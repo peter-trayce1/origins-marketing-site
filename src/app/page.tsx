@@ -737,16 +737,17 @@ function ExamplePassport() {
 function PricingPreview() {
   const plans = [
     {
-      name: "Starter",
-      price: "£350",
+      name: "Essentials",
+      price: "£375",
       period: "/mo",
-      description: "For small brands launching their first passports.",
+      description: "For emerging and growing brands launching their first passports.",
       features: [
-        "250 active passports per year",
-        "QR code generation",
+        "250 passport publications per year",
+        "Unlimited QR labels & scans",
+        "AI Passport Builder",
         "Public passport pages",
-        "Passport builder wizard",
-        "CSV export",
+        "Certification management",
+        "CSV import & export",
       ],
       cta: "Start free trial",
       href: `${APP_URL}/signup`,
@@ -754,17 +755,17 @@ function PricingPreview() {
     },
     {
       name: "Growth",
-      price: "£750",
+      price: "£795",
       period: "/mo",
-      description: "For growing brands managing collections and supplier data.",
+      description: "For established brands managing larger product ranges.",
       features: [
-        "1,000 active passports per year",
-        "Everything in Starter",
+        "750 passport publications per year",
+        "Unlimited QR labels & scans",
+        "Everything in Essentials",
         "Supplier data requests",
-        "Bulk CSV import",
-        "AI Passport Generator",
-        "Analytics dashboard",
-        "Shopify integration",
+        "Team members",
+        "Advanced analytics",
+        "Custom branding",
       ],
       cta: "Start free trial",
       href: `${APP_URL}/signup`,
@@ -774,14 +775,14 @@ function PricingPreview() {
       name: "Enterprise",
       price: "Custom",
       period: "",
-      description: "For larger teams, supplier networks and custom workflows.",
+      description: "For brands, manufacturers and enterprise teams requiring higher volumes and integrations.",
       features: [
-        "Unlimited passports",
+        "Custom publication allowance",
+        "Unlimited QR labels & scans",
         "Everything in Growth",
-        "Multi-brand workspace",
-        "Custom data extensions",
-        "SSO and permissions",
-        "Dedicated onboarding",
+        "ERP & PLM integration",
+        "Supplier portal",
+        "Dedicated success manager",
       ],
       cta: "Talk to us",
       href: "/book-demo",
@@ -877,7 +878,7 @@ function PricingPreview() {
         </div>
 
         <p className="text-center text-sm text-[#8C8C8C] mt-8">
-          All plans include a free trial. Annual billing available. Passport allocation applies per 12 months.
+          All plans include a 14-day free trial. Annual billing available. Passport publications are counted per year.
         </p>
       </div>
     </section>
