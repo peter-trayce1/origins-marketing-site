@@ -1,226 +1,143 @@
 import type { Metadata } from "next";
 import { APP_URL } from "@/lib/utils";
-import { Check, ArrowRight, Minus } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
+import PricingToggle from "./PricingToggle";
 
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Simple, transparent pricing for fashion brands of all sizes. Start free, scale as you grow.",
+    "Simple pricing for every stage of your Digital Product Passport journey. 14-day free trial, no credit card required.",
 };
 
-// ─── Plans ────────────────────────────────────────────────────────────────────
+// ─── Pricing hero ─────────────────────────────────────────────────────────────
 
-const plans = [
-  {
-    name: "Starter",
-    price: "£350",
-    period: "/mo",
-    tagline: "For growing brands",
-    description: "Everything you need to launch your first Digital Product Passports and go live with QR codes.",
-    cta: "Start free trial",
-    ctaHref: `${APP_URL}/signup`,
-    highlight: false,
-    features: [
-      { label: "Active passports", value: "250" },
-      { label: "QR code generation (PNG, SVG, PDF)", value: true },
-      { label: "Public passport pages", value: true },
-      { label: "Standard passport templates", value: true },
-      { label: "Passport builder wizard", value: true },
-      { label: "CSV export", value: true },
-      { label: "Email support", value: true },
-      { label: "AI Passport Generator", value: false },
-      { label: "Shopify integration", value: false },
-      { label: "Analytics dashboard", value: false },
-      { label: "Bulk CSV import", value: false },
-      { label: "Full embed suite", value: false },
-      { label: "Multi-brand workspace", value: false },
-    ],
-  },
-  {
-    name: "Growth",
-    price: "£750",
-    period: "/mo",
-    tagline: "Most popular",
-    description: "For scaling brands that need AI content generation, integrations and deeper analytics.",
-    cta: "Start free trial",
-    ctaHref: `${APP_URL}/signup`,
-    highlight: true,
-    features: [
-      { label: "Active passports", value: "1,000" },
-      { label: "QR code generation (PNG, SVG, PDF)", value: true },
-      { label: "Public passport pages", value: true },
-      { label: "Custom brand templates", value: true },
-      { label: "Passport builder wizard", value: true },
-      { label: "CSV export", value: true },
-      { label: "Priority email and chat support", value: true },
-      { label: "AI Passport Generator", value: true },
-      { label: "Shopify integration", value: true },
-      { label: "Analytics dashboard", value: true },
-      { label: "Bulk CSV import", value: true },
-      { label: "Full embed suite", value: true },
-      { label: "Multi-brand workspace", value: false },
-    ],
-  },
-  {
-    name: "Enterprise",
-    price: "Custom",
-    period: "",
-    tagline: "For large teams",
-    description: "For retailers, luxury brands and large teams needing custom data models, SSO and multi-brand management.",
-    cta: "Talk to us",
-    ctaHref: "/book-demo",
-    highlight: false,
-    features: [
-      { label: "Active passports", value: "Unlimited" },
-      { label: "QR code generation (PNG, SVG, PDF)", value: true },
-      { label: "Public passport pages", value: true },
-      { label: "Custom brand templates", value: true },
-      { label: "Passport builder wizard", value: true },
-      { label: "CSV export", value: true },
-      { label: "Dedicated account support", value: true },
-      { label: "AI Passport Generator", value: true },
-      { label: "Shopify integration", value: true },
-      { label: "Analytics dashboard", value: true },
-      { label: "Bulk CSV import", value: true },
-      { label: "Full embed suite", value: true },
-      { label: "Multi-brand workspace", value: true },
-    ],
-  },
-];
-
-// ─── Plan cards ───────────────────────────────────────────────────────────────
-
-function PlanCards() {
+function PricingHero() {
   return (
-    <section className="bg-white pt-20 pb-16 lg:pt-28">
+    <section className="bg-white pt-20 pb-14 lg:pt-28 lg:pb-16">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="max-w-2xl mb-16">
+        <div className="max-w-3xl">
           <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest mb-5">
             Pricing
           </div>
-          <h1 className="text-5xl lg:text-[3.5rem] font-semibold tracking-[-0.03em] text-[#0A0A0A] leading-[1.05] mb-4">
-            Simple, transparent pricing.
+          <h1 className="text-5xl lg:text-[3.5rem] font-semibold tracking-[-0.03em] text-[#0A0A0A] leading-[1.05] mb-5">
+            Simple pricing for every stage of your Digital Product Passport journey.
           </h1>
-          <p className="text-lg text-[#525252] leading-relaxed">
-            All plans start with a free trial. No credit card required to get started.
+          <p className="text-lg text-[#525252] leading-relaxed mb-4">
+            Create, publish and manage Digital Product Passports with transparent pricing that scales with your brand.
+          </p>
+          <p className="text-sm font-semibold text-[#0A0A0A]">
+            All plans include a 14-day free trial. No credit card required.
           </p>
         </div>
+      </div>
+    </section>
+  );
+}
 
-        <div className="grid md:grid-cols-3 gap-4 items-start">
-          {plans.map((plan) => (
-            <div
-              key={plan.name}
-              className={`rounded-2xl p-7 flex flex-col gap-7 ${
-                plan.highlight
-                  ? "bg-[#0A0A0A] ring-1 ring-[#0A0A0A]"
-                  : "bg-white border border-[#E8E8E6]"
-              }`}
-            >
-              {/* Header */}
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span
-                    className={`text-xs font-semibold uppercase tracking-widest ${
-                      plan.highlight ? "text-white/50" : "text-[#8C8C8C]"
-                    }`}
-                  >
-                    {plan.name}
-                  </span>
-                  {plan.tagline === "Most popular" && (
-                    <span className="text-[10px] font-semibold px-2 py-0.5 bg-white/15 text-white rounded-full">
-                      Most popular
-                    </span>
-                  )}
-                  {plan.tagline !== "Most popular" && (
-                    <span
-                      className={`text-[10px] font-medium ${
-                        plan.highlight ? "text-white/30" : "text-[#8C8C8C]"
-                      }`}
-                    >
-                      {plan.tagline}
-                    </span>
-                  )}
-                </div>
-                <div className="flex items-baseline gap-1 mb-3">
-                  <span
-                    className={`text-4xl font-semibold tracking-tight ${
-                      plan.highlight ? "text-white" : "text-[#0A0A0A]"
-                    }`}
-                  >
-                    {plan.price}
-                  </span>
-                  {plan.period && (
-                    <span className={plan.highlight ? "text-white/40 text-sm" : "text-[#8C8C8C] text-sm"}>
-                      {plan.period}
-                    </span>
-                  )}
-                </div>
-                <p className={`text-sm leading-relaxed ${plan.highlight ? "text-white/60" : "text-[#525252]"}`}>
-                  {plan.description}
-                </p>
+// ─── How pricing works ────────────────────────────────────────────────────────
+
+function HowPricingWorks() {
+  return (
+    <section className="bg-[#F9F9F8] py-16 lg:py-20 border-t border-[#E8E8E6]">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-start">
+          <div className="flex flex-col gap-6">
+            <h2 className="text-2xl lg:text-3xl font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight">
+              How Origins pricing works
+            </h2>
+            <p className="text-[#525252] leading-relaxed">
+              Origins pricing is based on the number of Product Passports your brand publishes each year.
+            </p>
+            <ul className="space-y-3">
+              {[
+                "One passport = one product style",
+                "Unlimited QR labels per passport",
+                "Unlimited QR scans",
+                "Draft passports are always free",
+                "Updates and edits never count towards your allowance",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-[#525252]">
+                  <Check size={14} className="text-[#0A0A0A] mt-0.5 shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="lg:w-[400px] shrink-0">
+            <div className="bg-white border border-[#E8E8E6] rounded-2xl p-6 space-y-4">
+              <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest">
+                Example
               </div>
-
-              {/* CTA */}
-              <a
-                href={plan.ctaHref}
-                className={`inline-flex items-center justify-center h-10 px-5 rounded-xl text-sm font-semibold transition-colors ${
-                  plan.highlight
-                    ? "bg-white text-[#0A0A0A] hover:bg-white/90"
-                    : "bg-[#0A0A0A] text-white hover:bg-[#1C1C1C]"
-                }`}
-              >
-                {plan.cta}
-              </a>
-
-              {/* Feature list */}
-              <ul className="space-y-3 pt-1 border-t border-white/10">
-                {plan.features.map((feat) => (
-                  <li key={feat.label} className="flex items-start gap-3">
-                    {feat.value === false ? (
-                      <Minus
-                        size={14}
-                        className={`mt-0.5 shrink-0 ${plan.highlight ? "text-white/20" : "text-[#D4D4D0]"}`}
-                        strokeWidth={2}
-                      />
-                    ) : (
-                      <Check
-                        size={14}
-                        className={`mt-0.5 shrink-0 ${plan.highlight ? "text-white/70" : "text-[#0A0A0A]"}`}
-                        strokeWidth={2.5}
-                      />
-                    )}
-                    <span
-                      className={`text-sm ${
-                        feat.value === false
-                          ? plan.highlight
-                            ? "text-white/20"
-                            : "text-[#C4C4C0]"
-                          : plan.highlight
-                          ? "text-white/70"
-                          : "text-[#525252]"
-                      }`}
-                    >
-                      {feat.label}
-                      {typeof feat.value === "string" && (
-                        <span
-                          className={`ml-1 font-semibold ${
-                            plan.highlight ? "text-white/90" : "text-[#0A0A0A]"
-                          }`}
-                        >
-                          — {feat.value}
-                        </span>
-                      )}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+              <div className="space-y-3">
+                <div className="p-4 bg-[#F9F9F8] rounded-xl">
+                  <div className="flex items-baseline gap-2 mb-1.5">
+                    <span className="text-2xl font-semibold tracking-tight text-[#0A0A0A]">1</span>
+                    <span className="text-sm font-medium text-[#0A0A0A]">passport publication</span>
+                  </div>
+                  <p className="text-sm text-[#525252]">
+                    A t-shirt style published once
+                  </p>
+                </div>
+                <div className="p-4 bg-[#F9F9F8] rounded-xl">
+                  <div className="flex items-baseline gap-2 mb-1.5">
+                    <span className="text-2xl font-semibold tracking-tight text-[#0A0A0A]">Still 1</span>
+                    <span className="text-sm font-medium text-[#0A0A0A]">passport publication</span>
+                  </div>
+                  <p className="text-sm text-[#525252]">
+                    10,000 QR labels printed from that same passport
+                  </p>
+                </div>
+              </div>
             </div>
-          ))}
+          </div>
         </div>
+      </div>
+    </section>
+  );
+}
 
-        <p className="text-center text-sm text-[#8C8C8C] mt-8">
-          All prices exclude VAT. Annual billing available on request.
-        </p>
+// ─── Free trial banner ────────────────────────────────────────────────────────
+
+function FreeTrialBanner() {
+  const perks = [
+    "14-day free trial",
+    "Publish up to 3 passports",
+    "QR code generation",
+    "Public passport pages",
+    "Full passport builder access",
+    "No credit card required",
+  ];
+
+  return (
+    <section className="bg-white py-12 border-t border-[#E8E8E6]">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="border border-[#E8E8E6] rounded-3xl p-8 lg:p-10 flex flex-col lg:flex-row gap-8 lg:gap-12 items-start lg:items-center">
+          <div className="flex-1 min-w-0">
+            <h2 className="text-xl lg:text-2xl font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight mb-1.5">
+              Included with every approved workspace
+            </h2>
+            <p className="text-sm text-[#8C8C8C]">
+              Every workspace application is reviewed by our team to ensure the best onboarding experience.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-2 shrink-0">
+            {perks.map((perk) => (
+              <div key={perk} className="flex items-center gap-2.5">
+                <Check size={13} className="text-green-600 shrink-0" strokeWidth={2.5} />
+                <span className="text-sm text-[#525252]">{perk}</span>
+              </div>
+            ))}
+          </div>
+          <div className="shrink-0">
+            <a
+              href={`${APP_URL}/signup`}
+              className="inline-flex items-center justify-center h-11 px-6 rounded-xl bg-[#0A0A0A] text-white text-sm font-semibold hover:bg-[#1C1C1C] transition-colors whitespace-nowrap"
+            >
+              Start your trial
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -230,36 +147,28 @@ function PlanCards() {
 
 const faqs = [
   {
-    q: "What is a Digital Product Passport?",
-    a: "A Digital Product Passport (DPP) is a structured digital record of a product's materials, origin, manufacturing, certifications, care instructions, and end-of-life options. It is accessed via a QR code or unique link. The EU's Ecodesign for Sustainable Products Regulation (ESPR) is introducing mandatory DPP requirements for fashion and other product categories from 2026.",
+    q: "What counts as a Product Passport publication?",
+    a: "A publication is counted when a passport is published for the first time. Editing, updating or re-publishing an existing passport does not use an additional publication.",
   },
   {
-    q: "How long does setup take?",
-    a: "Most brands publish their first passport in under 10 minutes using the OriginsID wizard. For teams with existing product data, bulk CSV import lets you create hundreds of passport drafts in a single upload.",
+    q: "Do QR scans count towards my allowance?",
+    a: "No. QR scans are unlimited on every plan.",
   },
   {
-    q: "Can I try before committing to a plan?",
-    a: "Yes — all plans start with a free trial. You can create passports, generate QR codes, and publish public pages before committing. No credit card required. Book a demo if you'd like a guided walkthrough first.",
+    q: "Do QR labels count towards my allowance?",
+    a: "No. You can generate unlimited QR labels from a published passport.",
   },
   {
-    q: "Do I need technical knowledge to use OriginsID?",
-    a: "No. The passport builder, QR code manager, and public page publishing all work without any technical knowledge. For teams who want to integrate OriginsID with their existing systems, a REST API and developer documentation are available on Growth and Enterprise plans.",
+    q: "Do draft passports count?",
+    a: "No. Draft and archived passports do not count towards your annual allowance.",
   },
   {
-    q: "What happens when I go over my passport limit?",
-    a: "We'll notify you before you reach your plan limit so you can upgrade without any disruption. Published passports remain live and accessible to consumers while you manage your plan.",
+    q: "What happens after my trial?",
+    a: "Choose the plan that best fits your expected passport volume and continue publishing passports.",
   },
   {
-    q: "Is OriginsID compliant with EU ESPR?",
-    a: "OriginsID structures passport data to align with the EU ESPR technical requirements for Digital Product Passports. We work closely with regulatory guidance to ensure our data model stays up to date as the regulation develops. For specific compliance questions, our team is available to advise.",
-  },
-  {
-    q: "Can I use OriginsID for multiple brands?",
-    a: "Yes — multi-brand workspaces are available on the Enterprise plan. Each brand gets its own passport library, QR codes, and public pages under a shared organisation.",
-  },
-  {
-    q: "What integrations are available?",
-    a: "OriginsID currently supports Shopify product sync, GOTS and EcoVadis certification imports, bulk CSV upload, and a REST API for connecting any custom system. Additional integrations including WooCommerce and Klaviyo are in progress.",
+    q: "Can I upgrade later?",
+    a: "Yes. You can upgrade from Essentials to Growth or Enterprise at any time.",
   },
 ];
 
@@ -276,7 +185,7 @@ function FAQ() {
               Common questions.
             </h2>
           </div>
-          <div className="space-y-0 divide-y divide-[#E8E8E6]">
+          <div className="divide-y divide-[#E8E8E6]">
             {faqs.map((faq) => (
               <div key={faq.q} className="py-6">
                 <h3 className="text-sm font-semibold text-[#0A0A0A] mb-2">{faq.q}</h3>
@@ -290,31 +199,31 @@ function FAQ() {
   );
 }
 
-// ─── Bottom CTA ───────────────────────────────────────────────────────────────
+// ─── Final CTA ────────────────────────────────────────────────────────────────
 
-function PricingCTA() {
+function FinalCTA() {
   return (
     <section className="bg-[#0A0A0A] py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6">
         <div className="max-w-xl">
           <h2 className="text-4xl font-semibold tracking-[-0.03em] text-white leading-[1.05] mb-4">
-            Still have questions?
+            Start your trial today.
           </h2>
           <p className="text-lg text-white/50 leading-relaxed mb-8">
-            Talk to the team — we can walk you through the platform, help you choose the right plan, and answer any compliance questions.
+            Publish your first Digital Product Passport in minutes. No credit card required.
           </p>
           <div className="flex items-center gap-3">
             <a
-              href="/book-demo"
+              href={`${APP_URL}/signup`}
               className="inline-flex items-center justify-center h-11 px-6 rounded-xl bg-white text-[#0A0A0A] text-sm font-semibold hover:bg-white/90 transition-colors"
             >
-              Book a demo
+              Start your trial
             </a>
             <a
-              href={`${APP_URL}/signup`}
+              href="/book-demo"
               className="inline-flex items-center h-11 px-2 text-white/50 text-sm font-medium hover:text-white transition-colors gap-1.5"
             >
-              Start free trial
+              Book a demo
               <ArrowRight size={14} />
             </a>
           </div>
@@ -329,9 +238,12 @@ function PricingCTA() {
 export default function PricingPage() {
   return (
     <>
-      <PlanCards />
+      <PricingHero />
+      <HowPricingWorks />
+      <FreeTrialBanner />
+      <PricingToggle />
       <FAQ />
-      <PricingCTA />
+      <FinalCTA />
     </>
   );
 }
