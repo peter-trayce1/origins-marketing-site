@@ -2,79 +2,88 @@ import Image from "next/image";
 import { APP_URL } from "@/lib/utils";
 import {
   ShieldCheck,
-  Sparkles,
   QrCode,
   BarChart2,
   ArrowRight,
   Check,
   FileText,
-  Database,
-  Globe,
-  Zap,
+  Upload,
+  Send,
 } from "lucide-react";
 
 const TURTLENECK_IMG = "/turtleneck.webp";
 
-// ─── Product mockups (CSS-only) ───────────────────────────────────────────────
+// ─── Hero: Workflow visual ────────────────────────────────────────────────────
 
-function DashboardMockup() {
+function WorkflowVisual() {
+  const steps = [
+    { label: "Product added", detail: "Merino Turtleneck", live: false },
+    { label: "Supplier data requested", detail: "Sent to 2 suppliers", live: false },
+    { label: "Passport built", detail: "94% complete", live: false },
+    { label: "QR code generated", detail: "Ready to print", live: false },
+    { label: "Passport live", detail: "originsid.com/ml-001", live: true },
+  ];
+
   return (
     <div className="relative">
-      <div className="bg-white rounded-2xl shadow-[0_8px_48px_rgba(0,0,0,0.10)] border border-[#E8E8E6] overflow-hidden w-[320px]">
+      <div className="bg-white rounded-2xl shadow-[0_8px_48px_rgba(0,0,0,0.10)] border border-[#E8E8E6] overflow-hidden w-[300px]">
         {/* Browser chrome */}
-        <div className="flex items-center gap-1.5 px-4 py-3 border-b border-[#E8E8E6] bg-[#F9F9F8]">
+        <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-[#E8E8E6] bg-[#F9F9F8]">
           <div className="w-2.5 h-2.5 rounded-full bg-[#E8E8E6]" />
           <div className="w-2.5 h-2.5 rounded-full bg-[#E8E8E6]" />
           <div className="w-2.5 h-2.5 rounded-full bg-[#E8E8E6]" />
-          <div className="flex-1 h-5 bg-white border border-[#E8E8E6] rounded-md mx-2 flex items-center px-2.5 gap-1.5">
-            <div className="w-2 h-2 rounded-full bg-green-500" />
-            <div className="w-24 h-2 bg-[#E8E8E6] rounded" />
+          <div className="flex-1 h-5 bg-white border border-[#E8E8E6] rounded-md mx-2 flex items-center px-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5 shrink-0" />
+            <span className="text-[9px] text-[#8C8C8C] truncate">app.originsid.com</span>
           </div>
         </div>
-        {/* App shell */}
-        <div className="flex">
-          {/* Sidebar */}
-          <div className="w-12 border-r border-[#E8E8E6] py-4 flex flex-col items-center gap-3 bg-[#F9F9F8]">
-            <div className="w-5 h-5 rounded-md bg-[#0A0A0A]" />
-            <div className="w-5 h-px bg-[#E8E8E6] my-1" />
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className={`w-5 h-5 rounded bg-[#E8E8E6] ${i === 0 ? "bg-[#D4D4D0]" : ""}`} />
-            ))}
+        {/* Product header */}
+        <div className="px-4 py-3 border-b border-[#E8E8E6] flex items-center gap-3">
+          <div className="w-9 h-9 rounded-lg bg-[#F4F4F3] shrink-0 relative overflow-hidden">
+            <Image src={TURTLENECK_IMG} alt="" fill className="object-contain" sizes="36px" />
           </div>
-          {/* Main content */}
-          <div className="flex-1 p-4 space-y-3">
-            <div className="flex items-center justify-between mb-1">
-              <div className="w-20 h-3.5 bg-[#0A0A0A] rounded-sm" />
-              <div className="w-16 h-6 bg-[#0A0A0A] rounded-lg" />
-            </div>
-            {[
-              { name: "Merino Turtleneck", status: "published", score: 96 },
-              { name: "Linen Overshirt", status: "published", score: 88 },
-              { name: "Recycled Wool Coat", status: "draft", score: 72 },
-            ].map((item) => (
-              <div key={item.name} className="flex items-center gap-3 py-2 border-b border-[#F4F4F3] last:border-0">
-                <div className="w-8 h-8 rounded-lg bg-[#F4F4F3] shrink-0" />
-                <div className="flex-1 min-w-0">
-                  <div className="text-[11px] font-medium text-[#0A0A0A] truncate">{item.name}</div>
-                  <div className="flex items-center gap-1.5 mt-0.5">
-                    <div className="h-1 bg-[#E8E8E6] rounded-full flex-1 max-w-[60px]">
-                      <div
-                        className="h-1 bg-[#0A0A0A] rounded-full"
-                        style={{ width: `${item.score}%` }}
-                      />
-                    </div>
-                    <span className="text-[9px] text-[#8C8C8C]">{item.score}%</span>
+          <div className="flex-1 min-w-0">
+            <div className="text-[11px] font-semibold text-[#0A0A0A] truncate">Merino Turtleneck</div>
+            <div className="text-[9px] text-[#8C8C8C]">Maison Loren · AW2025</div>
+          </div>
+          <span className="text-[9px] font-semibold text-green-700 bg-[#EDFAED] px-2 py-0.5 rounded-full shrink-0">
+            Live
+          </span>
+        </div>
+        {/* Pipeline */}
+        <div className="p-4">
+          <div className="text-[9px] font-semibold text-[#8C8C8C] uppercase tracking-wider mb-3">
+            Passport pipeline
+          </div>
+          <div>
+            {steps.map((step, i) => (
+              <div key={step.label} className="flex gap-3">
+                <div className="flex flex-col items-center">
+                  <div
+                    className={`w-3 h-3 rounded-full flex items-center justify-center shrink-0 ${
+                      step.live ? "bg-green-500" : "bg-[#0A0A0A]"
+                    }`}
+                  >
+                    {step.live ? (
+                      <div className="w-1.5 h-1.5 rounded-full bg-white" />
+                    ) : (
+                      <Check size={6} className="text-white" strokeWidth={3} />
+                    )}
                   </div>
+                  {i < steps.length - 1 && (
+                    <div className="w-px bg-[#E8E8E6] my-1 min-h-[14px]" />
+                  )}
                 </div>
-                <span
-                  className={`text-[9px] font-medium px-1.5 py-0.5 rounded-full shrink-0 ${
-                    item.status === "published"
-                      ? "bg-[#EDFAED] text-green-700"
-                      : "bg-[#F4F4F3] text-[#8C8C8C]"
-                  }`}
-                >
-                  {item.status}
-                </span>
+                <div className={`min-w-0 ${i < steps.length - 1 ? "pb-1" : ""}`}>
+                  <div
+                    className={`text-[10px] font-medium leading-none mb-0.5 ${
+                      step.live ? "text-green-700" : "text-[#0A0A0A]"
+                    }`}
+                  >
+                    {step.label}
+                  </div>
+                  <div className="text-[9px] text-[#8C8C8C] leading-tight">{step.detail}</div>
+                </div>
               </div>
             ))}
           </div>
@@ -82,7 +91,7 @@ function DashboardMockup() {
       </div>
 
       {/* Floating QR chip */}
-      <div className="absolute -right-5 bottom-8 bg-white border border-[#E8E8E6] rounded-xl p-3 shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+      <div className="absolute -right-10 bottom-10 bg-white border border-[#E8E8E6] rounded-xl p-3 shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
         <div className="text-[9px] font-semibold text-[#525252] mb-1.5 flex items-center gap-1">
           <QrCode size={9} />
           QR generated
@@ -97,10 +106,7 @@ function DashboardMockup() {
             0,0,1,0,0,1,0,0, 1,1,0,1,0,1,1,1,
             1,0,1,1,0,1,0,1, 1,1,1,0,0,1,1,1,
           ].map((cell, i) => (
-            <div
-              key={i}
-              style={{ backgroundColor: cell ? "#0A0A0A" : "white", aspectRatio: "1" }}
-            />
+            <div key={i} style={{ backgroundColor: cell ? "#0A0A0A" : "white", aspectRatio: "1" }} />
           ))}
         </div>
       </div>
@@ -108,50 +114,66 @@ function DashboardMockup() {
   );
 }
 
+// ─── Example passport mockup ──────────────────────────────────────────────────
+
 function PassportMockup() {
   return (
     <div
-      className="bg-white rounded-[24px] shadow-[0_8px_40px_rgba(0,0,0,0.10)] border border-[#E8E8E6] overflow-hidden"
-      style={{ width: 152 }}
+      className="bg-white rounded-[28px] shadow-[0_16px_56px_rgba(0,0,0,0.12)] border border-[#E8E8E6] overflow-hidden"
+      style={{ width: 200 }}
     >
-      {/* Status bar */}
       <div className="bg-[#0A0A0A] h-8 flex items-center justify-center">
         <div className="w-14 h-2 bg-[#2A2A2A] rounded-full" />
       </div>
-      {/* Hero image */}
-      <div className="h-24 relative overflow-hidden bg-[#F2F0EE]">
+      <div className="h-32 relative overflow-hidden bg-[#F2F0EE]">
         <Image
           src={TURTLENECK_IMG}
           alt="Merino turtleneck"
           fill
           className="object-contain"
-          sizes="152px"
+          sizes="200px"
         />
         <div className="absolute bottom-2 right-2 bg-white/95 rounded-md px-1.5 py-0.5 flex items-center gap-1 shadow-sm">
-          <ShieldCheck size={7} className="text-green-600" />
-          <span className="text-[7px] font-semibold text-[#0A0A0A]">Verified</span>
+          <ShieldCheck size={8} className="text-green-600" />
+          <span className="text-[8px] font-semibold text-[#0A0A0A]">Verified</span>
         </div>
       </div>
-      {/* Passport content */}
-      <div className="p-3 space-y-2">
-        <div className="text-[7px] font-semibold text-[#8C8C8C] uppercase tracking-widest">Maison Loren</div>
-        <div className="text-[12px] font-semibold text-[#0A0A0A] leading-tight">
-          Merino<br />Turtleneck
-        </div>
-        <div className="space-y-1">
-          <div className="text-[8px] font-medium text-[#525252]">Materials</div>
-          <div className="flex flex-wrap gap-1">
-            <span className="text-[7px] px-1.5 py-0.5 bg-[#F4F4F3] rounded-full text-[#525252]">
-              100% Merino
-            </span>
-            <span className="text-[7px] px-1.5 py-0.5 bg-[#F4F4F3] rounded-full text-[#525252]">
-              OEKO-TEX
-            </span>
+      <div className="p-4 space-y-3">
+        <div>
+          <div className="text-[8px] font-semibold text-[#8C8C8C] uppercase tracking-widest mb-1">
+            Maison Loren
           </div>
+          <div className="text-sm font-semibold text-[#0A0A0A] leading-tight">Merino Turtleneck</div>
         </div>
-        <div className="pt-1.5 border-t border-[#E8E8E6] flex items-center gap-1">
-          <span className="text-[7px] text-[#525252]">🇮🇹</span>
-          <span className="text-[7px] text-[#525252]">Made in Italy</span>
+        <div className="space-y-0">
+          {[
+            { label: "Materials", value: "100% Merino Wool" },
+            { label: "Made in", value: "🇮🇹 Italy" },
+            { label: "Certifications", value: "OEKO-TEX" },
+            { label: "Impact", value: "2.1kg CO₂e" },
+            { label: "Care", value: "Hand wash 30°C" },
+          ].map((row) => (
+            <div
+              key={row.label}
+              className="flex items-center justify-between py-1.5 border-b border-[#F4F4F3] last:border-0"
+            >
+              <span className="text-[8px] text-[#8C8C8C]">{row.label}</span>
+              <span className="text-[8px] font-medium text-[#0A0A0A]">{row.value}</span>
+            </div>
+          ))}
+        </div>
+        <div className="pt-1 flex items-center gap-2">
+          <div
+            className="grid gap-px"
+            style={{ gridTemplateColumns: "repeat(6, 1fr)", width: 24, height: 24 }}
+          >
+            {[1,1,1,0,1,1,1,0,1,0,1,0,1,1,0,0,1,1,0,1,0,1,0,1,1,1,1,0,1,0,1,0,1,1,0,1].map(
+              (cell, i) => (
+                <div key={i} style={{ backgroundColor: cell ? "#0A0A0A" : "white", aspectRatio: "1" }} />
+              )
+            )}
+          </div>
+          <span className="text-[8px] text-[#8C8C8C]">Scan to verify</span>
         </div>
       </div>
     </div>
@@ -165,37 +187,33 @@ function Hero() {
     <section className="bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 pt-20 pb-16 lg:pt-28 lg:pb-24">
         <div className="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center">
-          {/* Left: Copy */}
           <div className="flex flex-col gap-6 max-w-xl">
             <div>
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#E8E8E6] text-xs font-medium text-[#525252]">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" />
-                Built for EU ESPR 2026 compliance
+                Digital Product Passports for fashion brands
               </span>
             </div>
             <h1 className="text-[2.75rem] sm:text-5xl lg:text-[3.5rem] font-semibold tracking-[-0.03em] text-[#0A0A0A] leading-[1.05]">
-              Create verified<br />
-              Digital Product<br />
-              Passports<br />
-              in minutes.
+              Create product passports<br />
+              in minutes.<br />
+              Not months.
             </h1>
             <p className="text-lg text-[#525252] leading-relaxed">
-              OriginsID is the simplest way for fashion brands to build,
-              manage and publish verified product passports — with QR codes,
-              public pages and EU compliance built in.
+              Collect product data, request information from suppliers, generate QR codes and publish ESPR-ready Digital Product Passports from one simple platform.
             </p>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 pt-1">
               <a
                 href={`${APP_URL}/signup`}
                 className="inline-flex items-center justify-center h-11 px-6 rounded-xl bg-[#0A0A0A] text-white text-sm font-semibold hover:bg-[#1C1C1C] transition-colors"
               >
-                Get started free
+                Start free trial
               </a>
               <a
-                href="/book-demo"
+                href={`${APP_URL}/example`}
                 className="inline-flex items-center h-11 px-2 text-[#525252] text-sm font-medium hover:text-[#0A0A0A] transition-colors gap-1.5"
               >
-                Book a demo
+                See example passport
                 <ArrowRight size={14} />
               </a>
             </div>
@@ -204,17 +222,8 @@ function Hero() {
             </p>
           </div>
 
-          {/* Right: Mockups */}
-          <div className="relative h-[400px] hidden lg:flex items-center justify-end pr-8">
-            <div style={{ transform: "rotate(-2deg)" }}>
-              <DashboardMockup />
-            </div>
-            <div
-              className="absolute bottom-0 -left-4"
-              style={{ transform: "rotate(1.5deg)" }}
-            >
-              <PassportMockup />
-            </div>
+          <div className="relative hidden lg:flex items-center justify-end pr-16">
+            <WorkflowVisual />
           </div>
         </div>
       </div>
@@ -226,15 +235,13 @@ function Hero() {
 
 function TrustStrip() {
   const items = [
-    "EU ESPR compliant structure",
-    "GOTS & OEKO-TEX fields built in",
+    "Supplier data collection built in",
+    "ESPR-ready passport structure",
     "QR codes on every passport",
+    "Bulk upload from spreadsheet",
     "Public passport pages included",
-    "AI content drafting",
-    "Quick setup",
+    "GOTS & OEKO-TEX fields supported",
   ];
-
-  // Duplicate for seamless loop
   const ticker = [...items, ...items];
 
   return (
@@ -257,18 +264,28 @@ function HowItWorks() {
   const steps = [
     {
       number: "01",
-      title: "Build your passport",
-      body: "Add your product, materials, certifications and supply chain data using the guided wizard — or let AI draft the content from a simple product description.",
+      title: "Add your product",
+      body: "Create a single passport manually or upload hundreds of products from a spreadsheet.",
     },
     {
       number: "02",
-      title: "Publish and generate a QR code",
-      body: "Hit publish and OriginsID automatically generates a unique QR code and a branded public passport page — ready for swing tags, care labels and packaging.",
+      title: "Request supplier data",
+      body: "Send simple data requests to manufacturers and suppliers so they can provide the missing information.",
     },
     {
       number: "03",
-      title: "Turn compliance into trust",
-      body: "Consumers scan the QR and see a verified, beautiful product story. You get real-time scan analytics and a complete audit trail for EU DPP compliance.",
+      title: "Build your passport",
+      body: "Use the guided passport builder to add materials, certifications, facilities, care, impact and product story.",
+    },
+    {
+      number: "04",
+      title: "Generate your QR code",
+      body: "Every passport gets a QR code that can be used on labels, packaging, swing tags and ecommerce pages.",
+    },
+    {
+      number: "05",
+      title: "Publish and share",
+      body: "Launch a public product passport page that customers, retailers and partners can access instantly.",
     },
   ];
 
@@ -279,247 +296,28 @@ function HowItWorks() {
           <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest mb-4">
             How it works
           </div>
-          <h2 className="text-4xl lg:text-5xl font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight max-w-xl">
-            From product data to verified passport in minutes.
+          <h2 className="text-4xl lg:text-5xl font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight max-w-2xl">
+            From product data to live passport in five simple steps.
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
-          {steps.map((step) => (
-            <div key={step.number} className="flex flex-col gap-5">
-              <div className="text-4xl font-semibold tracking-[-0.04em] text-[#E8E8E6]">
-                {step.number}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6">
+          {steps.map((step, i) => (
+            <div key={step.number} className="flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <div className="text-4xl font-semibold tracking-[-0.04em] text-[#E8E8E6] leading-none shrink-0">
+                  {step.number}
+                </div>
+                {i < steps.length - 1 && (
+                  <div className="hidden lg:block flex-1 h-px bg-[#E8E8E6]" />
+                )}
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-[#0A0A0A] mb-2">{step.title}</h3>
-                <p className="text-[#525252] leading-relaxed text-sm">{step.body}</p>
+                <h3 className="text-base font-semibold text-[#0A0A0A] mb-2">{step.title}</h3>
+                <p className="text-sm text-[#525252] leading-relaxed">{step.body}</p>
               </div>
             </div>
           ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── Feature: Passport builder ────────────────────────────────────────────────
-
-function BuilderPreview() {
-  const fields = [
-    { label: "Product name", value: "Merino Turtleneck", done: true },
-    { label: "Materials", value: "100% Merino Wool", done: true },
-    { label: "Certifications", value: "OEKO-TEX Standard 100", done: true },
-    { label: "Country of origin", value: "Italy", done: true },
-    { label: "Care instructions", value: "Hand wash 30°C", done: false },
-    { label: "Supply chain", value: "Add facility details", done: false },
-  ];
-
-  return (
-    <div className="bg-white rounded-2xl border border-[#E8E8E6] overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
-      <div className="flex items-center gap-2 px-5 py-3.5 border-b border-[#E8E8E6] bg-[#F9F9F8]">
-        <div className="w-2 h-2 rounded-full bg-[#E8E8E6]" />
-        <div className="w-2 h-2 rounded-full bg-[#E8E8E6]" />
-        <div className="w-2 h-2 rounded-full bg-[#E8E8E6]" />
-        <span className="ml-3 text-xs text-[#8C8C8C] font-medium">Passport builder</span>
-        <div className="ml-auto flex items-center gap-1.5">
-          <span className="text-xs font-semibold text-[#525252]">72%</span>
-          <div className="w-16 h-1.5 bg-[#E8E8E6] rounded-full">
-            <div className="w-[72%] h-1.5 bg-[#0A0A0A] rounded-full" />
-          </div>
-        </div>
-      </div>
-      <div className="p-5 space-y-2.5">
-        {fields.map((field) => (
-          <div key={field.label} className="flex items-center gap-3 py-2 border-b border-[#F4F4F3] last:border-0">
-            <div
-              className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 ${
-                field.done
-                  ? "bg-[#0A0A0A] border-[#0A0A0A]"
-                  : "border-[#E8E8E6]"
-              }`}
-            >
-              {field.done && <Check size={8} className="text-white" strokeWidth={3} />}
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="text-xs text-[#8C8C8C]">{field.label}</div>
-              <div
-                className={`text-sm font-medium truncate ${
-                  field.done ? "text-[#0A0A0A]" : "text-[#C4C4C0]"
-                }`}
-              >
-                {field.value}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function FeatureBuilder() {
-  return (
-    <section className="bg-[#F9F9F8] py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div className="flex flex-col gap-6">
-            <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest">
-              Passport builder
-            </div>
-            <h2 className="text-4xl lg:text-[2.75rem] font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight">
-              Every field your brand needs. Nothing it doesn&apos;t.
-            </h2>
-            <p className="text-[#525252] leading-relaxed">
-              The guided passport wizard walks you through materials, certifications, supply chain steps, care instructions, product stories and impact data. A completeness score shows you exactly what&apos;s missing before you publish.
-            </p>
-            <ul className="space-y-3">
-              {[
-                "Materials and composition with verified certifications",
-                "Supply chain facility tracking",
-                "AI-assisted content drafting — always editable",
-                "Completeness score before publishing",
-                "Draft, review and publish workflow",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm text-[#525252]">
-                  <Check size={14} className="text-[#0A0A0A] mt-0.5 shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="lg:pl-8">
-            <BuilderPreview />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── Feature: Public passport ─────────────────────────────────────────────────
-
-function PublicPassportPreview() {
-  return (
-    <div className="flex justify-center">
-      <div className="relative">
-        {/* Phone frame */}
-        <div
-          className="bg-white rounded-[36px] shadow-[0_16px_56px_rgba(0,0,0,0.12)] border border-[#E8E8E6] overflow-hidden"
-          style={{ width: 240 }}
-        >
-          {/* Notch */}
-          <div className="bg-[#0A0A0A] h-10 flex items-center justify-center">
-            <div className="w-16 h-2 bg-[#2A2A2A] rounded-full" />
-          </div>
-          {/* Passport header image */}
-          <div className="h-40 relative overflow-hidden bg-[#F2F0EE]">
-            <Image
-              src={TURTLENECK_IMG}
-              alt="Merino turtleneck"
-              fill
-              className="object-contain"
-              sizes="240px"
-            />
-            <div className="absolute inset-0 bg-black/20" />
-            <div className="absolute inset-0 flex items-end p-4 justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-white/80 backdrop-blur" />
-                <span className="text-xs font-semibold text-white drop-shadow">Maison Loren</span>
-              </div>
-              <div className="bg-white/95 rounded-md px-2 py-1 flex items-center gap-1 shadow-sm">
-                <ShieldCheck size={9} className="text-green-600" />
-                <span className="text-[8px] font-semibold text-[#0A0A0A]">Verified</span>
-              </div>
-            </div>
-          </div>
-          {/* Content */}
-          <div className="p-4 space-y-4">
-            <div>
-              <h3 className="text-base font-semibold text-[#0A0A0A]">Merino Turtleneck</h3>
-              <p className="text-xs text-[#8C8C8C] mt-0.5">AW2025 · Knitwear</p>
-            </div>
-            {/* Tabs */}
-            <div className="flex gap-2 border-b border-[#E8E8E6]">
-              {["Materials", "Supply chain", "Care"].map((tab, i) => (
-                <button
-                  key={tab}
-                  className={`text-[10px] font-medium pb-2 ${
-                    i === 0
-                      ? "text-[#0A0A0A] border-b-2 border-[#0A0A0A]"
-                      : "text-[#8C8C8C]"
-                  }`}
-                >
-                  {tab}
-                </button>
-              ))}
-            </div>
-            {/* Materials content */}
-            <div className="space-y-2.5">
-              <div className="flex items-center justify-between">
-                <span className="text-xs text-[#0A0A0A] font-medium">Merino Wool</span>
-                <span className="text-xs text-[#525252]">100%</span>
-              </div>
-              <div className="h-1.5 bg-[#E8E8E6] rounded-full">
-                <div className="w-full h-1.5 bg-[#0A0A0A] rounded-full" />
-              </div>
-              <div className="flex gap-1.5 flex-wrap">
-                <span className="text-[9px] px-2 py-0.5 bg-[#EDFAED] text-green-700 rounded-full font-medium">
-                  OEKO-TEX
-                </span>
-                <span className="text-[9px] px-2 py-0.5 bg-[#F4F4F3] text-[#525252] rounded-full">
-                  Mulesing-free
-                </span>
-              </div>
-              <div className="pt-1.5 border-t border-[#F4F4F3]">
-                <div className="text-[9px] text-[#525252]">🇮🇹 Spun and knitted in Italy</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Scan count chip */}
-        <div className="absolute -right-10 top-24 bg-white border border-[#E8E8E6] rounded-xl px-3 py-2 shadow-[0_4px_16px_rgba(0,0,0,0.08)]">
-          <div className="text-[9px] text-[#8C8C8C] font-medium">Total scans</div>
-          <div className="text-sm font-semibold text-[#0A0A0A]">2,841</div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function FeaturePassport() {
-  return (
-    <section className="bg-white py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div className="lg:order-2 flex flex-col gap-6">
-            <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest">
-              Public passport pages
-            </div>
-            <h2 className="text-4xl lg:text-[2.75rem] font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight">
-              A consumer experience, not a compliance document.
-            </h2>
-            <p className="text-[#525252] leading-relaxed">
-              Every passport publishes as a beautiful, branded consumer page — designed to tell the real story of your product, not just satisfy a regulatory checkbox. Accessible by QR code, direct link, or embedded on your site.
-            </p>
-            <ul className="space-y-3">
-              {[
-                "Auto-generated QR codes in PNG, SVG and PDF",
-                "Branded public pages — materials, origin, certifications",
-                "Embeddable widget for Shopify, Hydrogen and any storefront",
-                "Consumer-friendly language, not regulatory jargon",
-                "Scan analytics — countries, devices, daily trends",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm text-[#525252]">
-                  <Check size={14} className="text-[#0A0A0A] mt-0.5 shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="lg:order-1">
-            <PublicPassportPreview />
-          </div>
         </div>
       </div>
     </section>
@@ -531,34 +329,34 @@ function FeaturePassport() {
 function FeatureGrid() {
   const features = [
     {
-      icon: Sparkles,
-      title: "AI content drafting",
-      body: "Describe your product and let AI generate passport content — product story, sustainability summary, transparency copy. Always editable before publishing.",
+      icon: FileText,
+      title: "Passport Builder",
+      body: "Guided fields for product identity, materials, suppliers, certifications, impact data and product story.",
+    },
+    {
+      icon: Send,
+      title: "Supplier Requests",
+      body: "Request missing product data directly from suppliers and manufacturers through simple forms.",
+    },
+    {
+      icon: Upload,
+      title: "Bulk Upload",
+      body: "Import collections by spreadsheet and automatically create draft passports ready for review.",
+    },
+    {
+      icon: QrCode,
+      title: "QR Code Management",
+      body: "Generate and manage QR codes for products, packaging, care labels and ecommerce pages.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Evidence & Verification",
+      body: "Upload supporting evidence and show verified data clearly inside the passport builder.",
     },
     {
       icon: BarChart2,
-      title: "Scan analytics",
-      body: "See who&apos;s scanning your QR codes in real time. Track engagement by country, device and passport — proof that your transparency is being read.",
-    },
-    {
-      icon: Database,
-      title: "Bulk import",
-      body: "Already have product data? Upload a CSV and create hundreds of passport drafts in one go. No technical knowledge required.",
-    },
-    {
-      icon: Globe,
-      title: "Integrations",
-      body: "Sync products from Shopify, pull certification data from GOTS and EcoVadis, and connect to any system via the OriginsID REST API.",
-    },
-    {
-      icon: FileText,
-      title: "Templates by category",
-      body: "Start from a passport template tailored to your product type — fashion essentials, premium outerwear, sustainable hero, accessories and more.",
-    },
-    {
-      icon: Zap,
-      title: "Instant publishing",
-      body: "Draft → review → publish in minutes. Your QR code and public passport page go live the moment you hit publish. No deployment, no delays.",
+      title: "Analytics",
+      body: "Track passport views, QR code scans and customer engagement across your product range.",
     },
   ];
 
@@ -567,10 +365,10 @@ function FeatureGrid() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-14">
           <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest mb-4">
-            Everything you need
+            Platform
           </div>
-          <h2 className="text-4xl lg:text-5xl font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight max-w-lg">
-            Built for fashion brands. Designed for speed.
+          <h2 className="text-4xl lg:text-5xl font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight max-w-2xl">
+            Everything you need to launch Digital Product Passports.
           </h2>
         </div>
 
@@ -592,9 +390,9 @@ function FeatureGrid() {
   );
 }
 
-// ─── EU compliance callout ────────────────────────────────────────────────────
+// ─── ESPR readiness ───────────────────────────────────────────────────────────
 
-function ComplianceBanner() {
+function ESPRReadiness() {
   return (
     <section className="bg-white py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6">
@@ -602,35 +400,31 @@ function ComplianceBanner() {
           <div className="flex-1 flex flex-col gap-5">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#E8E8E6] text-xs font-medium text-[#525252] w-fit">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
-              EU regulation incoming
+              EU regulation in progress
             </div>
             <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight">
-              EU ESPR mandates Digital Product Passports for fashion from 2026.
+              Designed to support ESPR readiness.
             </h2>
             <p className="text-[#525252] leading-relaxed">
-              The Ecodesign for Sustainable Products Regulation (ESPR) will require fashion brands to attach a verified Digital Product Passport to every product. OriginsID gives you the structure, data fields, and publishing infrastructure to be ready — without compliance ever feeling like a burden.
+              Origins helps fashion brands structure the data expected within future Digital Product Passports, including product identity, materials, certifications, manufacturing information, environmental claims, care guidance and supporting evidence.
             </p>
-            <a
-              href="/platform"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0A0A0A] hover:opacity-60 transition-opacity w-fit"
-            >
-              See how we handle compliance
-              <ArrowRight size={14} />
-            </a>
+            <p className="text-sm text-[#8C8C8C] leading-relaxed">
+              Origins is designed to support ESPR readiness as regulations evolve. We update our data model as official guidance develops.
+            </p>
           </div>
           <div className="lg:w-72 shrink-0 space-y-4">
             {[
               {
-                title: "ESPR-ready data structure",
-                body: "Passport fields map directly to EU DPP data requirements.",
+                title: "ESPR-aligned data structure",
+                body: "Passport fields are structured around the data categories expected by EU Digital Product Passport requirements.",
               },
               {
-                title: "Verified and audit-ready",
-                body: "Every published passport has a timestamped, immutable audit trail.",
+                title: "Certifications supported",
+                body: "GOTS, OEKO-TEX, GRS, Bluesign and custom certifications can be added and evidenced.",
               },
               {
-                title: "Certifications built in",
-                body: "GOTS, OEKO-TEX, GRS, Bluesign and custom certifications supported.",
+                title: "Audit trail included",
+                body: "Published passports include a timestamped record of data contributions and changes.",
               },
             ].map((item) => (
               <div key={item.title} className="flex items-start gap-3">
@@ -650,6 +444,294 @@ function ComplianceBanner() {
   );
 }
 
+// ─── Built for fashion ────────────────────────────────────────────────────────
+
+function BuiltForFashion() {
+  const categories = [
+    "Materials",
+    "Certifications",
+    "Manufacturing facilities",
+    "Supplier data",
+    "Care instructions",
+    "Repair guidance",
+    "End-of-life guidance",
+    "Carbon / water / energy data",
+    "Product story",
+    "Evidence uploads",
+  ];
+
+  return (
+    <section className="bg-[#F9F9F8] py-24 lg:py-32">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          <div className="flex flex-col gap-6">
+            <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest">
+              For fashion brands
+            </div>
+            <h2 className="text-4xl lg:text-[2.75rem] font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight">
+              Built around the way fashion products are made.
+            </h2>
+            <p className="text-[#525252] leading-relaxed">
+              Origins is not a generic compliance tool. It is built around the specific data that fashion brands need to capture, manage and share — from raw materials to end of life.
+            </p>
+            <a
+              href={`${APP_URL}/signup`}
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0A0A0A] hover:opacity-60 transition-opacity w-fit"
+            >
+              Start free trial
+              <ArrowRight size={14} />
+            </a>
+          </div>
+          <div className="grid grid-cols-2 gap-2.5">
+            {categories.map((cat) => (
+              <div
+                key={cat}
+                className="flex items-center gap-2.5 py-3 px-4 bg-white border border-[#E8E8E6] rounded-xl"
+              >
+                <div className="w-1.5 h-1.5 rounded-full bg-[#0A0A0A] shrink-0" />
+                <span className="text-sm font-medium text-[#0A0A0A]">{cat}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Supplier data collection ─────────────────────────────────────────────────
+
+function SupplierFormMockup() {
+  return (
+    <div className="bg-white rounded-2xl border border-[#E8E8E6] shadow-[0_4px_24px_rgba(0,0,0,0.06)] overflow-hidden max-w-xs w-full">
+      <div className="flex items-center gap-2 px-5 py-3.5 border-b border-[#E8E8E6] bg-[#F9F9F8]">
+        <div className="w-2 h-2 rounded-full bg-[#E8E8E6]" />
+        <div className="w-2 h-2 rounded-full bg-[#E8E8E6]" />
+        <div className="w-2 h-2 rounded-full bg-[#E8E8E6]" />
+        <span className="ml-3 text-xs text-[#8C8C8C] font-medium">Supplier data request</span>
+      </div>
+      <div className="p-5 space-y-4">
+        <div className="space-y-1">
+          <div className="text-xs text-[#8C8C8C]">
+            From: <span className="font-semibold text-[#0A0A0A]">Maison Loren</span>
+          </div>
+          <div className="text-xs text-[#8C8C8C]">
+            For: <span className="font-semibold text-[#0A0A0A]">Merino Turtleneck</span>
+          </div>
+        </div>
+        <div className="border-t border-[#E8E8E6] pt-4 space-y-3">
+          {[
+            { q: "Fibre origin", a: "New Zealand (Mulesing-free)" },
+            { q: "Certifications", a: "OEKO-TEX Standard 100" },
+            { q: "Yarn spun in", a: "Biella, Italy" },
+          ].map((field) => (
+            <div key={field.q}>
+              <div className="text-[10px] text-[#8C8C8C] mb-1">{field.q}</div>
+              <div className="text-xs font-medium text-[#0A0A0A] bg-[#F4F4F3] rounded-lg px-3 py-2">
+                {field.a}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="w-full h-8 bg-[#0A0A0A] text-white text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5">
+          Submit data
+          <ArrowRight size={11} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SupplierCollection() {
+  return (
+    <section className="bg-white py-24 lg:py-32">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="flex flex-col gap-6">
+            <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest">
+              Supplier data
+            </div>
+            <h2 className="text-4xl lg:text-[2.75rem] font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight">
+              Getting the data is the hardest part. Origins makes it easier.
+            </h2>
+            <p className="text-[#525252] leading-relaxed">
+              Most fashion brands don&apos;t have all the product information they need internally. Origins lets you request missing data from suppliers through simple forms — no spreadsheets back and forth.
+            </p>
+            <div className="grid grid-cols-2 gap-2.5">
+              {[
+                { n: "1", label: "Brand requests data", sub: "Via Origins platform" },
+                { n: "2", label: "Supplier completes form", sub: "Simple web form" },
+                { n: "3", label: "Data reviewed", sub: "In the passport builder" },
+                { n: "4", label: "Passport updated", sub: "And published" },
+              ].map((step) => (
+                <div
+                  key={step.label}
+                  className="flex flex-col gap-1 p-4 bg-[#F9F9F8] border border-[#E8E8E6] rounded-xl"
+                >
+                  <span className="text-xs font-bold text-[#C4C4C0]">{step.n}</span>
+                  <div className="text-sm font-semibold text-[#0A0A0A]">{step.label}</div>
+                  <div className="text-xs text-[#8C8C8C]">{step.sub}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="flex justify-center lg:justify-end">
+            <SupplierFormMockup />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Bulk upload ──────────────────────────────────────────────────────────────
+
+function BulkUploadMockup() {
+  const rows = [
+    { name: "Merino Turtleneck", sku: "ML-001" },
+    { name: "Linen Overshirt", sku: "ML-002" },
+    { name: "Recycled Wool Coat", sku: "ML-003" },
+  ];
+
+  return (
+    <div className="bg-white rounded-2xl border border-[#E8E8E6] shadow-[0_4px_24px_rgba(0,0,0,0.06)] overflow-hidden max-w-sm w-full">
+      <div className="flex items-center gap-2 px-5 py-3.5 border-b border-[#E8E8E6] bg-[#F9F9F8]">
+        <div className="w-2 h-2 rounded-full bg-[#E8E8E6]" />
+        <div className="w-2 h-2 rounded-full bg-[#E8E8E6]" />
+        <div className="w-2 h-2 rounded-full bg-[#E8E8E6]" />
+        <span className="ml-3 text-xs text-[#8C8C8C] font-medium">Import products</span>
+      </div>
+      <div className="p-5 space-y-4">
+        <div className="border-2 border-dashed border-[#E8E8E6] rounded-xl p-5 flex flex-col items-center gap-2 bg-[#F9F9F8]">
+          <Upload size={20} className="text-[#C4C4C0]" />
+          <div className="text-xs font-medium text-[#525252]">products-aw2025.csv</div>
+          <div className="text-[10px] text-green-600 font-semibold">3 products found</div>
+        </div>
+        <div className="space-y-1">
+          <div className="text-[10px] font-semibold text-[#8C8C8C] uppercase tracking-wider mb-2">
+            Preview
+          </div>
+          {rows.map((row) => (
+            <div
+              key={row.sku}
+              className="flex items-center justify-between py-2 border-b border-[#F4F4F3] last:border-0"
+            >
+              <div>
+                <div className="text-xs font-medium text-[#0A0A0A]">{row.name}</div>
+                <div className="text-[10px] text-[#8C8C8C]">{row.sku}</div>
+              </div>
+              <span className="text-[10px] font-medium px-2 py-0.5 bg-[#F4F4F3] text-[#8C8C8C] rounded-full">
+                draft
+              </span>
+            </div>
+          ))}
+        </div>
+        <div className="w-full h-8 bg-[#0A0A0A] text-white text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5">
+          Create 3 draft passports
+          <ArrowRight size={11} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BulkUpload() {
+  return (
+    <section className="bg-[#F9F9F8] py-24 lg:py-32">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="lg:order-2 flex flex-col gap-6">
+            <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest">
+              Bulk upload
+            </div>
+            <h2 className="text-4xl lg:text-[2.75rem] font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight">
+              Already working in spreadsheets? Upload them.
+            </h2>
+            <p className="text-[#525252] leading-relaxed">
+              Brands can bulk upload product data via CSV to create multiple unpublished draft passports. Review them in Origins and publish when ready.
+            </p>
+            <div className="flex items-start gap-4 p-5 bg-white border border-[#E8E8E6] rounded-2xl">
+              <div className="text-3xl font-semibold tracking-[-0.04em] text-[#E8E8E6] leading-none shrink-0">
+                ↑
+              </div>
+              <div className="space-y-0.5">
+                <div className="text-sm font-semibold text-[#0A0A0A]">Upload once.</div>
+                <div className="text-sm text-[#525252]">Review in Origins.</div>
+                <div className="text-sm text-[#525252]">Publish when ready.</div>
+              </div>
+            </div>
+            <ul className="space-y-3">
+              {[
+                "Import full product collections in one upload",
+                "Draft passports created automatically for each row",
+                "Review and complete passport data before publishing",
+                "Upload entire seasons at once — no size limit",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-[#525252]">
+                  <Check size={14} className="text-[#0A0A0A] mt-0.5 shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="lg:order-1 flex justify-center">
+            <BulkUploadMockup />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Example passport ─────────────────────────────────────────────────────────
+
+function ExamplePassport() {
+  return (
+    <section className="bg-white py-24 lg:py-32">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="flex flex-col gap-6">
+            <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest">
+              Example passport
+            </div>
+            <h2 className="text-4xl lg:text-[2.75rem] font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight">
+              See what your customers will see.
+            </h2>
+            <p className="text-[#525252] leading-relaxed">
+              Every product you publish in Origins becomes a beautiful, accessible passport page. Customers scan the QR code from the label, swing tag or packaging and see the full product story.
+            </p>
+            <ul className="space-y-3">
+              {[
+                "Product image and brand identity",
+                "Materials and composition",
+                "Country of manufacture",
+                "Certifications and evidence",
+                "Environmental impact data",
+                "Care and end-of-life instructions",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-[#525252]">
+                  <Check size={14} className="text-[#0A0A0A] mt-0.5 shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a
+              href={`${APP_URL}/example`}
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0A0A0A] hover:opacity-60 transition-opacity w-fit"
+            >
+              View example passport
+              <ArrowRight size={14} />
+            </a>
+          </div>
+          <div className="flex justify-center">
+            <PassportMockup />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── Pricing preview ──────────────────────────────────────────────────────────
 
 function PricingPreview() {
@@ -658,48 +740,51 @@ function PricingPreview() {
       name: "Starter",
       price: "£350",
       period: "/mo",
-      description: "For growing brands launching their first passports.",
+      description: "For small brands launching their first passports.",
       features: [
-        "Up to 250 active passports",
+        "250 active passports per year",
         "QR code generation",
         "Public passport pages",
-        "Standard templates",
+        "Passport builder wizard",
         "CSV export",
       ],
-      cta: "Get started",
+      cta: "Start free trial",
+      href: `${APP_URL}/signup`,
       highlight: false,
     },
     {
       name: "Growth",
       price: "£750",
       period: "/mo",
-      description: "For scaling brands with larger catalogues and teams.",
+      description: "For growing brands managing collections and supplier data.",
       features: [
-        "Up to 1,000 active passports",
+        "1,000 active passports per year",
         "Everything in Starter",
+        "Supplier data requests",
+        "Bulk CSV import",
         "AI Passport Generator",
-        "Shopify integration",
         "Analytics dashboard",
-        "Bulk import",
-        "Full embed suite",
+        "Shopify integration",
       ],
-      cta: "Get started",
+      cta: "Start free trial",
+      href: `${APP_URL}/signup`,
       highlight: true,
     },
     {
       name: "Enterprise",
       price: "Custom",
       period: "",
-      description: "For large teams, multi-brand workspaces and custom requirements.",
+      description: "For larger teams, supplier networks and custom workflows.",
       features: [
         "Unlimited passports",
         "Everything in Growth",
-        "Custom data extensions",
         "Multi-brand workspace",
+        "Custom data extensions",
         "SSO and permissions",
         "Dedicated onboarding",
       ],
       cta: "Talk to us",
+      href: "/book-demo",
       highlight: false,
     },
   ];
@@ -713,14 +798,14 @@ function PricingPreview() {
               Pricing
             </div>
             <h2 className="text-4xl lg:text-5xl font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight">
-              Simple, transparent pricing.
+              Simple pricing for brands at every stage.
             </h2>
           </div>
           <a
             href="/pricing"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-[#525252] hover:text-[#0A0A0A] transition-colors shrink-0"
           >
-            See full pricing details
+            View pricing
             <ArrowRight size={14} />
           </a>
         </div>
@@ -752,20 +837,12 @@ function PricingPreview() {
                     {plan.price}
                   </span>
                   {plan.period && (
-                    <span
-                      className={`text-sm ${
-                        plan.highlight ? "text-white/50" : "text-[#8C8C8C]"
-                      }`}
-                    >
+                    <span className={`text-sm ${plan.highlight ? "text-white/50" : "text-[#8C8C8C]"}`}>
                       {plan.period}
                     </span>
                   )}
                 </div>
-                <p
-                  className={`text-sm leading-relaxed ${
-                    plan.highlight ? "text-white/60" : "text-[#525252]"
-                  }`}
-                >
+                <p className={`text-sm leading-relaxed ${plan.highlight ? "text-white/60" : "text-[#525252]"}`}>
                   {plan.description}
                 </p>
               </div>
@@ -775,16 +852,10 @@ function PricingPreview() {
                   <li key={feat} className="flex items-start gap-2.5">
                     <Check
                       size={13}
-                      className={`mt-0.5 shrink-0 ${
-                        plan.highlight ? "text-white/70" : "text-[#0A0A0A]"
-                      }`}
+                      className={`mt-0.5 shrink-0 ${plan.highlight ? "text-white/70" : "text-[#0A0A0A]"}`}
                       strokeWidth={2.5}
                     />
-                    <span
-                      className={`text-sm ${
-                        plan.highlight ? "text-white/70" : "text-[#525252]"
-                      }`}
-                    >
+                    <span className={`text-sm ${plan.highlight ? "text-white/70" : "text-[#525252]"}`}>
                       {feat}
                     </span>
                   </li>
@@ -792,7 +863,7 @@ function PricingPreview() {
               </ul>
 
               <a
-                href={plan.name === "Enterprise" ? "/book-demo" : `${APP_URL}/signup`}
+                href={plan.href}
                 className={`inline-flex items-center justify-center h-10 px-5 rounded-xl text-sm font-semibold transition-colors ${
                   plan.highlight
                     ? "bg-white text-[#0A0A0A] hover:bg-white/90"
@@ -806,7 +877,7 @@ function PricingPreview() {
         </div>
 
         <p className="text-center text-sm text-[#8C8C8C] mt-8">
-          All plans include a free trial. No credit card required to get started.
+          All plans include a free trial. Annual billing available. Passport allocation applies per 12 months.
         </p>
       </div>
     </section>
@@ -821,17 +892,17 @@ function FinalCTA() {
       <div className="max-w-7xl mx-auto px-6 py-24 lg:py-32">
         <div className="max-w-2xl">
           <h2 className="text-4xl lg:text-5xl xl:text-[3.5rem] font-semibold tracking-[-0.03em] text-white leading-[1.05] mb-6">
-            The simplest way to launch Digital Product Passports.
+            Launch your first product passport today.
           </h2>
           <p className="text-lg text-white/50 leading-relaxed mb-10">
-            Join fashion brands using OriginsID to build verified product passports, prepare for EU regulation and turn transparency into consumer trust.
+            Create passports, collect supplier data and generate QR codes from one simple platform.
           </p>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
             <a
               href={`${APP_URL}/signup`}
               className="inline-flex items-center justify-center h-11 px-6 rounded-xl bg-white text-[#0A0A0A] text-sm font-semibold hover:bg-white/90 transition-colors"
             >
-              Get started free
+              Start free trial
             </a>
             <a
               href="/book-demo"
@@ -858,10 +929,12 @@ export default function HomePage() {
       <Hero />
       <TrustStrip />
       <HowItWorks />
-      <FeatureBuilder />
-      <FeaturePassport />
       <FeatureGrid />
-      <ComplianceBanner />
+      <ESPRReadiness />
+      <BuiltForFashion />
+      <SupplierCollection />
+      <BulkUpload />
+      <ExamplePassport />
       <PricingPreview />
       <FinalCTA />
     </>
