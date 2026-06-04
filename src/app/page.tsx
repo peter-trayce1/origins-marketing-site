@@ -730,13 +730,13 @@ function ExamplePassport() {
               <ArrowRight size={14} />
             </a>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-start pl-6">
             <Image
               src="/Sustainability screenshot.png"
               alt="Example passport on mobile"
               width={726}
               height={1374}
-              className="w-full max-w-[260px] h-auto [filter:brightness(1.12)]"
+              className="w-full max-w-[300px] h-auto [filter:brightness(1.18)]"
             />
           </div>
         </div>
