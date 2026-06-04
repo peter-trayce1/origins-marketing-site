@@ -731,7 +731,13 @@ function ExamplePassport() {
             </a>
           </div>
           <div className="flex justify-center">
-            <PassportMockup />
+            <Image
+              src="/Sustainability screenshot.png"
+              alt="Example passport on mobile"
+              width={726}
+              height={1374}
+              className="w-full max-w-sm h-auto mix-blend-multiply"
+            />
           </div>
         </div>
       </div>
