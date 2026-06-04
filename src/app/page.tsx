@@ -194,7 +194,7 @@ function Hero() {
                 Digital Product Passports for fashion brands
               </span>
             </div>
-            <h1 className="text-[2.75rem] sm:text-5xl lg:text-[3.5rem] font-semibold tracking-[-0.03em] text-[#0A0A0A] leading-[1.05]">
+            <h1 className="text-[2.25rem] sm:text-[2.5rem] lg:text-[3rem] font-semibold tracking-[-0.03em] text-[#0A0A0A] leading-[1.05]">
               Connect every product.<br />
               Connect every story.<br />
               Connect every customer.
