@@ -242,7 +242,7 @@ export default function PricingToggle() {
                   {billing === "annual" && pricing.price !== "Custom" && (
                     <p
                       className={`text-xs mb-3 ${
-                        plan.highlight ? "text-green-400" : "text-green-600"
+                        plan.highlight ? "text-[#2ECC71]" : "text-[#2ECC71]"
                       }`}
                     >
                       Save 17% with annual billing
@@ -264,7 +264,7 @@ export default function PricingToggle() {
                   className={`inline-flex items-center justify-center h-10 px-5 rounded-xl text-sm font-semibold transition-colors ${
                     plan.highlight
                       ? "bg-white text-[#0A0A0A] hover:bg-white/90"
-                      : "bg-[#0A0A0A] text-white hover:bg-[#1C1C1C]"
+                      : "bg-[#0E6EEA] text-white hover:bg-[#0C5CD0]"
                   }`}
                 >
                   {plan.cta}

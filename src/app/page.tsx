@@ -33,7 +33,7 @@ function WorkflowVisual() {
           <div className="w-2.5 h-2.5 rounded-full bg-[#E8E8E6]" />
           <div className="w-2.5 h-2.5 rounded-full bg-[#E8E8E6]" />
           <div className="flex-1 h-5 bg-white border border-[#E8E8E6] rounded-md mx-2 flex items-center px-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5 shrink-0" />
+            <div className="w-1.5 h-1.5 rounded-full bg-[#2ECC71] mr-1.5 shrink-0" />
             <span className="text-[9px] text-[#8C8C8C] truncate">app.originsid.com</span>
           </div>
         </div>
@@ -61,7 +61,7 @@ function WorkflowVisual() {
                 <div className="flex flex-col items-center">
                   <div
                     className={`w-3 h-3 rounded-full flex items-center justify-center shrink-0 ${
-                      step.live ? "bg-green-500" : "bg-[#0A0A0A]"
+                      step.live ? "bg-[#2ECC71]" : "bg-[#0A0A0A]"
                     }`}
                   >
                     {step.live ? (
@@ -134,7 +134,7 @@ function PassportMockup() {
           sizes="200px"
         />
         <div className="absolute bottom-2 right-2 bg-white/95 rounded-md px-1.5 py-0.5 flex items-center gap-1 shadow-sm">
-          <ShieldCheck size={8} className="text-green-600" />
+          <ShieldCheck size={8} className="text-[#2ECC71]" />
           <span className="text-[8px] font-semibold text-[#0A0A0A]">Verified</span>
         </div>
       </div>
@@ -190,7 +190,7 @@ function Hero() {
           <div className="flex flex-col gap-6 max-w-xl">
             <div>
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#E8E8E6] text-xs font-medium text-[#525252]">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#2ECC71] shrink-0" />
                 Digital Product Passports for fashion brands
               </span>
             </div>
@@ -205,7 +205,7 @@ function Hero() {
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 pt-1">
               <a
                 href={`${APP_URL}/signup`}
-                className="inline-flex items-center justify-center h-11 px-6 rounded-xl bg-[#0A0A0A] text-white text-sm font-semibold hover:bg-[#1C1C1C] transition-colors"
+                className="inline-flex items-center justify-center h-11 px-6 rounded-xl bg-[#0E6EEA] text-white text-sm font-semibold hover:bg-[#0C5CD0] transition-colors"
               >
                 Start free trial
               </a>
@@ -256,7 +256,7 @@ function TrustStrip() {
       <div className="animate-marquee flex py-3.5">
         {ticker.map((item, i) => (
           <div key={i} className="flex items-center gap-2 shrink-0 px-8">
-            <Check size={12} className="text-green-600 shrink-0" />
+            <Check size={12} className="text-[#2ECC71] shrink-0" />
             <span className="text-sm text-[#525252] whitespace-nowrap">{item}</span>
           </div>
         ))}
@@ -612,7 +612,7 @@ function BulkUploadMockup() {
         <div className="border-2 border-dashed border-[#E8E8E6] rounded-xl p-5 flex flex-col items-center gap-2 bg-[#F9F9F8]">
           <Upload size={20} className="text-[#C4C4C0]" />
           <div className="text-xs font-medium text-[#525252]">products-aw2025.csv</div>
-          <div className="text-[10px] text-green-600 font-semibold">3 products found</div>
+          <div className="text-[10px] text-[#2ECC71] font-semibold">3 products found</div>
         </div>
         <div className="space-y-1">
           <div className="text-[10px] font-semibold text-[#8C8C8C] uppercase tracking-wider mb-2">
@@ -881,7 +881,7 @@ function PricingPreview() {
                 className={`inline-flex items-center justify-center h-10 px-5 rounded-xl text-sm font-semibold transition-colors ${
                   plan.highlight
                     ? "bg-white text-[#0A0A0A] hover:bg-white/90"
-                    : "bg-[#0A0A0A] text-white hover:bg-[#1C1C1C]"
+                    : "bg-[#0E6EEA] text-white hover:bg-[#0C5CD0]"
                 }`}
               >
                 {plan.cta}

@@ -37,7 +37,7 @@ function PageHero() {
           <div className="flex items-center gap-3">
             <a
               href={`${APP_URL}/signup`}
-              className="inline-flex items-center justify-center h-11 px-6 rounded-xl bg-[#0A0A0A] text-white text-sm font-semibold hover:bg-[#1C1C1C] transition-colors"
+              className="inline-flex items-center justify-center h-11 px-6 rounded-xl bg-[#0E6EEA] text-white text-sm font-semibold hover:bg-[#0C5CD0] transition-colors"
             >
               Get started free
             </a>
@@ -339,7 +339,7 @@ function AnalyticsVisual() {
           <div>
             <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest mb-1">Scan analytics</div>
             <div className="text-3xl font-semibold tracking-tight text-[#0A0A0A]">12,841</div>
-            <div className="text-xs text-green-600 font-medium mt-0.5">↑ 24% this month</div>
+            <div className="text-xs text-[#2ECC71] font-medium mt-0.5">↑ 24% this month</div>
           </div>
           <div className="text-xs text-[#8C8C8C] border border-[#E8E8E6] rounded-lg px-2.5 py-1.5">Last 30 days</div>
         </div>
@@ -462,7 +462,7 @@ function ComplianceSection() {
               </div>
               <div>
                 <div className="text-sm font-semibold text-[#0A0A0A]">Compliance status</div>
-                <div className="text-xs text-green-600 font-medium">ESPR-ready structure</div>
+                <div className="text-xs text-[#2ECC71] font-medium">ESPR-ready structure</div>
               </div>
             </div>
             {[

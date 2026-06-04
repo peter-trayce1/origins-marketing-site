@@ -55,7 +55,7 @@ export function Footer() {
             </div>
             {/* Compliance badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#E8E8E6] text-xs font-medium text-[#525252] w-fit">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#2ECC71] shrink-0" />
               EU ESPR 2026 ready
             </div>
           </div>

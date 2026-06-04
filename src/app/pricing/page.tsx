@@ -124,7 +124,7 @@ function FreeTrialBanner() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-2 shrink-0">
             {perks.map((perk) => (
               <div key={perk} className="flex items-center gap-2.5">
-                <Check size={13} className="text-green-600 shrink-0" strokeWidth={2.5} />
+                <Check size={13} className="text-[#2ECC71] shrink-0" strokeWidth={2.5} />
                 <span className="text-sm text-[#525252]">{perk}</span>
               </div>
             ))}
@@ -132,7 +132,7 @@ function FreeTrialBanner() {
           <div className="shrink-0">
             <a
               href={`${APP_URL}/signup`}
-              className="inline-flex items-center justify-center h-11 px-6 rounded-xl bg-[#0A0A0A] text-white text-sm font-semibold hover:bg-[#1C1C1C] transition-colors whitespace-nowrap"
+              className="inline-flex items-center justify-center h-11 px-6 rounded-xl bg-[#0E6EEA] text-white text-sm font-semibold hover:bg-[#0C5CD0] transition-colors whitespace-nowrap"
             >
               Start your trial
             </a>

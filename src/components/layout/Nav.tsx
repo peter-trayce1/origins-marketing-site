@@ -44,7 +44,7 @@ export function Nav() {
           </Link>
           <a
             href={`${APP_URL}/signup`}
-            className="inline-flex items-center justify-center h-9 px-4 rounded-xl bg-[#0A0A0A] text-white text-sm font-semibold hover:bg-[#1C1C1C] transition-colors"
+            className="inline-flex items-center justify-center h-9 px-4 rounded-xl bg-[#0E6EEA] text-white text-sm font-semibold hover:bg-[#0C5CD0] transition-colors"
           >
             Get started
           </a>
@@ -85,7 +85,7 @@ export function Nav() {
             <div className="pt-2">
               <a
                 href={`${APP_URL}/signup`}
-                className="flex items-center justify-center h-11 rounded-xl bg-[#0A0A0A] text-white text-sm font-semibold hover:bg-[#1C1C1C] transition-colors"
+                className="flex items-center justify-center h-11 rounded-xl bg-[#0E6EEA] text-white text-sm font-semibold hover:bg-[#0C5CD0] transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
                 Get started free
