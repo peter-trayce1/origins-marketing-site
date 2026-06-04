@@ -185,46 +185,51 @@ function PassportMockup() {
 function Hero() {
   return (
     <section className="bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 pt-20 pb-16 lg:pt-28 lg:pb-24">
-        <div className="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center">
-          <div className="flex flex-col gap-6 max-w-xl">
-            <div>
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#E8E8E6] text-xs font-medium text-[#525252]">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" />
-                Digital Product Passports for fashion brands
-              </span>
-            </div>
-            <h1 className="text-[2.75rem] sm:text-5xl lg:text-[3.5rem] font-semibold tracking-[-0.03em] text-[#0A0A0A] leading-[1.05]">
-              Create product passports<br />
-              in minutes.<br />
-              Not months.
-            </h1>
-            <p className="text-lg text-[#525252] leading-relaxed">
-              Collect product data, request information from suppliers, generate QR codes and publish ESPR-ready Digital Product Passports from one simple platform.
-            </p>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 pt-1">
-              <a
-                href={`${APP_URL}/signup`}
-                className="inline-flex items-center justify-center h-11 px-6 rounded-xl bg-[#0A0A0A] text-white text-sm font-semibold hover:bg-[#1C1C1C] transition-colors"
-              >
-                Start free trial
-              </a>
-              <a
-                href="https://app.origins-id.com/c/ORI-89413809"
-                className="inline-flex items-center h-11 px-2 text-[#525252] text-sm font-medium hover:text-[#0A0A0A] transition-colors gap-1.5"
-              >
-                See example passport (best viewed on mobile)
-                <ArrowRight size={14} />
-              </a>
-            </div>
-            <p className="text-sm text-[#8C8C8C]">
-              No credit card required · Set up in under 10 minutes
-            </p>
+      <div className="max-w-7xl mx-auto px-6 pt-20 lg:pt-28">
+        {/* Centred text */}
+        <div className="flex flex-col items-center text-center gap-6 max-w-2xl mx-auto pb-14 lg:pb-20">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#E8E8E6] text-xs font-medium text-[#525252]">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" />
+            Digital Product Passports for fashion brands
+          </span>
+          <h1 className="text-[2.75rem] sm:text-5xl lg:text-[3.5rem] font-semibold tracking-[-0.03em] text-[#0A0A0A] leading-[1.05]">
+            Create product passports<br />
+            in minutes.<br />
+            Not months.
+          </h1>
+          <p className="text-lg text-[#525252] leading-relaxed">
+            Collect product data, request information from suppliers, generate QR codes and publish ESPR-ready Digital Product Passports from one simple platform.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-3 pt-1">
+            <a
+              href={`${APP_URL}/signup`}
+              className="inline-flex items-center justify-center h-11 px-6 rounded-xl bg-[#0A0A0A] text-white text-sm font-semibold hover:bg-[#1C1C1C] transition-colors"
+            >
+              Start free trial
+            </a>
+            <a
+              href="https://app.origins-id.com/c/ORI-89413809"
+              className="inline-flex items-center h-11 px-2 text-[#525252] text-sm font-medium hover:text-[#0A0A0A] transition-colors gap-1.5"
+            >
+              See example passport (best viewed on mobile)
+              <ArrowRight size={14} />
+            </a>
           </div>
+          <p className="text-sm text-[#8C8C8C]">
+            No credit card required · Set up in under 10 minutes
+          </p>
+        </div>
 
-          <div className="relative hidden lg:flex items-center justify-end pr-16">
-            <WorkflowVisual />
-          </div>
+        {/* Product preview */}
+        <div className="relative">
+          <Image
+            src="/product-preview.png.png"
+            alt="OriginsID dashboard and passport preview"
+            width={1536}
+            height={1024}
+            className="w-full h-auto rounded-t-2xl shadow-[0_-8px_48px_rgba(0,0,0,0.08)]"
+            priority
+          />
         </div>
       </div>
     </section>
