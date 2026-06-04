@@ -736,7 +736,7 @@ function ExamplePassport() {
               alt="Example passport on mobile"
               width={726}
               height={1374}
-              className="w-full max-w-sm h-auto mix-blend-multiply"
+              className="w-full max-w-[260px] h-auto [filter:brightness(1.12)]"
             />
           </div>
         </div>
