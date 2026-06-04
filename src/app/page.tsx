@@ -228,7 +228,7 @@ function Hero() {
               alt="OriginsID dashboard and passport preview"
               width={1536}
               height={1024}
-              className="w-full h-auto rounded-2xl shadow-[0_8px_48px_rgba(0,0,0,0.10)]"
+              className="w-full h-auto mix-blend-multiply"
               priority
             />
           </div>
