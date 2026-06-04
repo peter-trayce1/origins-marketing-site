@@ -276,13 +276,13 @@ function HowItWorks() {
     },
     {
       number: "02",
-      title: "Request supplier data",
-      body: "Send simple data requests to manufacturers and suppliers so they can provide the missing information.",
+      title: "Build your passport",
+      body: "Use the guided passport builder to add materials, certifications, facilities, care, impact and product story.",
     },
     {
       number: "03",
-      title: "Build your passport",
-      body: "Use the guided passport builder to add materials, certifications, facilities, care, impact and product story.",
+      title: "Request supplier data",
+      body: "Send simple data requests to manufacturers and suppliers so they can provide the missing information.",
     },
     {
       number: "04",
