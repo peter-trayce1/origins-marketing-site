@@ -224,7 +224,7 @@ function Hero() {
 
           <div className="relative hidden lg:block">
             <Image
-              src="/product-preview.png.png"
+              src="/product-preview.png - 2.png"
               alt="OriginsID dashboard and passport preview"
               width={1536}
               height={1024}
