@@ -134,7 +134,7 @@ function Segments() {
                 <ul className="space-y-3">
                   {seg.features.map((feat) => (
                     <li key={feat} className="flex items-start gap-3 text-sm text-[#525252]">
-                      <Check size={14} className="text-[#0A0A0A] mt-0.5 shrink-0" />
+                      <Check size={14} className="text-[#2ECC71] mt-0.5 shrink-0" />
                       {feat}
                     </li>
                   ))}

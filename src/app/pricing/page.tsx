@@ -57,7 +57,7 @@ function HowPricingWorks() {
                 "Updates and edits never count towards your allowance",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm text-[#525252]">
-                  <Check size={14} className="text-[#0A0A0A] mt-0.5 shrink-0" />
+                  <Check size={14} className="text-[#2ECC71] mt-0.5 shrink-0" />
                   {item}
                 </li>
               ))}

@@ -675,7 +675,7 @@ function BulkUpload() {
                 "Upload entire seasons at once — no size limit",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm text-[#525252]">
-                  <Check size={14} className="text-[#0A0A0A] mt-0.5 shrink-0" />
+                  <Check size={14} className="text-[#2ECC71] mt-0.5 shrink-0" />
                   {item}
                 </li>
               ))}
@@ -717,7 +717,7 @@ function ExamplePassport() {
                 "Care and end-of-life instructions",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm text-[#525252]">
-                  <Check size={14} className="text-[#0A0A0A] mt-0.5 shrink-0" />
+                  <Check size={14} className="text-[#2ECC71] mt-0.5 shrink-0" />
                   {item}
                 </li>
               ))}

@@ -82,7 +82,7 @@ function FeatureSection({ label, title, body, bullets, flip = false, visual }: F
             <ul className="space-y-3">
               {bullets.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm text-[#525252]">
-                  <Check size={14} className="text-[#0A0A0A] mt-0.5 shrink-0" />
+                  <Check size={14} className="text-[#2ECC71] mt-0.5 shrink-0" />
                   {item}
                 </li>
               ))}
@@ -449,7 +449,7 @@ function ComplianceSection() {
                 "EU-hosted data for GDPR compliance",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm text-[#525252]">
-                  <Check size={14} className="text-[#0A0A0A] mt-0.5 shrink-0" />
+                  <Check size={14} className="text-[#2ECC71] mt-0.5 shrink-0" />
                   {item}
                 </li>
               ))}
