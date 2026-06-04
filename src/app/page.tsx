@@ -195,12 +195,12 @@ function Hero() {
               </span>
             </div>
             <h1 className="text-[2.75rem] sm:text-5xl lg:text-[3.5rem] font-semibold tracking-[-0.03em] text-[#0A0A0A] leading-[1.05]">
-              Create product passports<br />
-              in minutes.<br />
-              Not months.
+              Connect every product.<br />
+              Connect every story.<br />
+              Connect every customer.
             </h1>
             <p className="text-lg text-[#525252] leading-relaxed">
-              Collect product data, request information from suppliers, generate QR codes and publish ESPR-ready Digital Product Passports from one simple platform.
+              Create digital product passports that bring together product data, supplier information and customer experiences — all from one simple platform.
             </p>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 pt-1">
               <a
@@ -218,7 +218,7 @@ function Hero() {
               </a>
             </div>
             <p className="text-sm text-[#8C8C8C]">
-              No credit card required · Set up in under 10 minutes
+              No credit card required. ESPR-ready. Live in minutes.
             </p>
           </div>
 
