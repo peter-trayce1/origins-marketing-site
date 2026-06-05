@@ -222,13 +222,13 @@ function Hero() {
             </p>
           </div>
 
-          <div className="relative hidden lg:block">
+          <div className="relative">
             <Image
               src="/product-preview.png - 2.png"
               alt="OriginsID dashboard and passport preview"
               width={1536}
               height={1024}
-              className="w-full h-auto mix-blend-multiply"
+              className="w-full h-auto mix-blend-multiply lg:block"
               priority
             />
           </div>
