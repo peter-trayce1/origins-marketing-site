@@ -61,19 +61,28 @@ function Hero() {
             <p className="text-lg text-[#525252] leading-relaxed">
               Connect product data, collect supplier information, generate QR codes and publish customer-facing passport pages — all from one platform. ESPR-ready from day one.
             </p>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 pt-1">
-              <a
-                href={`${APP_URL}/signup`}
-                className="inline-flex items-center justify-center h-11 px-6 rounded-xl bg-[#0E6EEA] text-white text-sm font-semibold hover:bg-[#0C5CD0] transition-colors"
-              >
-                Start free trial
-              </a>
+            <div className="flex flex-col items-start gap-3 pt-1">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                <a
+                  href={`${APP_URL}/signup`}
+                  className="inline-flex items-center justify-center h-11 px-6 rounded-xl bg-[#0E6EEA] text-white text-sm font-semibold hover:bg-[#0C5CD0] transition-colors"
+                >
+                  Start free trial
+                </a>
+                <a
+                  href="/book-demo"
+                  className="inline-flex items-center h-11 px-2 text-[#525252] text-sm font-medium hover:text-[#0A0A0A] transition-colors gap-1.5"
+                >
+                  Book a demo
+                  <ArrowRight size={14} />
+                </a>
+              </div>
               <a
                 href="https://app.origins-id.com/c/ORI-89413809"
-                className="inline-flex items-center h-11 px-2 text-[#525252] text-sm font-medium hover:text-[#0A0A0A] transition-colors gap-1.5"
+                className="inline-flex items-center px-2 text-[#8C8C8C] text-xs font-medium hover:text-[#525252] transition-colors gap-1.5"
               >
                 See example passport (best viewed on mobile)
-                <ArrowRight size={14} />
+                <ArrowRight size={12} />
               </a>
             </div>
             <p className="text-sm text-[#8C8C8C]">
