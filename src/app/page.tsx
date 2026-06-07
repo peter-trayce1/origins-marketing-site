@@ -368,7 +368,7 @@ function PassportSteps() {
             How it works
           </div>
           <h2 className="text-4xl lg:text-5xl font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight">
-            Create a passport in minutes.
+            The world&apos;s most customisable passport builder.
           </h2>
           <p className="mt-5 text-[#525252] leading-relaxed">
             Origins is designed to be simple. Most brands publish their first passport within an hour of signing up.
