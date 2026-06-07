@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { APP_URL } from "@/lib/utils";
 import {
   FileText,
@@ -259,6 +260,18 @@ function QRVisual() {
             <span className="text-[9px] text-[#8C8C8C]">Print ready</span>
           </div>
         ))}
+      </div>
+
+      {/* Real QR example */}
+      <div className="border-t border-[#E8E8E6] pt-5 flex flex-col items-center gap-2">
+        <Image
+          src="/qr-example.png"
+          alt="Example passport QR code"
+          width={400}
+          height={400}
+          className="w-24 h-24"
+        />
+        <span className="text-[10px] text-[#8C8C8C] text-center">Scan to see a live passport example</span>
       </div>
     </div>
   );
