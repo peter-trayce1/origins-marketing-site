@@ -8,6 +8,8 @@ import { APP_URL } from "@/lib/utils";
 
 const navLinks = [
   { label: "Product", href: "/platform" },
+  { label: "Compliance", href: "/compliance" },
+  { label: "Customer Experience", href: "/customer-experience" },
   { label: "Pricing", href: "/pricing" },
   { label: "About", href: "/about" },
   { label: "Resources", href: "/resources" },

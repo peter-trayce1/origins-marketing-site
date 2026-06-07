@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
+import { motion, type MotionProps, type Variants } from "framer-motion";
 import { APP_URL } from "@/lib/utils";
 import {
   ShieldCheck,
@@ -9,176 +13,32 @@ import {
   FileText,
   Upload,
   Send,
+  Plus,
+  Minus,
+  BookOpen,
+  RefreshCw,
 } from "lucide-react";
 
 const TURTLENECK_IMG = "/turtleneck.webp";
 
-// ─── Hero: Workflow visual ────────────────────────────────────────────────────
+// ─── Animation helpers ────────────────────────────────────────────────────────
 
-function WorkflowVisual() {
-  const steps = [
-    { label: "Product added", detail: "Merino Turtleneck", live: false },
-    { label: "Supplier data requested", detail: "Sent to 2 suppliers", live: false },
-    { label: "Passport built", detail: "94% complete", live: false },
-    { label: "QR code generated", detail: "Ready to print", live: false },
-    { label: "Passport live", detail: "originsid.com/ml-001", live: true },
-  ];
+const fadeUp = (delay = 0): MotionProps => ({
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.5, delay },
+});
 
-  return (
-    <div className="relative">
-      <div className="bg-white rounded-2xl shadow-[0_8px_48px_rgba(0,0,0,0.10)] border border-[#E8E8E6] overflow-hidden w-[300px]">
-        {/* Browser chrome */}
-        <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-[#E8E8E6] bg-[#F9F9F8]">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#E8E8E6]" />
-          <div className="w-2.5 h-2.5 rounded-full bg-[#E8E8E6]" />
-          <div className="w-2.5 h-2.5 rounded-full bg-[#E8E8E6]" />
-          <div className="flex-1 h-5 bg-white border border-[#E8E8E6] rounded-md mx-2 flex items-center px-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#2ECC71] mr-1.5 shrink-0" />
-            <span className="text-[9px] text-[#8C8C8C] truncate">app.originsid.com</span>
-          </div>
-        </div>
-        {/* Product header */}
-        <div className="px-4 py-3 border-b border-[#E8E8E6] flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-[#F4F4F3] shrink-0 relative overflow-hidden">
-            <Image src={TURTLENECK_IMG} alt="" fill className="object-contain" sizes="36px" />
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="text-[11px] font-semibold text-[#0A0A0A] truncate">Merino Turtleneck</div>
-            <div className="text-[9px] text-[#8C8C8C]">Maison Loren · AW2025</div>
-          </div>
-          <span className="text-[9px] font-semibold text-green-700 bg-[#EDFAED] px-2 py-0.5 rounded-full shrink-0">
-            Live
-          </span>
-        </div>
-        {/* Pipeline */}
-        <div className="p-4">
-          <div className="text-[9px] font-semibold text-[#8C8C8C] uppercase tracking-wider mb-3">
-            Passport pipeline
-          </div>
-          <div>
-            {steps.map((step, i) => (
-              <div key={step.label} className="flex gap-3">
-                <div className="flex flex-col items-center">
-                  <div
-                    className={`w-3 h-3 rounded-full flex items-center justify-center shrink-0 ${
-                      step.live ? "bg-[#2ECC71]" : "bg-[#0A0A0A]"
-                    }`}
-                  >
-                    {step.live ? (
-                      <div className="w-1.5 h-1.5 rounded-full bg-white" />
-                    ) : (
-                      <Check size={6} className="text-white" strokeWidth={3} />
-                    )}
-                  </div>
-                  {i < steps.length - 1 && (
-                    <div className="w-px bg-[#E8E8E6] my-1 min-h-[14px]" />
-                  )}
-                </div>
-                <div className={`min-w-0 ${i < steps.length - 1 ? "pb-1" : ""}`}>
-                  <div
-                    className={`text-[10px] font-medium leading-none mb-0.5 ${
-                      step.live ? "text-green-700" : "text-[#0A0A0A]"
-                    }`}
-                  >
-                    {step.label}
-                  </div>
-                  <div className="text-[9px] text-[#8C8C8C] leading-tight">{step.detail}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+const staggerContainer: Variants = {
+  initial: {},
+  whileInView: { transition: { staggerChildren: 0.1 } },
+};
 
-      {/* Floating QR chip */}
-      <div className="absolute -right-10 bottom-10 bg-white border border-[#E8E8E6] rounded-xl p-3 shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
-        <div className="text-[9px] font-semibold text-[#525252] mb-1.5 flex items-center gap-1">
-          <QrCode size={9} />
-          QR generated
-        </div>
-        <div
-          className="grid gap-px"
-          style={{ gridTemplateColumns: "repeat(8, 1fr)", width: 36, height: 36 }}
-        >
-          {[
-            1,1,1,1,0,1,1,1, 1,0,0,1,0,1,0,1,
-            1,0,1,1,0,1,1,1, 1,1,0,0,0,0,1,0,
-            0,0,1,0,0,1,0,0, 1,1,0,1,0,1,1,1,
-            1,0,1,1,0,1,0,1, 1,1,1,0,0,1,1,1,
-          ].map((cell, i) => (
-            <div key={i} style={{ backgroundColor: cell ? "#0A0A0A" : "white", aspectRatio: "1" }} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ─── Example passport mockup ──────────────────────────────────────────────────
-
-function PassportMockup() {
-  return (
-    <div
-      className="bg-white rounded-[28px] shadow-[0_16px_56px_rgba(0,0,0,0.12)] border border-[#E8E8E6] overflow-hidden"
-      style={{ width: 200 }}
-    >
-      <div className="bg-[#0A0A0A] h-8 flex items-center justify-center">
-        <div className="w-14 h-2 bg-[#2A2A2A] rounded-full" />
-      </div>
-      <div className="h-32 relative overflow-hidden bg-[#F2F0EE]">
-        <Image
-          src={TURTLENECK_IMG}
-          alt="Merino turtleneck"
-          fill
-          className="object-contain"
-          sizes="200px"
-        />
-        <div className="absolute bottom-2 right-2 bg-white/95 rounded-md px-1.5 py-0.5 flex items-center gap-1 shadow-sm">
-          <ShieldCheck size={8} className="text-[#2ECC71]" />
-          <span className="text-[8px] font-semibold text-[#0A0A0A]">Verified</span>
-        </div>
-      </div>
-      <div className="p-4 space-y-3">
-        <div>
-          <div className="text-[8px] font-semibold text-[#8C8C8C] uppercase tracking-widest mb-1">
-            Maison Loren
-          </div>
-          <div className="text-sm font-semibold text-[#0A0A0A] leading-tight">Merino Turtleneck</div>
-        </div>
-        <div className="space-y-0">
-          {[
-            { label: "Materials", value: "100% Merino Wool" },
-            { label: "Made in", value: "🇮🇹 Italy" },
-            { label: "Certifications", value: "OEKO-TEX" },
-            { label: "Impact", value: "2.1kg CO₂e" },
-            { label: "Care", value: "Hand wash 30°C" },
-          ].map((row) => (
-            <div
-              key={row.label}
-              className="flex items-center justify-between py-1.5 border-b border-[#F4F4F3] last:border-0"
-            >
-              <span className="text-[8px] text-[#8C8C8C]">{row.label}</span>
-              <span className="text-[8px] font-medium text-[#0A0A0A]">{row.value}</span>
-            </div>
-          ))}
-        </div>
-        <div className="pt-1 flex items-center gap-2">
-          <div
-            className="grid gap-px"
-            style={{ gridTemplateColumns: "repeat(6, 1fr)", width: 24, height: 24 }}
-          >
-            {[1,1,1,0,1,1,1,0,1,0,1,0,1,1,0,0,1,1,0,1,0,1,0,1,1,1,1,0,1,0,1,0,1,1,0,1].map(
-              (cell, i) => (
-                <div key={i} style={{ backgroundColor: cell ? "#0A0A0A" : "white", aspectRatio: "1" }} />
-              )
-            )}
-          </div>
-          <span className="text-[8px] text-[#8C8C8C]">Scan to verify</span>
-        </div>
-      </div>
-    </div>
-  );
-}
+const staggerItem: Variants = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 
@@ -187,7 +47,7 @@ function Hero() {
     <section className="bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 pt-20 pb-16 lg:pt-28 lg:pb-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="flex flex-col gap-6 max-w-xl">
+          <motion.div {...fadeUp(0)} className="flex flex-col gap-6 max-w-xl">
             <div>
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#E8E8E6] text-xs font-medium text-[#525252]">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#2ECC71] shrink-0" />
@@ -195,12 +55,11 @@ function Hero() {
               </span>
             </div>
             <h1 className="text-[2.75rem] sm:text-5xl lg:text-[3.5rem] font-semibold tracking-[-0.03em] text-[#0A0A0A] leading-[1.05]">
-              Create product passports<br />
-              in minutes.<br />
-              Not months.
+              Create Digital Product<br />
+              Passports in minutes.
             </h1>
             <p className="text-lg text-[#525252] leading-relaxed">
-              Collect product data, request information from suppliers, generate QR codes and publish ESPR-ready Digital Product Passports from one simple platform.
+              Connect product data, collect supplier information, generate QR codes and publish customer-facing passport pages — all from one platform. ESPR-ready from day one.
             </p>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 pt-1">
               <a
@@ -210,28 +69,28 @@ function Hero() {
                 Start free trial
               </a>
               <a
-                href="https://app.origins-id.com/c/ORI-89413809"
+                href="/book-demo"
                 className="inline-flex items-center h-11 px-2 text-[#525252] text-sm font-medium hover:text-[#0A0A0A] transition-colors gap-1.5"
               >
-                See example passport (best viewed on mobile)
+                Book a demo
                 <ArrowRight size={14} />
               </a>
             </div>
             <p className="text-sm text-[#8C8C8C]">
               No credit card required · Set up in under 10 minutes
             </p>
-          </div>
+          </motion.div>
 
-          <div className="relative">
+          <motion.div {...fadeUp(0.15)} className="relative">
             <Image
               src="/product-preview.png - 2.png"
               alt="OriginsID dashboard and passport preview"
               width={1536}
               height={1024}
-              className="w-full h-auto mix-blend-multiply lg:block"
+              className="w-full h-auto mix-blend-multiply"
               priority
             />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -265,187 +124,416 @@ function TrustStrip() {
   );
 }
 
-// ─── How it works ─────────────────────────────────────────────────────────────
+// ─── What Is A DPP ────────────────────────────────────────────────────────────
 
-function HowItWorks() {
+function WhatIsADPP() {
   const steps = [
     {
       number: "01",
-      title: "Add your product",
-      body: "Create a single passport manually or upload hundreds of products from a spreadsheet.",
+      title: "Product Data",
+      body: "Add product information, materials, supply chain, certifications and impact data in the Origins passport builder.",
+      image: "/screenshot-passport-builder.png",
+      alt: "Origins passport builder",
+      width: 2870,
+      height: 1614,
+      portrait: false,
     },
     {
       number: "02",
-      title: "Build your passport",
-      body: "Use the guided passport builder to add materials, certifications, facilities, care, impact and product story.",
+      title: "QR Code",
+      body: "Every passport generates a unique QR code ready to print on labels, packaging, swing tags or product pages.",
+      image: null,
+      alt: "",
+      width: 0,
+      height: 0,
+      portrait: false,
     },
     {
       number: "03",
-      title: "Request supplier data",
-      body: "Send simple data requests to manufacturers and suppliers so they can provide the missing information.",
-    },
-    {
-      number: "04",
-      title: "Generate your QR code",
-      body: "Every passport gets a QR code that can be used on labels, packaging, swing tags and ecommerce pages.",
-    },
-    {
-      number: "05",
-      title: "Publish and share",
-      body: "Launch a public product passport page that customers, retailers and partners can access instantly.",
-    },
-  ];
-
-  return (
-    <section className="bg-white py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="mb-16">
-          <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest mb-4">
-            How it works
-          </div>
-          <h2 className="text-4xl lg:text-5xl font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight max-w-2xl">
-            From product data to live passport in five simple steps.
-          </h2>
-        </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6">
-          {steps.map((step, i) => (
-            <div key={step.number} className="flex flex-col gap-4">
-              <div className="flex items-center gap-3">
-                <div className="text-4xl font-semibold tracking-[-0.04em] text-[#E8E8E6] leading-none shrink-0">
-                  {step.number}
-                </div>
-                {i < steps.length - 1 && (
-                  <div className="hidden lg:block flex-1 h-px bg-[#E8E8E6]" />
-                )}
-              </div>
-              <div>
-                <h3 className="text-base font-semibold text-[#0A0A0A] mb-2">{step.title}</h3>
-                <p className="text-sm text-[#525252] leading-relaxed">{step.body}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── Feature grid ─────────────────────────────────────────────────────────────
-
-function FeatureGrid() {
-  const features = [
-    {
-      icon: FileText,
-      title: "Passport Builder",
-      body: "Guided fields for product identity, materials, suppliers, certifications, impact data and product story.",
-    },
-    {
-      icon: Send,
-      title: "Supplier Requests",
-      body: "Request missing product data directly from suppliers and manufacturers through simple forms.",
-    },
-    {
-      icon: Upload,
-      title: "Bulk Upload",
-      body: "Import collections by spreadsheet and automatically create draft passports ready for review.",
-    },
-    {
-      icon: QrCode,
-      title: "QR Code Management",
-      body: "Generate and manage QR codes for products, packaging, care labels and ecommerce pages.",
-    },
-    {
-      icon: ShieldCheck,
-      title: "Evidence & Verification",
-      body: "Upload supporting evidence and show verified data clearly inside the passport builder.",
-    },
-    {
-      icon: BarChart2,
-      title: "Analytics",
-      body: "Track passport views, QR code scans and customer engagement across your product range.",
+      title: "Customer Experience",
+      body: "Customers scan and access the full product story — materials, origins, certifications, impact and circularity options.",
+      image: "/screenshot-certifications-mobile.png",
+      alt: "Customer passport experience",
+      width: 862,
+      height: 1478,
+      portrait: true,
     },
   ];
 
   return (
     <section className="bg-[#F9F9F8] py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="mb-14">
+        <motion.div {...fadeUp(0)} className="max-w-2xl mb-16">
           <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest mb-4">
-            Platform
+            What is a Digital Product Passport?
           </div>
-          <h2 className="text-4xl lg:text-5xl font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight max-w-2xl">
-            Everything you need to launch Digital Product Passports.
+          <h2 className="text-4xl lg:text-5xl font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight">
+            A digital identity for every product you make.
           </h2>
-        </div>
+          <p className="mt-5 text-lg text-[#525252] leading-relaxed">
+            A Digital Product Passport is a digital record attached to a physical product via a QR code. When customers scan it, they access the full product story — materials, origins, certifications, impact and care instructions.
+          </p>
+        </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E8E8E6]">
-          {features.map((feat) => (
-            <div key={feat.title} className="bg-[#F9F9F8] p-8 flex flex-col gap-4">
-              <div className="w-9 h-9 rounded-xl border border-[#E8E8E6] bg-white flex items-center justify-center">
-                <feat.icon size={16} className="text-[#0A0A0A]" />
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-3 gap-8 lg:gap-12"
+        >
+          {steps.map((step, i) => (
+            <motion.div key={step.number} variants={staggerItem} className="flex flex-col gap-5">
+              <div className="h-[220px] rounded-2xl bg-white border border-[#E8E8E6] overflow-hidden flex items-center justify-center relative">
+                {step.image ? (
+                  <Image
+                    src={step.image}
+                    alt={step.alt}
+                    width={step.width}
+                    height={step.height}
+                    className={`mix-blend-multiply ${step.portrait ? "h-full w-auto" : "w-full h-auto"}`}
+                  />
+                ) : (
+                  // QR code visual
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="p-4 bg-[#F9F9F8] rounded-2xl border border-[#E8E8E6]">
+                      <div
+                        className="grid gap-[2px]"
+                        style={{ gridTemplateColumns: "repeat(9, 1fr)", width: 72, height: 72 }}
+                      >
+                        {[
+                          1,1,1,1,0,1,1,1,1,
+                          1,0,0,1,0,1,0,0,1,
+                          1,0,1,1,0,1,1,0,1,
+                          1,1,1,0,0,0,1,1,1,
+                          0,0,0,0,1,0,0,0,0,
+                          1,1,1,0,0,0,1,1,1,
+                          1,0,1,1,0,1,1,0,1,
+                          1,0,0,1,0,1,0,0,1,
+                          1,1,1,1,0,1,1,1,1,
+                        ].map((cell, idx) => (
+                          <div
+                            key={idx}
+                            style={{ backgroundColor: cell ? "#0A0A0A" : "transparent", aspectRatio: "1" }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                    <span className="text-xs text-[#8C8C8C] font-medium">Scan to view passport</span>
+                  </div>
+                )}
+                {/* Step connector arrow */}
+                {i < steps.length - 1 && (
+                  <div className="hidden md:flex absolute -right-6 top-1/2 -translate-y-1/2 z-10 w-5 h-5 items-center justify-center">
+                    <ArrowRight size={16} className="text-[#C4C4C0]" />
+                  </div>
+                )}
               </div>
               <div>
-                <h3 className="font-semibold text-[#0A0A0A] mb-1.5">{feat.title}</h3>
-                <p className="text-sm text-[#525252] leading-relaxed">{feat.body}</p>
+                <div className="text-xs font-semibold text-[#0E6EEA] uppercase tracking-widest mb-2">
+                  Step {step.number}
+                </div>
+                <h3 className="text-lg font-semibold text-[#0A0A0A] mb-2">{step.title}</h3>
+                <p className="text-sm text-[#525252] leading-relaxed">{step.body}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 }
 
-// ─── ESPR readiness ───────────────────────────────────────────────────────────
+// ─── Digital Touchpoints ──────────────────────────────────────────────────────
 
-function ESPRReadiness() {
+function DigitalTouchpoints() {
+  const pillars = [
+    {
+      icon: BookOpen,
+      title: "Tell your product story",
+      body: "Let customers discover the materials, people and journey behind what they bought. Every product has a story worth telling.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Build trust through transparency",
+      body: "Show verified certifications, composition data and manufacturing origins — not just claims. Evidence-backed and customer-facing.",
+    },
+    {
+      icon: RefreshCw,
+      title: "Enable a second life",
+      body: "Give every product a pathway to repair, resale, take-back or recycling. Circularity starts with a scan.",
+    },
+  ];
+
   return (
     <section className="bg-white py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="border border-[#E8E8E6] rounded-3xl p-10 lg:p-16 flex flex-col lg:flex-row gap-10 lg:gap-20 items-start lg:items-center">
-          <div className="flex-1 flex flex-col gap-5">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#E8E8E6] text-xs font-medium text-[#525252] w-fit">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
-              EU regulation in progress
-            </div>
-            <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight">
-              Designed to support ESPR readiness.
-            </h2>
-            <p className="text-[#525252] leading-relaxed">
-              Origins helps fashion brands structure the data expected within future Digital Product Passports, including product identity, materials, certifications, manufacturing information, environmental claims, care guidance and supporting evidence.
-            </p>
-            <p className="text-sm text-[#8C8C8C] leading-relaxed">
-              Origins is designed to support ESPR readiness as regulations evolve. We update our data model as official guidance develops.
-            </p>
+        <motion.div {...fadeUp(0)} className="max-w-3xl mb-16">
+          <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest mb-4">
+            Beyond compliance
           </div>
-          <div className="lg:w-72 shrink-0 space-y-4">
-            {[
-              {
-                title: "ESPR-aligned data structure",
-                body: "Passport fields are structured around the data categories expected by EU Digital Product Passport requirements.",
-              },
-              {
-                title: "Certifications supported",
-                body: "GOTS, OEKO-TEX, GRS, Bluesign and custom certifications can be added and evidenced.",
-              },
-              {
-                title: "Audit trail included",
-                body: "Published passports include a timestamped record of data contributions and changes.",
-              },
-            ].map((item) => (
-              <div key={item.title} className="flex items-start gap-3">
-                <div className="w-5 h-5 rounded-full bg-[#0A0A0A] flex items-center justify-center shrink-0 mt-0.5">
-                  <Check size={10} className="text-white" strokeWidth={3} />
+          <h2 className="text-4xl lg:text-5xl font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight">
+            Every product becomes a<br />digital touchpoint.
+          </h2>
+          <p className="mt-5 text-lg text-[#525252] leading-relaxed max-w-2xl">
+            Most brands see Digital Product Passports as a compliance obligation. Forward-thinking brands see them as a new customer channel — a permanent, scannable connection between product and person.
+          </p>
+        </motion.div>
+
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-3 gap-px bg-[#E8E8E6]"
+        >
+          {pillars.map((pillar) => (
+            <motion.div
+              key={pillar.title}
+              variants={staggerItem}
+              className="bg-white p-8 lg:p-10 flex flex-col gap-5"
+            >
+              <div className="w-10 h-10 rounded-xl border border-[#E8E8E6] flex items-center justify-center">
+                <pillar.icon size={18} className="text-[#0A0A0A]" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-[#0A0A0A] mb-3 tracking-[-0.02em]">
+                  {pillar.title}
+                </h3>
+                <p className="text-[#525252] leading-relaxed">{pillar.body}</p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div {...fadeUp(0.2)} className="mt-8 flex items-center gap-6">
+          <a
+            href={`${APP_URL}/signup`}
+            className="inline-flex items-center justify-center h-11 px-6 rounded-xl bg-[#0E6EEA] text-white text-sm font-semibold hover:bg-[#0C5CD0] transition-colors"
+          >
+            Start free trial
+          </a>
+          <a
+            href="https://app.origins-id.com/c/ORI-89413809"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-[#525252] hover:text-[#0A0A0A] transition-colors"
+          >
+            See example passport
+            <ArrowRight size={14} />
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Passport Steps ───────────────────────────────────────────────────────────
+
+function PassportSteps() {
+  const steps = [
+    {
+      number: "01",
+      title: "Add product information",
+      body: "Name, description, imagery, country of origin, category and product identifiers.",
+      image: "/screenshot-passport-builder.png",
+      alt: "Product information builder",
+      width: 2870,
+      height: 1614,
+    },
+    {
+      number: "02",
+      title: "Add materials, impact & certifications",
+      body: "Composition, carbon footprint, water usage, self-declared claims and verified certifications.",
+      image: "/screenshot-impact-builder.png",
+      alt: "Sustainability and impact builder",
+      width: 2308,
+      height: 1508,
+    },
+    {
+      number: "03",
+      title: "Connect supply chain data",
+      body: "Add suppliers and manufacturing facilities, or send a request and let suppliers complete their own data.",
+      image: "/screenshot-supply-chain-builder.png",
+      alt: "Supply chain builder",
+      width: 2284,
+      height: 1508,
+    },
+    {
+      number: "04",
+      title: "Publish and generate your QR code",
+      body: "Your passport goes live instantly. Download a QR code for labels, packaging, swing tags and product pages.",
+      image: "/screenshot-passport-builder.png",
+      alt: "Publish passport and QR code",
+      width: 2870,
+      height: 1614,
+    },
+  ];
+
+  return (
+    <section className="bg-[#F9F9F8] py-24 lg:py-32">
+      <div className="max-w-7xl mx-auto px-6">
+        <motion.div {...fadeUp(0)} className="max-w-2xl mb-16">
+          <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest mb-4">
+            How it works
+          </div>
+          <h2 className="text-4xl lg:text-5xl font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight">
+            Create a passport in minutes.
+          </h2>
+          <p className="mt-5 text-[#525252] leading-relaxed">
+            Origins is designed to be simple. Most brands publish their first passport within an hour of signing up.
+          </p>
+        </motion.div>
+
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+          className="grid sm:grid-cols-2 gap-8"
+        >
+          {steps.map((step) => (
+            <motion.div
+              key={step.number}
+              variants={staggerItem}
+              className="bg-white border border-[#E8E8E6] rounded-2xl overflow-hidden"
+            >
+              <div className="h-[240px] bg-[#F9F9F8] overflow-hidden flex items-center justify-center">
+                <Image
+                  src={step.image}
+                  alt={step.alt}
+                  width={step.width}
+                  height={step.height}
+                  className="w-full h-auto mix-blend-multiply"
+                />
+              </div>
+              <div className="p-7">
+                <div className="text-xs font-semibold text-[#0E6EEA] uppercase tracking-widest mb-2">
+                  Step {step.number}
+                </div>
+                <h3 className="text-lg font-semibold text-[#0A0A0A] mb-2 tracking-[-0.02em]">
+                  {step.title}
+                </h3>
+                <p className="text-sm text-[#525252] leading-relaxed">{step.body}</p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div {...fadeUp(0.2)} className="mt-10 text-center">
+          <a
+            href={`${APP_URL}/signup`}
+            className="inline-flex items-center justify-center h-11 px-8 rounded-xl bg-[#0E6EEA] text-white text-sm font-semibold hover:bg-[#0C5CD0] transition-colors"
+          >
+            Start building for free
+          </a>
+          <p className="text-sm text-[#8C8C8C] mt-3">No credit card required · Set up in under 10 minutes</p>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Why Now ──────────────────────────────────────────────────────────────────
+
+function WhyNow() {
+  const milestones = [
+    {
+      year: "2026",
+      label: "Preparation",
+      body: "Brands get organised. Early adopters structure product data and begin issuing passports voluntarily.",
+    },
+    {
+      year: "2027",
+      label: "Initial rollout",
+      body: "First EU Digital Product Passport requirements take effect for selected textile product categories.",
+    },
+    {
+      year: "2028–30",
+      label: "Expanded adoption",
+      body: "Requirements expand across broader fashion and textile categories. Passports become standard practice.",
+    },
+  ];
+
+  const benefits = [
+    "Future compliance built in",
+    "Better organised product data",
+    "Improved supplier collaboration",
+    "Greater product transparency",
+    "Foundation for resale and circularity",
+    "No consultants or spreadsheets required",
+  ];
+
+  return (
+    <section className="bg-white py-24 lg:py-32">
+      <div className="max-w-7xl mx-auto px-6">
+        <motion.div {...fadeUp(0)} className="max-w-2xl mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#E8E8E6] text-xs font-medium text-[#525252] mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
+            Why brands are acting now
+          </div>
+          <h2 className="text-4xl lg:text-5xl font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight">
+            Digital Product Passports are coming. Origins makes them simple.
+          </h2>
+          <p className="mt-5 text-[#525252] leading-relaxed">
+            The EU&apos;s Ecodesign for Sustainable Products Regulation requires fashion brands to issue Digital Product Passports. Origins gives you the infrastructure to prepare early — without consultants, spreadsheets or complex implementation projects.
+          </p>
+        </motion.div>
+
+        {/* Timeline */}
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-3 gap-0 mb-16 relative"
+        >
+          {/* Connecting line */}
+          <div className="hidden md:block absolute top-5 left-[16.67%] right-[16.67%] h-px bg-[#E8E8E6] z-0" />
+
+          {milestones.map((m, i) => (
+            <motion.div key={m.year} variants={staggerItem} className="flex flex-col gap-4 p-6 relative">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-[#0A0A0A] flex items-center justify-center shrink-0 z-10">
+                  <span className="text-white text-xs font-semibold">{String(i + 1).padStart(2, "0")}</span>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-[#0A0A0A]">{item.title}</div>
-                  <div className="text-sm text-[#525252]">{item.body}</div>
+                  <div className="text-xl font-semibold text-[#0A0A0A] tracking-[-0.02em]">{m.year}</div>
+                  <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest">{m.label}</div>
                 </div>
+              </div>
+              <p className="text-sm text-[#525252] leading-relaxed">{m.body}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Benefits */}
+        <motion.div {...fadeUp(0.1)} className="border border-[#E8E8E6] rounded-2xl p-8 lg:p-10">
+          <div className="text-sm font-semibold text-[#0A0A0A] mb-6">
+            Brands that start now get:
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {benefits.map((b) => (
+              <div key={b} className="flex items-center gap-3">
+                <Check size={14} className="text-[#2ECC71] shrink-0" />
+                <span className="text-sm text-[#525252]">{b}</span>
               </div>
             ))}
           </div>
-        </div>
+          <div className="mt-8 flex flex-col sm:flex-row gap-3">
+            <a
+              href={`${APP_URL}/signup`}
+              className="inline-flex items-center justify-center h-11 px-6 rounded-xl bg-[#0E6EEA] text-white text-sm font-semibold hover:bg-[#0C5CD0] transition-colors"
+            >
+              Start free trial
+            </a>
+            <a
+              href="/compliance"
+              className="inline-flex items-center gap-1.5 h-11 px-2 text-sm font-medium text-[#525252] hover:text-[#0A0A0A] transition-colors"
+            >
+              Learn about ESPR
+              <ArrowRight size={14} />
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -471,7 +559,7 @@ function BuiltForFashion() {
     <section className="bg-[#F9F9F8] py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          <div className="flex flex-col gap-6">
+          <motion.div {...fadeUp(0)} className="flex flex-col gap-6">
             <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest">
               For fashion brands
             </div>
@@ -488,18 +576,25 @@ function BuiltForFashion() {
               Start free trial
               <ArrowRight size={14} />
             </a>
-          </div>
-          <div className="grid grid-cols-2 gap-2.5">
+          </motion.div>
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 gap-2.5"
+          >
             {categories.map((cat) => (
-              <div
+              <motion.div
                 key={cat}
+                variants={staggerItem}
                 className="flex items-center gap-2.5 py-3 px-4 bg-white border border-[#E8E8E6] rounded-xl"
               >
-                <div className="w-1.5 h-1.5 rounded-full bg-[#0A0A0A] shrink-0" />
+                <div className="w-1.5 h-1.5 rounded-full bg-[#2ECC71] shrink-0" />
                 <span className="text-sm font-medium text-[#0A0A0A]">{cat}</span>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -508,83 +603,51 @@ function BuiltForFashion() {
 
 // ─── Supplier data collection ─────────────────────────────────────────────────
 
-function SupplierFormMockup() {
-  return (
-    <div className="bg-white rounded-2xl border border-[#E8E8E6] shadow-[0_4px_24px_rgba(0,0,0,0.06)] overflow-hidden max-w-xs w-full">
-      <div className="flex items-center gap-2 px-5 py-3.5 border-b border-[#E8E8E6] bg-[#F9F9F8]">
-        <div className="w-2 h-2 rounded-full bg-[#E8E8E6]" />
-        <div className="w-2 h-2 rounded-full bg-[#E8E8E6]" />
-        <div className="w-2 h-2 rounded-full bg-[#E8E8E6]" />
-        <span className="ml-3 text-xs text-[#8C8C8C] font-medium">Supplier data request</span>
-      </div>
-      <div className="p-5 space-y-4">
-        <div className="space-y-1">
-          <div className="text-xs text-[#8C8C8C]">
-            From: <span className="font-semibold text-[#0A0A0A]">Maison Loren</span>
-          </div>
-          <div className="text-xs text-[#8C8C8C]">
-            For: <span className="font-semibold text-[#0A0A0A]">Merino Turtleneck</span>
-          </div>
-        </div>
-        <div className="border-t border-[#E8E8E6] pt-4 space-y-3">
-          {[
-            { q: "Fibre origin", a: "New Zealand (Mulesing-free)" },
-            { q: "Certifications", a: "OEKO-TEX Standard 100" },
-            { q: "Yarn spun in", a: "Biella, Italy" },
-          ].map((field) => (
-            <div key={field.q}>
-              <div className="text-[10px] text-[#8C8C8C] mb-1">{field.q}</div>
-              <div className="text-xs font-medium text-[#0A0A0A] bg-[#F4F4F3] rounded-lg px-3 py-2">
-                {field.a}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="w-full h-8 bg-[#0A0A0A] text-white text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5">
-          Submit data
-          <ArrowRight size={11} />
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function SupplierCollection() {
   return (
     <section className="bg-white py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div className="flex flex-col gap-6">
+          <motion.div {...fadeUp(0)} className="flex flex-col gap-6">
             <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest">
               Supplier data
             </div>
             <h2 className="text-4xl lg:text-[2.75rem] font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight">
-              Getting the data is the hardest part. Origins makes it easier.
+              Collect supplier data without spreadsheets.
             </h2>
             <p className="text-[#525252] leading-relaxed">
-              Most fashion brands don&apos;t have all the product information they need internally. Origins lets you request missing data from suppliers through simple forms — no spreadsheets back and forth.
+              Send suppliers a secure link and request only the data you need. They complete a simple form — no account required. Responses populate your passport automatically.
             </p>
-            <div className="grid grid-cols-2 gap-2.5">
+            <ul className="space-y-3">
               {[
-                { n: "1", label: "Brand requests data", sub: "Via Origins platform" },
-                { n: "2", label: "Supplier completes form", sub: "Simple web form" },
-                { n: "3", label: "Data reviewed", sub: "In the passport builder" },
-                { n: "4", label: "Passport updated", sub: "And published" },
-              ].map((step) => (
-                <div
-                  key={step.label}
-                  className="flex flex-col gap-1 p-4 bg-[#F9F9F8] border border-[#E8E8E6] rounded-xl"
-                >
-                  <span className="text-xs font-bold text-[#C4C4C0]">{step.n}</span>
-                  <div className="text-sm font-semibold text-[#0A0A0A]">{step.label}</div>
-                  <div className="text-xs text-[#8C8C8C]">{step.sub}</div>
-                </div>
+                "Send a secure link to any supplier",
+                "Request only the fields you need",
+                "Track responses in real time",
+                "Data populates passports automatically",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3 text-sm text-[#525252]">
+                  <Check size={14} className="text-[#2ECC71] shrink-0" />
+                  {item}
+                </li>
               ))}
-            </div>
-          </div>
-          <div className="flex justify-center lg:justify-end">
-            <SupplierFormMockup />
-          </div>
+            </ul>
+            <a
+              href={`${APP_URL}/signup`}
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0A0A0A] hover:opacity-60 transition-opacity w-fit"
+            >
+              Start free trial
+              <ArrowRight size={14} />
+            </a>
+          </motion.div>
+          <motion.div {...fadeUp(0.15)} className="flex justify-center lg:justify-end">
+            <Image
+              src="/screenshot-supplier-request.png"
+              alt="Supply Chain Requests in Origins"
+              width={2334}
+              height={1164}
+              className="w-full max-w-lg h-auto mix-blend-multiply"
+            />
+          </motion.div>
         </div>
       </div>
     </section>
@@ -593,86 +656,27 @@ function SupplierCollection() {
 
 // ─── Bulk upload ──────────────────────────────────────────────────────────────
 
-function BulkUploadMockup() {
-  const rows = [
-    { name: "Merino Turtleneck", sku: "ML-001" },
-    { name: "Linen Overshirt", sku: "ML-002" },
-    { name: "Recycled Wool Coat", sku: "ML-003" },
-  ];
-
-  return (
-    <div className="bg-white rounded-2xl border border-[#E8E8E6] shadow-[0_4px_24px_rgba(0,0,0,0.06)] overflow-hidden max-w-sm w-full">
-      <div className="flex items-center gap-2 px-5 py-3.5 border-b border-[#E8E8E6] bg-[#F9F9F8]">
-        <div className="w-2 h-2 rounded-full bg-[#E8E8E6]" />
-        <div className="w-2 h-2 rounded-full bg-[#E8E8E6]" />
-        <div className="w-2 h-2 rounded-full bg-[#E8E8E6]" />
-        <span className="ml-3 text-xs text-[#8C8C8C] font-medium">Import products</span>
-      </div>
-      <div className="p-5 space-y-4">
-        <div className="border-2 border-dashed border-[#E8E8E6] rounded-xl p-5 flex flex-col items-center gap-2 bg-[#F9F9F8]">
-          <Upload size={20} className="text-[#C4C4C0]" />
-          <div className="text-xs font-medium text-[#525252]">products-aw2025.csv</div>
-          <div className="text-[10px] text-[#2ECC71] font-semibold">3 products found</div>
-        </div>
-        <div className="space-y-1">
-          <div className="text-[10px] font-semibold text-[#8C8C8C] uppercase tracking-wider mb-2">
-            Preview
-          </div>
-          {rows.map((row) => (
-            <div
-              key={row.sku}
-              className="flex items-center justify-between py-2 border-b border-[#F4F4F3] last:border-0"
-            >
-              <div>
-                <div className="text-xs font-medium text-[#0A0A0A]">{row.name}</div>
-                <div className="text-[10px] text-[#8C8C8C]">{row.sku}</div>
-              </div>
-              <span className="text-[10px] font-medium px-2 py-0.5 bg-[#F4F4F3] text-[#8C8C8C] rounded-full">
-                draft
-              </span>
-            </div>
-          ))}
-        </div>
-        <div className="w-full h-8 bg-[#0A0A0A] text-white text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5">
-          Create 3 draft passports
-          <ArrowRight size={11} />
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function BulkUpload() {
   return (
     <section className="bg-[#F9F9F8] py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div className="lg:order-2 flex flex-col gap-6">
+          <motion.div {...fadeUp(0)} className="lg:order-2 flex flex-col gap-6">
             <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest">
               Bulk upload
             </div>
             <h2 className="text-4xl lg:text-[2.75rem] font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight">
-              Already working in spreadsheets? Upload them.
+              Create hundreds of passports at once.
             </h2>
             <p className="text-[#525252] leading-relaxed">
-              Brands can bulk upload product data via CSV to create multiple unpublished draft passports. Review them in Origins and publish when ready.
+              Download a template — Quick Start, Standard or Advanced — upload your product data, map columns automatically and publish at scale. No spreadsheet expertise required.
             </p>
-            <div className="flex items-start gap-4 p-5 bg-white border border-[#E8E8E6] rounded-2xl">
-              <div className="text-3xl font-semibold tracking-[-0.04em] text-[#E8E8E6] leading-none shrink-0">
-                ↑
-              </div>
-              <div className="space-y-0.5">
-                <div className="text-sm font-semibold text-[#0A0A0A]">Upload once.</div>
-                <div className="text-sm text-[#525252]">Review in Origins.</div>
-                <div className="text-sm text-[#525252]">Publish when ready.</div>
-              </div>
-            </div>
             <ul className="space-y-3">
               {[
-                "Import full product collections in one upload",
-                "Draft passports created automatically for each row",
-                "Review and complete passport data before publishing",
-                "Upload entire seasons at once — no size limit",
+                "Download a CSV template — 3 levels to choose from",
+                "Upload your product data, any column format",
+                "Origins maps columns automatically",
+                "Review drafts and publish at scale",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm text-[#525252]">
                   <Check size={14} className="text-[#2ECC71] mt-0.5 shrink-0" />
@@ -680,10 +684,16 @@ function BulkUpload() {
                 </li>
               ))}
             </ul>
-          </div>
-          <div className="lg:order-1 flex justify-center">
-            <BulkUploadMockup />
-          </div>
+          </motion.div>
+          <motion.div {...fadeUp(0.15)} className="lg:order-1 flex justify-center">
+            <Image
+              src="/screenshot-bulk-import.png"
+              alt="Bulk import in Origins"
+              width={1700}
+              height={1454}
+              className="w-full max-w-lg h-auto mix-blend-multiply"
+            />
+          </motion.div>
         </div>
       </div>
     </section>
@@ -697,7 +707,7 @@ function ExamplePassport() {
     <section className="bg-white py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div className="flex flex-col gap-6">
+          <motion.div {...fadeUp(0)} className="flex flex-col gap-6">
             <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest">
               Example passport
             </div>
@@ -729,8 +739,8 @@ function ExamplePassport() {
               View example passport (best viewed on mobile)
               <ArrowRight size={14} />
             </a>
-          </div>
-          <div className="flex justify-start pl-6">
+          </motion.div>
+          <motion.div {...fadeUp(0.15)} className="flex justify-start pl-6">
             <Image
               src="/Sustainability screenshot.png"
               alt="Example passport on mobile"
@@ -738,8 +748,80 @@ function ExamplePassport() {
               height={1374}
               className="w-full max-w-[300px] h-auto [filter:brightness(1.18)]"
             />
-          </div>
+          </motion.div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Feature grid ─────────────────────────────────────────────────────────────
+
+function FeatureGrid() {
+  const features = [
+    {
+      icon: FileText,
+      title: "Passport Builder",
+      body: "Guided fields for product identity, materials, suppliers, certifications, impact data and product story. Live preview as you build.",
+    },
+    {
+      icon: Send,
+      title: "Supplier Requests",
+      body: "Send suppliers a secure link and request only the data you need. No account or spreadsheet required.",
+    },
+    {
+      icon: Upload,
+      title: "Bulk Upload",
+      body: "Import entire product collections by CSV and automatically create draft passports ready to review and publish.",
+    },
+    {
+      icon: QrCode,
+      title: "QR Code Management",
+      body: "Generate and download QR codes for every passport. Use them on labels, packaging, care tags and ecommerce pages.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Verification & Evidence",
+      body: "Upload supporting evidence for certifications and claims. Show customers what is verified and what is self-declared.",
+    },
+    {
+      icon: BarChart2,
+      title: "Analytics",
+      body: "Track passport views, QR code scans and customer engagement across your full product range.",
+    },
+  ];
+
+  return (
+    <section className="bg-[#F9F9F8] py-24 lg:py-32">
+      <div className="max-w-7xl mx-auto px-6">
+        <motion.div {...fadeUp(0)} className="mb-14">
+          <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest mb-4">
+            Platform
+          </div>
+          <h2 className="text-4xl lg:text-5xl font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight max-w-2xl">
+            Everything you need to build, manage and share Digital Product Passports.
+          </h2>
+        </motion.div>
+
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E8E8E6]"
+        >
+          {features.map((feat) => (
+            <motion.div key={feat.title} variants={staggerItem} className="bg-[#F9F9F8] p-8 flex flex-col gap-4">
+              <div className="w-9 h-9 rounded-xl border border-[#E8E8E6] bg-white flex items-center justify-center">
+                <feat.icon size={16} className="text-[#0A0A0A]" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-[#0A0A0A] mb-1.5">{feat.title}</h3>
+                <p className="text-sm text-[#525252] leading-relaxed">{feat.body}</p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
@@ -755,7 +837,7 @@ function PricingPreview() {
       period: "/mo",
       description: "For emerging and growing brands launching their first passports.",
       features: [
-        "250 passport publications per year",
+        "250 passports per year",
         "Unlimited QR labels & scans",
         "AI Passport Builder",
         "Public passport pages",
@@ -772,7 +854,7 @@ function PricingPreview() {
       period: "/mo",
       description: "For established brands managing larger product ranges.",
       features: [
-        "750 passport publications per year",
+        "750 passports per year",
         "Unlimited QR labels & scans",
         "Everything in Essentials",
         "Supplier data requests",
@@ -790,7 +872,7 @@ function PricingPreview() {
       period: "",
       description: "For brands, manufacturers and enterprise teams requiring higher volumes and integrations.",
       features: [
-        "Custom publication allowance",
+        "Custom passport allowance",
         "Unlimited QR labels & scans",
         "Everything in Growth",
         "ERP & PLM integration",
@@ -804,9 +886,9 @@ function PricingPreview() {
   ];
 
   return (
-    <section className="bg-[#F9F9F8] py-24 lg:py-32">
+    <section className="bg-white py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
+        <motion.div {...fadeUp(0)} className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
           <div>
             <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest mb-4">
               Pricing
@@ -819,10 +901,10 @@ function PricingPreview() {
             href="/pricing"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-[#525252] hover:text-[#0A0A0A] transition-colors shrink-0"
           >
-            View pricing
+            View full pricing
             <ArrowRight size={14} />
           </a>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-3 gap-4">
           {plans.map((plan) => (
@@ -866,7 +948,7 @@ function PricingPreview() {
                   <li key={feat} className="flex items-start gap-2.5">
                     <Check
                       size={13}
-                      className={`mt-0.5 shrink-0 ${plan.highlight ? "text-white/70" : "text-[#0A0A0A]"}`}
+                      className={`mt-0.5 shrink-0 ${plan.highlight ? "text-white/70" : "text-[#2ECC71]"}`}
                       strokeWidth={2.5}
                     />
                     <span className={`text-sm ${plan.highlight ? "text-white/70" : "text-[#525252]"}`}>
@@ -898,18 +980,107 @@ function PricingPreview() {
   );
 }
 
+// ─── FAQ ──────────────────────────────────────────────────────────────────────
+
+function HomepageFAQ() {
+  const [open, setOpen] = useState<number | null>(null);
+
+  const faqs = [
+    {
+      q: "What is a Digital Product Passport?",
+      a: "A Digital Product Passport (DPP) is a digital record linked to a physical product via a QR code. It gives customers, retailers and regulators access to verified product information — materials, origins, certifications, environmental data and circularity guidance.",
+    },
+    {
+      q: "Is a Digital Product Passport the same as a QR code?",
+      a: "No — the QR code is just the access point. The Digital Product Passport is the data behind it: a structured, customer-facing record of everything about that product. Origins builds the passport and generates the QR code automatically.",
+    },
+    {
+      q: "What is ESPR and does it affect my brand?",
+      a: "ESPR stands for the EU Ecodesign for Sustainable Products Regulation. It requires fashion and textile brands selling into the EU to issue Digital Product Passports. If you sell into European markets, this will apply to your brand.",
+    },
+    {
+      q: "Is DPP legislation mandatory?",
+      a: "For brands selling into the EU, yes. The regulation is being phased in from 2027 onwards, starting with certain textile categories. Origins helps brands prepare early so the transition is straightforward.",
+    },
+    {
+      q: "How long does it take to set up Origins?",
+      a: "Most brands publish their first passport within an hour of signing up. Origins is designed to be simple — guided fields, AI-assisted content generation and CSV import mean you can move quickly.",
+    },
+    {
+      q: "Can my suppliers contribute data directly?",
+      a: "Yes. Origins has a built-in supplier request feature. You send a secure link, your supplier completes a simple web form with the data you need — no account required — and the information flows directly into your passport.",
+    },
+    {
+      q: "Can I bulk upload my product catalogue?",
+      a: "Yes. Origins supports CSV import. Download a template, populate it with your product data and upload. Origins maps the columns automatically and creates draft passports for each product, ready for you to review and publish.",
+    },
+    {
+      q: "Do customers need to download an app to view a passport?",
+      a: "No. Passport pages are public web pages. Customers scan the QR code with any smartphone camera and the passport opens instantly in their browser — no app, no login required.",
+    },
+    {
+      q: "Can I customise the passport with my own branding?",
+      a: "Yes. Growth and Enterprise plans include custom branding. Your logo, brand name and colour palette can be applied to the public passport experience.",
+    },
+    {
+      q: "How are QR codes managed — can I reprint them?",
+      a: "Yes. QR codes are permanent and linked to the passport, not the label. You can download and reprint them at any time in PNG or SVG format. The passport URL never changes, so existing printed labels always work.",
+    },
+  ];
+
+  return (
+    <section className="bg-[#F9F9F8] py-24 lg:py-32">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20">
+          <motion.div {...fadeUp(0)}>
+            <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest mb-4">FAQ</div>
+            <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight">
+              Common questions.
+            </h2>
+            <p className="mt-4 text-[#525252] leading-relaxed text-sm">
+              Can&apos;t find what you&apos;re looking for?{" "}
+              <a href="mailto:hello@originsid.com" className="underline underline-offset-2 hover:text-[#0A0A0A] transition-colors">
+                Get in touch.
+              </a>
+            </p>
+          </motion.div>
+
+          <motion.div {...fadeUp(0.1)} className="divide-y divide-[#E8E8E6]">
+            {faqs.map((faq, i) => (
+              <div key={faq.q} className="py-5">
+                <button
+                  onClick={() => setOpen(open === i ? null : i)}
+                  className="w-full flex items-start justify-between gap-4 text-left"
+                >
+                  <span className="text-sm font-semibold text-[#0A0A0A]">{faq.q}</span>
+                  <span className="shrink-0 mt-0.5 text-[#8C8C8C]">
+                    {open === i ? <Minus size={14} /> : <Plus size={14} />}
+                  </span>
+                </button>
+                {open === i && (
+                  <p className="mt-3 text-sm text-[#525252] leading-relaxed pr-6">{faq.a}</p>
+                )}
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── Final CTA ────────────────────────────────────────────────────────────────
 
 function FinalCTA() {
   return (
     <section className="bg-[#0A0A0A]">
       <div className="max-w-7xl mx-auto px-6 py-24 lg:py-32">
-        <div className="max-w-2xl">
+        <motion.div {...fadeUp(0)} className="max-w-2xl">
           <h2 className="text-4xl lg:text-5xl xl:text-[3.5rem] font-semibold tracking-[-0.03em] text-white leading-[1.05] mb-6">
-            Launch your first product passport today.
+            Ready to create your first Digital Product Passport?
           </h2>
           <p className="text-lg text-white/50 leading-relaxed mb-10">
-            Create passports, collect supplier data and generate QR codes from one simple platform.
+            Connect product data, collect supplier information and generate QR codes in minutes.
           </p>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
             <a
@@ -929,7 +1100,7 @@ function FinalCTA() {
           <p className="text-sm text-white/30 mt-5">
             No credit card required · Set up in under 10 minutes
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -942,14 +1113,17 @@ export default function HomePage() {
     <>
       <Hero />
       <TrustStrip />
-      <HowItWorks />
-      <FeatureGrid />
-      <ESPRReadiness />
+      <WhatIsADPP />
+      <DigitalTouchpoints />
+      <PassportSteps />
+      <WhyNow />
       <BuiltForFashion />
       <SupplierCollection />
       <BulkUpload />
       <ExamplePassport />
+      <FeatureGrid />
       <PricingPreview />
+      <HomepageFAQ />
       <FinalCTA />
     </>
   );

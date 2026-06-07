@@ -7,9 +7,9 @@ const footerLinks = [
     heading: "Product",
     links: [
       { label: "Platform overview", href: "/platform" },
+      { label: "Customer Experience", href: "/customer-experience" },
       { label: "Passport builder", href: "/platform" },
       { label: "QR codes", href: "/platform" },
-      { label: "AI generator", href: "/platform" },
       { label: "Analytics", href: "/platform" },
       { label: "Integrations", href: "/platform" },
     ],
@@ -18,6 +18,7 @@ const footerLinks = [
     heading: "Company",
     links: [
       { label: "About", href: "/about" },
+      { label: "Compliance & ESPR", href: "/compliance" },
       { label: "Pricing", href: "/pricing" },
       { label: "Solutions", href: "/solutions" },
       { label: "Resources", href: "/resources" },
