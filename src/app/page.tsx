@@ -1109,7 +1109,6 @@ export default function HomePage() {
       <DigitalTouchpoints />
       <PassportSteps />
       <WhyNow />
-      <BuiltForFashion />
       <SupplierCollection />
       <BulkUpload />
       <ExamplePassport />
