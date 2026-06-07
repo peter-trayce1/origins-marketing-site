@@ -69,10 +69,10 @@ function Hero() {
                 Start free trial
               </a>
               <a
-                href="/book-demo"
+                href="https://app.origins-id.com/c/ORI-89413809"
                 className="inline-flex items-center h-11 px-2 text-[#525252] text-sm font-medium hover:text-[#0A0A0A] transition-colors gap-1.5"
               >
-                Book a demo
+                See example passport (best viewed on mobile)
                 <ArrowRight size={14} />
               </a>
             </div>
@@ -194,32 +194,15 @@ function WhatIsADPP() {
                     className={`mix-blend-multiply ${step.portrait ? "h-full w-auto" : "w-full h-auto"}`}
                   />
                 ) : (
-                  // QR code visual
-                  <div className="flex flex-col items-center gap-3">
-                    <div className="p-4 bg-[#F9F9F8] rounded-2xl border border-[#E8E8E6]">
-                      <div
-                        className="grid gap-[2px]"
-                        style={{ gridTemplateColumns: "repeat(9, 1fr)", width: 72, height: 72 }}
-                      >
-                        {[
-                          1,1,1,1,0,1,1,1,1,
-                          1,0,0,1,0,1,0,0,1,
-                          1,0,1,1,0,1,1,0,1,
-                          1,1,1,0,0,0,1,1,1,
-                          0,0,0,0,1,0,0,0,0,
-                          1,1,1,0,0,0,1,1,1,
-                          1,0,1,1,0,1,1,0,1,
-                          1,0,0,1,0,1,0,0,1,
-                          1,1,1,1,0,1,1,1,1,
-                        ].map((cell, idx) => (
-                          <div
-                            key={idx}
-                            style={{ backgroundColor: cell ? "#0A0A0A" : "transparent", aspectRatio: "1" }}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                    <span className="text-xs text-[#8C8C8C] font-medium">Scan to view passport</span>
+                  <div className="flex flex-col items-center gap-3 px-6">
+                    <span className="text-xs font-medium text-[#525252] text-center">Scan to see this product&apos;s story</span>
+                    <Image
+                      src="/qr-example.png"
+                      alt="Scan to see product passport"
+                      width={400}
+                      height={400}
+                      className="w-28 h-28"
+                    />
                   </div>
                 )}
                 {/* Step connector arrow */}
