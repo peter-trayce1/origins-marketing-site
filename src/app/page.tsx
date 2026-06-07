@@ -59,7 +59,7 @@ function Hero() {
               Passports in minutes.
             </h1>
             <p className="text-lg text-[#525252] leading-relaxed">
-              Connect product data, collect supplier information, generate QR codes and publish customer-facing passport pages - all from one platform. Become ESPR-ready from day one.
+              Connect product data, collect supplier information, generate QR codes and publish customer-facing passport pages - all from one simple platform. Become ESPR-ready from day one.
             </p>
             <div className="flex flex-col items-start gap-3 pt-1">
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
