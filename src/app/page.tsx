@@ -1111,7 +1111,6 @@ export default function HomePage() {
       <WhyNow />
       <SupplierCollection />
       <BulkUpload />
-      <ExamplePassport />
       <FeatureGrid />
       <PricingPreview />
       <HomepageFAQ />
