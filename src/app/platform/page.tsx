@@ -230,18 +230,13 @@ function QRVisual() {
       {/* Main QR */}
       <div className="flex flex-col items-center gap-4">
         <div className="bg-white border border-[#E8E8E6] rounded-2xl p-5 shadow-sm">
-          <div
-            className="grid gap-px"
-            style={{ gridTemplateColumns: "repeat(16, 1fr)", width: 120, height: 120 }}
-          >
-            {QR_PATTERN.map((cell, i) => (
-              <div
-                key={i}
-                className="aspect-square"
-                style={{ backgroundColor: cell ? "#0A0A0A" : "white" }}
-              />
-            ))}
-          </div>
+          <Image
+            src="/qr-example.png"
+            alt="Example passport QR code"
+            width={400}
+            height={400}
+            className="w-[120px] h-[120px]"
+          />
         </div>
         <div className="text-center">
           <div className="text-sm font-medium text-[#0A0A0A]">Merino Turtleneck</div>
@@ -260,18 +255,6 @@ function QRVisual() {
             <span className="text-[9px] text-[#8C8C8C]">Print ready</span>
           </div>
         ))}
-      </div>
-
-      {/* Real QR example */}
-      <div className="border-t border-[#E8E8E6] pt-5 flex flex-col items-center gap-2">
-        <Image
-          src="/qr-example.png"
-          alt="Example passport QR code"
-          width={400}
-          height={400}
-          className="w-24 h-24"
-        />
-        <span className="text-[10px] text-[#8C8C8C] text-center">Scan to see a live passport example</span>
       </div>
     </div>
   );
