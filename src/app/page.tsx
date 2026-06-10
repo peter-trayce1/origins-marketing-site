@@ -55,8 +55,8 @@ function Hero() {
               </span>
             </div>
             <h1 className="text-[2.75rem] sm:text-5xl lg:text-[3.5rem] font-semibold tracking-[-0.03em] text-[#0A0A0A] leading-[1.05]">
-              Create Digital Product<br />
-              Passports in minutes.
+              Create Digital IDs for<br />
+              your products in minutes.
             </h1>
             <p className="text-lg text-[#525252] leading-relaxed">
               Connect product data, collect supplier information, generate QR codes and publish customer-facing passport pages - all from one simple platform. Become ESPR-ready from day one.
