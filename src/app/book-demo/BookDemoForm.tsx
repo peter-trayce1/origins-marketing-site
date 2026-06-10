@@ -68,7 +68,7 @@ export function BookDemoForm() {
       if (!res.ok) throw new Error("Request failed");
       setSubmitted(true);
     } catch {
-      setError("Something went wrong — please try again or email hello@originsid.com");
+      setError("Something went wrong — please try again or email hello@origins-id.com");
     } finally {
       setLoading(false);
     }

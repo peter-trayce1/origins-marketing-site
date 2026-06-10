@@ -48,10 +48,10 @@ export default function BookDemoPage() {
               <p className="text-sm text-[#525252]">
                 Email us at{" "}
                 <a
-                  href="mailto:hello@originsid.com"
+                  href="mailto:hello@origins-id.com"
                   className="text-[#0A0A0A] underline underline-offset-2"
                 >
-                  hello@originsid.com
+                  hello@origins-id.com
                 </a>
               </p>
             </div>
