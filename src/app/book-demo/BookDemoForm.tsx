@@ -5,6 +5,8 @@ import { CheckCircle } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
+const DEMO_ENDPOINT = "https://app.origins-id.com/api/demo-request";
+
 type FormData = {
   fullName: string;
   email: string;
@@ -31,6 +33,8 @@ const labelClass = "block text-sm font-medium text-[#0A0A0A] mb-1.5";
 export function BookDemoForm() {
   const [form, setForm] = useState<FormData>(initialForm);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   function handleChange(
     e: React.ChangeEvent<
@@ -40,9 +44,34 @@ export function BookDemoForm() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch(DEMO_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          full_name: form.fullName,
+          email: form.email,
+          company: form.brandName,
+          website: form.website,
+          message: [form.volume ? `Volume: ${form.volume}` : "", form.message]
+            .filter(Boolean)
+            .join("\n") || undefined,
+          hp_field: "",
+        }),
+      });
+
+      if (!res.ok) throw new Error("Request failed");
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong — please try again or email hello@originsid.com");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -182,11 +211,16 @@ export function BookDemoForm() {
         />
       </div>
 
+      {error && (
+        <p className="text-sm text-red-600">{error}</p>
+      )}
+
       <button
         type="submit"
-        className="w-full bg-[#0A0A0A] text-white font-medium rounded-lg py-3 text-sm hover:bg-[#1a1a1a] active:bg-[#2a2a2a] transition-colors mt-2"
+        disabled={loading}
+        className="w-full bg-[#0A0A0A] text-white font-medium rounded-lg py-3 text-sm hover:bg-[#1a1a1a] active:bg-[#2a2a2a] transition-colors mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        Book my demo
+        {loading ? "Sending…" : "Book my demo"}
       </button>
 
       <p className="text-xs text-[#8C8C8C] text-center">
