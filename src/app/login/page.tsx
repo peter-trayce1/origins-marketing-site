@@ -4,7 +4,7 @@ import { APP_URL } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Login",
-  description: "Sign in to the OriginsID brand portal.",
+  description: "Sign in to the Known Objects. brand portal.",
 };
 
 export default function LoginPage() {
@@ -16,18 +16,18 @@ export default function LoginPage() {
             href="/"
             className="text-2xl font-bold text-[#0A0A0A] tracking-tight"
           >
-            OriginsID
+            Known Objects.
           </Link>
         </div>
         <div className="bg-[#F9F9F8] rounded-2xl border border-[#E8E8E6] p-10 flex flex-col items-center gap-6">
           <p className="text-sm text-[#525252] leading-relaxed">
-            You&apos;re being redirected to the OriginsID brand portal.
+            You&apos;re being redirected to the Known Objects. brand portal.
           </p>
           <a
             href={`${APP_URL}/login`}
             className="w-full inline-flex items-center justify-center gap-2 bg-[#0A0A0A] text-white font-medium rounded-lg px-6 py-3 text-sm hover:bg-[#1a1a1a] transition-colors"
           >
-            Sign in to OriginsID →
+            Sign in to Known Objects. →
           </a>
           <div className="text-xs text-[#8C8C8C]">
             Don&apos;t have an account?{" "}

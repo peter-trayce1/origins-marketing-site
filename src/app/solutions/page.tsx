@@ -5,7 +5,7 @@ import { ArrowRight, Check } from "lucide-react";
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "OriginsID for every type of fashion brand — from independent labels to luxury houses and enterprise retailers.",
+    "Known Objects. for every type of fashion brand — from independent labels to luxury houses and enterprise retailers.",
 };
 
 // ─── Page hero ────────────────────────────────────────────────────────────────
@@ -22,7 +22,7 @@ function PageHero() {
             Built for every kind of fashion brand.
           </h1>
           <p className="text-lg text-[#525252] leading-relaxed">
-            From independent labels to luxury houses and enterprise retailers — OriginsID scales to the size, complexity and ambition of your brand.
+            From independent labels to luxury houses and enterprise retailers — Known Objects. scales to the size, complexity and ambition of your brand.
           </p>
         </div>
       </div>
@@ -36,7 +36,7 @@ const segments = [
   {
     tag: "Independent & sustainable brands",
     headline: "Prove your sustainability claims with structured, verifiable data.",
-    body: "For brands built on transparency, OriginsID gives you the infrastructure to back your claims — not just say them. Structure your materials data, certifications, supply chain steps and impact metrics in a format that consumers, stockists and regulators can verify.",
+    body: "For brands built on transparency, Known Objects. gives you the infrastructure to back your claims — not just say them. Structure your materials data, certifications, supply chain steps and impact metrics in a format that consumers, stockists and regulators can verify.",
     features: [
       "GOTS, OEKO-TEX, GRS and custom certification fields",
       "Supply chain transparency — country, facility, process",
@@ -45,14 +45,14 @@ const segments = [
       "Evidence-backed, not just stated",
     ],
     quote: {
-      text: "We used to spend hours writing sustainability copy that nobody could verify. OriginsID gives us a structure that actually means something.",
+      text: "We used to spend hours writing sustainability copy that nobody could verify. Known Objects. gives us a structure that actually means something.",
       attribution: "Head of Sustainability, independent knitwear label",
     },
   },
   {
     tag: "Premium & luxury brands",
     headline: "Protect provenance. Communicate craftsmanship.",
-    body: "Luxury products deserve a digital identity that matches their physical quality. OriginsID gives every piece a verifiable, branded passport — communicating provenance, materials, artisan stories and certifications in a format customers access instantly by scanning the label.",
+    body: "Luxury products deserve a digital identity that matches their physical quality. Known Objects. gives every piece a verifiable, branded passport — communicating provenance, materials, artisan stories and certifications in a format customers access instantly by scanning the label.",
     features: [
       "Artisan and maker story fields",
       "Provenance and origin documentation",
@@ -61,14 +61,14 @@ const segments = [
       "Anti-counterfeit QR identity",
     ],
     quote: {
-      text: "Our customers want to know exactly who made their piece and where. OriginsID lets us tell that story at the moment they're holding the garment.",
+      text: "Our customers want to know exactly who made their piece and where. Known Objects. lets us tell that story at the moment they're holding the garment.",
       attribution: "Creative Director, luxury accessories brand",
     },
   },
   {
     tag: "Scaling fashion brands",
     headline: "Manage passports across your entire catalogue.",
-    body: "Whether you have 50 products or 5,000, OriginsID scales with your range. Bulk CSV import, Shopify sync, and AI-assisted content drafting mean you can build and maintain a complete passport library without a dedicated compliance team.",
+    body: "Whether you have 50 products or 5,000, Known Objects. scales with your range. Bulk CSV import, Shopify sync, and AI-assisted content drafting mean you can build and maintain a complete passport library without a dedicated compliance team.",
     features: [
       "Bulk CSV import for large product ranges",
       "Shopify product sync — auto-draft on new products",
@@ -84,7 +84,7 @@ const segments = [
   {
     tag: "Ecommerce & DTC brands",
     headline: "Embed passports into your product pages and checkout.",
-    body: "OriginsID integrates directly into your ecommerce stack. Add passport badges, inline material summaries, and full passport modals to any Shopify, Hydrogen or custom storefront — reducing customer questions and building trust at the point of purchase.",
+    body: "Known Objects. integrates directly into your ecommerce stack. Add passport badges, inline material summaries, and full passport modals to any Shopify, Hydrogen or custom storefront — reducing customer questions and building trust at the point of purchase.",
     features: [
       "Shopify and Hydrogen widgets",
       "Webflow and custom embed support",
@@ -100,7 +100,7 @@ const segments = [
   {
     tag: "Enterprise retailers",
     headline: "EU DPP compliance infrastructure for large teams.",
-    body: "For retailers managing hundreds of brands or thousands of products, OriginsID provides the data infrastructure, team controls and API access to manage Digital Product Passports at scale — with compliance built in from day one.",
+    body: "For retailers managing hundreds of brands or thousands of products, Known Objects. provides the data infrastructure, team controls and API access to manage Digital Product Passports at scale — with compliance built in from day one.",
     features: [
       "Unlimited passports across multiple brands",
       "Multi-brand workspace management",
@@ -110,7 +110,7 @@ const segments = [
       "Dedicated onboarding and account support",
     ],
     quote: {
-      text: "We needed a platform that could handle our full product range and integrate with our existing systems. OriginsID was the only one that could do both.",
+      text: "We needed a platform that could handle our full product range and integrate with our existing systems. Known Objects. was the only one that could do both.",
       attribution: "Head of Digital, enterprise fashion retailer",
     },
   },
@@ -183,7 +183,7 @@ function ComplianceCallout() {
             Whatever your size, EU ESPR applies to you.
           </h2>
           <p className="text-[#525252] leading-relaxed">
-            The EU&apos;s Ecodesign for Sustainable Products Regulation requires all fashion brands — from independents to global retailers — to issue Digital Product Passports by 2026. OriginsID builds the compliance structure in from day one, so you&apos;re never scrambling to catch up.
+            The EU&apos;s Ecodesign for Sustainable Products Regulation requires all fashion brands — from independents to global retailers — to issue Digital Product Passports by 2026. Known Objects. builds the compliance structure in from day one, so you&apos;re never scrambling to catch up.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <a

@@ -4,7 +4,7 @@ import { BookDemoForm } from "./BookDemoForm";
 export const metadata: Metadata = {
   title: "Book a Demo",
   description:
-    "See OriginsID in action. Book a 30-minute walkthrough tailored to your brand and product range.",
+    "See Known Objects. in action. Book a 30-minute walkthrough tailored to your brand and product range.",
 };
 
 export default function BookDemoPage() {
@@ -22,7 +22,7 @@ export default function BookDemoPage() {
                 Book a demo
               </h1>
               <p className="mt-4 text-base text-[#525252] leading-relaxed">
-                See OriginsID in action. We&apos;ll walk you through the platform and
+                See Known Objects. in action. We&apos;ll walk you through the platform and
                 help you understand how Digital Product Passports could work for
                 your brand.
               </p>

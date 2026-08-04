@@ -6,4 +6,4 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://app.origins-id.com";
-export const DEMO_EMAIL = "hello@originsid.com";
+export const DEMO_EMAIL = "hello@origins-id.com";

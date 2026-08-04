@@ -1,64 +1,84 @@
-import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-
-export function OriginsMark({ size = 20, white = false, className }: { size?: number; white?: boolean; className?: string }) {
-  const fill = white ? "white" : "#333333";
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 20 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-hidden="true"
-    >
-      {/* Left column: tiny top, medium middle, large bottom */}
-      <circle cx="4" cy="2.5" r="1" fill={fill} />
-      <circle cx="4" cy="10" r="2" fill={fill} />
-      <circle cx="4" cy="17.5" r="3" fill={fill} />
-      {/* Right column: medium-large top, medium lower */}
-      <circle cx="13" cy="6.5" r="2.4" fill={fill} />
-      <circle cx="13" cy="14" r="1.6" fill={fill} />
-    </svg>
-  );
-}
 
 interface LogoProps {
   white?: boolean;
   className?: string;
   href?: string;
+  compact?: boolean;
 }
 
-export function Logo({ white = false, className, href = "/" }: LogoProps) {
-  if (white) {
-    return (
-      <Link
-        href={href}
-        className={cn("inline-flex items-center gap-2.5 group", className)}
-      >
-        <OriginsMark white className="shrink-0 transition-opacity group-hover:opacity-80" />
-        <span className="text-[16px] font-semibold tracking-[-0.02em] leading-none text-white transition-opacity group-hover:opacity-80">
-          Origins
-        </span>
-      </Link>
-    );
-  }
+/**
+ * Known Objects. wordmark.
+ * "Known" — Inter (sans-serif)
+ * "Objects." — Instrument Serif italic
+ */
+export function Logo({ white = false, className, href = "/", compact = false }: LogoProps) {
+  const textColor = white ? "text-white" : "text-[#111111]";
+  const size = compact ? "text-[15px]" : "text-[17px]";
 
   return (
     <Link
       href={href}
-      className={cn("inline-flex items-center group transition-opacity hover:opacity-80", className)}
+      className={cn("inline-flex items-baseline group transition-opacity hover:opacity-75", className)}
+      aria-label="Known Objects. — home"
     >
-      <Image
-        src="/logo-dark.png"
-        alt="Origins"
-        width={100}
-        height={22}
-        className="object-contain h-[22px] w-auto"
-        priority
-      />
+      <span
+        className={cn(
+          "font-medium tracking-[-0.01em] leading-none select-none",
+          textColor,
+          size,
+          "font-[family-name:var(--font-inter)]"
+        )}
+      >
+        Known{" "}
+      </span>
+      <span
+        className={cn(
+          "italic tracking-[-0.01em] leading-none select-none",
+          textColor,
+          size,
+          "font-[family-name:var(--font-instrument-serif)]"
+        )}
+      >
+        Objects.
+      </span>
     </Link>
+  );
+}
+
+/** KO monogram — for favicon / app icon contexts */
+export function KOMonogram({
+  size = 32,
+  white = false,
+  className,
+}: {
+  size?: number;
+  white?: boolean;
+  className?: string;
+}) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden="true"
+    >
+      <rect width="32" height="32" fill={white ? "#111111" : "#ffffff"} />
+      <text
+        x="4"
+        y="22"
+        fontFamily="system-ui, sans-serif"
+        fontWeight="500"
+        fontSize="14"
+        fill={white ? "#ffffff" : "#111111"}
+        letterSpacing="-0.5"
+      >
+        KO
+      </text>
+    </svg>
   );
 }

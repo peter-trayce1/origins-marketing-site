@@ -110,7 +110,7 @@ export default function ResourcesPage() {
                 Stay ahead on product transparency.
               </h2>
               <p className="text-base text-[#525252] leading-relaxed">
-                Book a demo to learn how OriginsID can help your brand prepare
+                Book a demo to learn how Known Objects. can help your brand prepare
                 for Digital Product Passport requirements.
               </p>
             </div>

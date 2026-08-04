@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/Button";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "OriginsID is a product transparency platform helping fashion and lifestyle brands connect their physical products to trusted digital identities.",
+    "Known Objects. is a product transparency platform helping fashion and lifestyle brands connect their physical products to trusted digital identities.",
 };
 
 const values = [
@@ -30,7 +30,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
             <span className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest">
-              About OriginsID
+              About Known Objects.
             </span>
             <h1 className="mt-4 text-4xl sm:text-5xl font-bold text-[#0A0A0A] leading-tight">
               We believe every product should have a trusted digital identity.
@@ -48,7 +48,7 @@ export default function AboutPage() {
                 Our mission
               </span>
               <p className="mt-6 text-xl text-[#0A0A0A] leading-relaxed font-medium">
-                OriginsID is a product transparency platform helping fashion and
+                Known Objects. is a product transparency platform helping fashion and
                 lifestyle brands connect their physical products to trusted digital
                 identities.
               </p>
@@ -152,7 +152,7 @@ export default function AboutPage() {
               The team is growing.
             </h2>
             <p className="text-base text-[#525252] leading-relaxed">
-              We&apos;re building OriginsID with a small, focused team. If you&apos;re
+              We&apos;re building Known Objects. with a small, focused team. If you&apos;re
               passionate about product transparency, sustainable fashion, and
               building meaningful software, we&apos;d love to hear from you.
             </p>

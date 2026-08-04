@@ -33,7 +33,7 @@ function PageHero() {
             Everything you need to build verified passports at scale.
           </h1>
           <p className="text-lg text-[#525252] leading-relaxed mb-8">
-            OriginsID gives fashion brands a complete infrastructure for Digital Product Passports — from the first data entry to the consumer scanning a QR code at the point of sale.
+            Known Objects. gives fashion brands a complete infrastructure for Digital Product Passports — from the first data entry to the consumer scanning a QR code at the point of sale.
           </p>
           <div className="flex items-center gap-3">
             <a
@@ -240,7 +240,7 @@ function QRVisual() {
         </div>
         <div className="text-center">
           <div className="text-sm font-medium text-[#0A0A0A]">Merino Turtleneck</div>
-          <div className="text-xs text-[#8C8C8C] mt-0.5">originsid.com/p/merino-turtleneck</div>
+          <div className="text-xs text-[#8C8C8C] mt-0.5">knownobjects.com/p/merino-turtleneck</div>
         </div>
       </div>
 
@@ -434,7 +434,7 @@ function ComplianceSection() {
               Built for EU ESPR from day one.
             </h2>
             <p className="text-[#525252] leading-relaxed">
-              The EU&apos;s Ecodesign for Sustainable Products Regulation (ESPR) requires all fashion brands to issue Digital Product Passports by 2026. OriginsID structures your passport data to meet the regulation&apos;s technical requirements — without you needing to understand the legal text.
+              The EU&apos;s Ecodesign for Sustainable Products Regulation (ESPR) requires all fashion brands to issue Digital Product Passports by 2026. Known Objects. structures your passport data to meet the regulation&apos;s technical requirements — without you needing to understand the legal text.
             </p>
             <ul className="space-y-3">
               {[
@@ -528,7 +528,7 @@ export default function PlatformPage() {
         <FeatureSection
           label="Passport builder"
           title="A guided wizard for every field your passport needs."
-          body="The OriginsID passport builder walks you through every section — product info, materials, certifications, supply chain, care instructions, and brand story. A live completeness score shows exactly what's missing before you publish."
+          body="The Known Objects. passport builder walks you through every section — product info, materials, certifications, supply chain, care instructions, and brand story. A live completeness score shows exactly what's missing before you publish."
           bullets={[
             "8-step structured wizard with guided prompts",
             "Materials composition with percentage breakdowns",
@@ -542,7 +542,7 @@ export default function PlatformPage() {
         <FeatureSection
           label="QR codes"
           title="Every passport gets a unique QR code, instantly."
-          body="The moment you publish a passport, OriginsID generates a print-ready QR code linked to its public page. Export in PNG, SVG, or PDF — ready for swing tags, care labels, garment bags, and packaging inserts."
+          body="The moment you publish a passport, Known Objects. generates a print-ready QR code linked to its public page. Export in PNG, SVG, or PDF — ready for swing tags, care labels, garment bags, and packaging inserts."
           bullets={[
             "Auto-generated on publish — no manual steps",
             "Export as PNG, SVG and PDF for any use case",
@@ -557,7 +557,7 @@ export default function PlatformPage() {
         <FeatureSection
           label="AI content generator"
           title="AI drafts your passport content. You approve it."
-          body="Paste a product description and let OriginsID generate a full passport draft — product story, sustainability summary, consumer transparency copy, and more. Every AI suggestion is clearly labelled. Nothing is published without your review."
+          body="Paste a product description and let Known Objects. generate a full passport draft — product story, sustainability summary, consumer transparency copy, and more. Every AI suggestion is clearly labelled. Nothing is published without your review."
           bullets={[
             "Product story, sustainability summary, maker story",
             "Consumer-friendly transparency copy",
@@ -586,7 +586,7 @@ export default function PlatformPage() {
         <FeatureSection
           label="Integrations"
           title="Connect your existing product data stack."
-          body="OriginsID integrates with the tools fashion brands already use. Sync products from Shopify, pull certification data from GOTS and EcoVadis, and connect to any PLM, ERP or custom system via the REST API."
+          body="Known Objects. integrates with the tools fashion brands already use. Sync products from Shopify, pull certification data from GOTS and EcoVadis, and connect to any PLM, ERP or custom system via the REST API."
           bullets={[
             "Shopify product sync — auto-create passport drafts for new products",
             "GOTS and EcoVadis certification data import",
@@ -630,7 +630,7 @@ export default function PlatformPage() {
               {
                 icon: Code,
                 title: "REST API",
-                body: "Push product and certification data from any system — PLM, ERP or custom platforms — using the OriginsID developer API.",
+                body: "Push product and certification data from any system — PLM, ERP or custom platforms — using the Known Objects. developer API.",
               },
               {
                 icon: ShieldCheck,

@@ -224,7 +224,7 @@ export function BookDemoForm() {
       </button>
 
       <p className="text-xs text-[#8C8C8C] text-center">
-        By submitting this form you agree to be contacted about OriginsID.
+        By submitting this form you agree to be contacted about Known Objects.
         No spam, ever.
       </p>
     </form>

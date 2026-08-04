@@ -1,24 +1,120 @@
 @import "tailwindcss";
 
+/* ─── Design tokens ──────────────────────────────────────────────────────────── */
 :root {
+  /* Colours */
+  --ko-black:       #111111;
+  --ko-white:       #ffffff;
+  --ko-warm-gray:   #F6F4F2;
+  --ko-border:      #E6E6E2;
+  --ko-muted:       #72726D;
+  --ko-cobalt:      #164ED8;
+  --ko-cobalt-pale: #EAF1FF;
+
+  /* Fonts */
+  --font-sans:  var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
+
+  /* Legacy aliases so existing arbitrary colour values still resolve */
   --background: #ffffff;
-  --foreground: #0a0a0a;
+  --foreground: #111111;
 }
 
+/* ─── Base ───────────────────────────────────────────────────────────────────── */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  background: var(--ko-white);
+  color: var(--ko-black);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* ─── Typography utilities ───────────────────────────────────────────────────── */
+
+/* Editorial serif — for hero headlines and major section headings */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Eyebrow — small uppercase label above headlines */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;      /* 11px */
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ko-muted);
+}
+
+/* ─── Button utilities ───────────────────────────────────────────────────────── */
+
+/* Primary — black fill, white text */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;           /* 40px */
+  padding: 0 1.25rem;
+  background-color: var(--ko-black);
+  color: var(--ko-white);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;     /* 13px */
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border-radius: 4px;
+  transition: background-color 150ms ease;
+  white-space: nowrap;
+}
+.btn-primary:hover {
+  background-color: #2a2a2a;
+}
+
+/* Secondary — white fill, border, pale cobalt hover */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  padding: 0 1.25rem;
+  background-color: var(--ko-white);
+  color: var(--ko-black);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border: 1px solid var(--ko-border);
+  border-radius: 4px;
+  transition: background-color 150ms ease, border-color 150ms ease;
+  white-space: nowrap;
+}
+.btn-secondary:hover {
+  background-color: var(--ko-cobalt-pale);
+  border-color: #c5d6f5;
+}
+
+/* Cobalt text link — inline cobalt link with arrow */
+.link-cobalt {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--ko-cobalt);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 150ms ease;
+}
+.link-cobalt:hover {
+  opacity: 0.75;
+}
+
+/* ─── Animation ──────────────────────────────────────────────────────────────── */
 @keyframes marquee {
   from { transform: translateX(-50%); }
   to   { transform: translateX(0%); }
 }
 
 .animate-marquee {
-  animation: marquee 28s linear infinite;
+  animation: marquee 32s linear infinite;
   will-change: transform;
 }
 
