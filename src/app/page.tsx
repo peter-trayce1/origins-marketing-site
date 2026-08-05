@@ -45,7 +45,7 @@ function Hero() {
   return (
     <section className="bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 pt-20 pb-0 lg:pt-28">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-end">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: copy */}
           <motion.div {...fadeUp(0)} className="pb-16 lg:pb-24 flex flex-col gap-8 max-w-xl">
             <p className="eyebrow">Digital identities for physical products</p>
@@ -88,20 +88,14 @@ function Hero() {
 
           {/* Right: product image */}
           <motion.div {...fadeUp(0.15)} className="relative flex justify-center lg:justify-end">
-            {hasHeroImage ? (
-              <Image
-                src="/hero-jacket.png"
-                alt="Waxed field jacket with Known Objects. digital identity tag"
-                width={1270}
-                height={952}
-                className="w-full max-w-[580px] h-auto object-contain"
-                priority
-              />
-            ) : (
-              <div className="w-full max-w-[580px] aspect-[4/3] bg-[#F6F4F2] rounded flex items-center justify-center">
-                <span className="text-[#72726D] text-sm">Product image</span>
-              </div>
-            )}
+            <Image
+              src="/hero-jacket white background.png"
+              alt="Waxed field jacket with Known Objects. digital identity tag"
+              width={1448}
+              height={1086}
+              className="w-full h-auto mix-blend-multiply"
+              priority
+            />
           </motion.div>
         </div>
       </div>
