@@ -89,7 +89,7 @@ function Hero() {
           {/* Right: product image */}
           <motion.div {...fadeUp(0.15)} className="relative flex justify-center lg:justify-end">
             <Image
-              src="/hero-jacket white background.png"
+              src="/hero-jacket-white.png"
               alt="Waxed field jacket with Known Objects. digital identity tag"
               width={1448}
               height={1086}
