@@ -89,11 +89,12 @@ function Hero() {
           {/* Right: product image */}
           <motion.div {...fadeUp(0.15)} className="relative flex justify-center lg:justify-end">
             <Image
-              src="/hero-jacket-white.png"
+              src="/hero-jacket-full-white.png"
               alt="Waxed field jacket with Known Objects. digital identity tag"
               width={1448}
               height={1086}
-              className="w-full h-auto mix-blend-multiply"
+              className="w-full h-auto"
+              style={{ backgroundColor: "#ffffff" }}
               priority
             />
           </motion.div>
