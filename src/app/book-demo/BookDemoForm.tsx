@@ -5,7 +5,7 @@ import { CheckCircle } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-const DEMO_ENDPOINT = "https://app.origins-id.com/api/demo-request";
+const DEMO_ENDPOINT = "https://app.knownobjects.io/api/demo-request";
 
 type FormData = {
   fullName: string;
@@ -68,7 +68,7 @@ export function BookDemoForm() {
       if (!res.ok) throw new Error("Request failed");
       setSubmitted(true);
     } catch {
-      setError("Something went wrong. Please try again or email hello@origins-id.com");
+      setError("Something went wrong. Please try again or email hello@knownobjects.io");
     } finally {
       setLoading(false);
     }

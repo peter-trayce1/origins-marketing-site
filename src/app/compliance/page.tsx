@@ -4,8 +4,8 @@ import { Check, ArrowRight } from "lucide-react";
 import { APP_URL } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "ESPR Compliance — Origins",
-  description: "Origins helps fashion brands prepare for EU Digital Product Passport requirements simply, without consultants or complex implementation projects.",
+  title: "ESPR Compliance",
+  description: "Known Objects helps brands prepare for EU Digital Product Passport requirements simply, without consultants or complex implementation projects.",
 };
 
 const milestones = [
@@ -45,7 +45,7 @@ const whatBrandsNeed = [
 const howOriginsHelps = [
   {
     title: "ESPR-aligned data structure",
-    body: "Passport fields are structured around the data categories expected by EU Digital Product Passport requirements. As guidance develops, Origins updates the data model.",
+    body: "Passport fields are structured around the data categories expected by EU Digital Product Passport requirements. As guidance develops, Known Objects updates the data model.",
   },
   {
     title: "Built-in certifications",
@@ -65,7 +65,7 @@ const howOriginsHelps = [
   },
   {
     title: "Bulk passport creation",
-    body: "Import entire collections via CSV. Origins creates draft passports automatically, ready to review and publish at scale.",
+    body: "Import entire collections via CSV. Known Objects creates draft passports automatically, ready to review and publish at scale.",
   },
 ];
 
@@ -83,12 +83,12 @@ const faqs = [
     a: "The first requirements for textile and apparel products are expected to take effect from 2027, with broader adoption through 2028–2030. The specific timeline continues to be refined as the EU publishes delegated acts.",
   },
   {
-    q: "Does Origins guarantee compliance?",
-    a: "Origins is designed to support ESPR readiness by providing the data infrastructure required for Digital Product Passports. We update our data model as official guidance develops. We recommend consulting a legal or compliance advisor for specific compliance obligations.",
+    q: "Does Known Objects guarantee compliance?",
+    a: "Known Objects is designed to support ESPR readiness by providing the data infrastructure required for Digital Product Passports. We update our data model as official guidance develops. We recommend consulting a legal or compliance advisor for specific compliance obligations.",
   },
   {
     q: "How quickly can we get started?",
-    a: "Most brands publish their first passport within an hour of signing up. Origins is designed to be simple. Guided fields, AI-assisted content and bulk import mean you can move quickly without consultants or complex projects.",
+    a: "Most brands publish their first passport within an hour of signing up. Known Objects is designed to be simple. Guided fields, AI-assisted content and bulk import mean you can move quickly without consultants or complex projects.",
   },
 ];
 
@@ -107,7 +107,7 @@ export default function CompliancePage() {
               The simplest path to ESPR readiness.
             </h1>
             <p className="text-xl text-[#525252] leading-relaxed mb-10 max-w-2xl">
-              Digital Product Passports are becoming a legal requirement for fashion brands selling into the EU. Origins gives you the infrastructure to prepare early, without consultants, spreadsheets or complex implementation projects.
+              Digital Product Passports are becoming a legal requirement for fashion brands selling into the EU. Known Objects gives you the infrastructure to prepare early, without consultants, spreadsheets or complex implementation projects.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <a
@@ -193,7 +193,7 @@ export default function CompliancePage() {
           </div>
 
           <p className="text-sm text-[#8C8C8C] mt-6">
-            Timelines are based on current EU proposals and may be updated as delegated acts are published. Origins monitors regulatory developments and updates its data model accordingly.
+            Timelines are based on current EU proposals and may be updated as delegated acts are published. Known Objects monitors regulatory developments and updates its data model accordingly.
           </p>
         </div>
       </section>
@@ -225,12 +225,12 @@ export default function CompliancePage() {
         </div>
       </section>
 
-      {/* How Origins helps */}
+      {/* How Known Objects helps */}
       <section className="bg-white py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-14">
             <div className="text-xs font-semibold text-[#8C8C8C] uppercase tracking-widest mb-4">
-              How Origins helps
+              How Known Objects helps
             </div>
             <h2 className="text-4xl font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight max-w-xl">
               Built for ESPR readiness from day one.

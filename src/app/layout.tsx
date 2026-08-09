@@ -19,6 +19,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://knownobjects.io"),
   title: {
     default: "Known Objects.: Digital Identities for Physical Products",
     template: "%s | Known Objects.",
@@ -31,12 +32,16 @@ export const metadata: Metadata = {
       "Known Objects creates connected digital identities that bring together product data, stories and services across the entire product lifecycle.",
     type: "website",
     siteName: "Known Objects.",
+    url: "https://knownobjects.io",
   },
   twitter: {
     card: "summary_large_image",
     title: "Known Objects.: Digital Identities for Physical Products",
     description:
       "Known Objects creates connected digital identities that bring together product data, stories and services across the entire product lifecycle.",
+  },
+  alternates: {
+    canonical: "https://knownobjects.io",
   },
 };
 

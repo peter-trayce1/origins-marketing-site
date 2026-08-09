@@ -73,7 +73,7 @@ function Hero() {
                 </a>
               </div>
               <a
-                href="https://app.origins-id.com/c/ORI-89413809"
+                href="https://passport.knownobjects.io/c/ORI-89413809"
                 className="link-cobalt text-xs text-[#72726D] hover:text-[#111111]"
                 style={{ color: "#72726D" }}
               >
@@ -768,7 +768,7 @@ function HomepageFAQ() {
             </h2>
             <p className="mt-4 text-[13px] text-[#72726D] leading-relaxed">
               Still have questions?{" "}
-              <a href="mailto:hello@origins-id.com" className="text-[#164ED8] hover:underline">
+              <a href="mailto:hello@knownobjects.io" className="text-[#164ED8] hover:underline">
                 Get in touch.
               </a>
             </p>

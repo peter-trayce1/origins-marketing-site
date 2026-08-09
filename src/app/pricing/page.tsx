@@ -43,10 +43,10 @@ function HowPricingWorks() {
         <div className="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-start">
           <div className="flex flex-col gap-6">
             <h2 className="text-2xl lg:text-3xl font-semibold tracking-[-0.025em] text-[#0A0A0A] leading-tight">
-              How Origins pricing works
+              How Known Objects pricing works
             </h2>
             <p className="text-[#525252] leading-relaxed">
-              Origins pricing is based on the number of Product Passports your brand publishes each year.
+              Known Objects pricing is based on the number of Product Passports your brand publishes each year.
             </p>
             <ul className="space-y-3">
               {[

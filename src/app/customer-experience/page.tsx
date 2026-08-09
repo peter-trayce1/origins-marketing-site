@@ -4,7 +4,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { APP_URL } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Customer Experience — Origins",
+  title: "Customer Experience",
   description: "Turn every product into a digital customer experience. Digital Product Passports give customers access to product stories, certifications, care guidance and circularity pathways.",
 };
 
@@ -12,7 +12,7 @@ const experiences = [
   {
     label: "Story",
     title: "Tell your product story.",
-    body: "Every product has a story worth telling. Origins lets you share the people, places and processes behind what you make, from the farm where the fibre was grown to the factory where it was finished.",
+    body: "Every product has a story worth telling. Known Objects lets you share the people, places and processes behind what you make, from the farm where the fibre was grown to the factory where it was finished.",
     detail: "Customers who understand where a product comes from are more likely to buy, more likely to return, and more likely to keep the product longer.",
     features: [
       "Brand narrative and founding story",
@@ -24,8 +24,8 @@ const experiences = [
   {
     label: "Transparency",
     title: "Back every claim with evidence.",
-    body: "Transparency is not a marketing claim. It is a standard. Origins lets you show customers verified certifications, composition data, manufacturing origins and environmental metrics that are evidence-backed, not just stated.",
-    detail: "Greenwashing is increasingly scrutinised by regulators and consumers. Origins gives you a structured way to show what is independently verified versus self-declared.",
+    body: "Transparency is not a marketing claim. It is a standard. Known Objects lets you show customers verified certifications, composition data, manufacturing origins and environmental metrics that are evidence-backed, not just stated.",
+    detail: "Greenwashing is increasingly scrutinised by regulators and consumers. Known Objects gives you a structured way to show what is independently verified versus self-declared.",
     features: [
       "Verified certifications with evidence",
       "Composition and material breakdown",
@@ -36,7 +36,7 @@ const experiences = [
   {
     label: "Care",
     title: "Extend the life of every product.",
-    body: "The most sustainable product is the one that lasts. Origins lets you give customers clear care instructions, product maintenance guidance and longevity tips, making products easier to look after and longer-lasting.",
+    body: "The most sustainable product is the one that lasts. Known Objects lets you give customers clear care instructions, product maintenance guidance and longevity tips, making products easier to look after and longer-lasting.",
     detail: "A well-cared-for product is kept longer, replaced less often, and generates fewer returns. Better care guidance is good for customers and good for the planet.",
     features: [
       "Wash, dry, iron and storage icons",
@@ -48,8 +48,8 @@ const experiences = [
   {
     label: "Circularity",
     title: "Give every product a second life.",
-    body: "A Digital Product Passport is the foundation of a circular product system. Origins lets you offer customers clear pathways to repair, resale, take-back and recycling, making end-of-life easy to act on.",
-    detail: "Circularity requires infrastructure. Origins gives you the tools to build that infrastructure and give every customer a clear path to responsible product disposal.",
+    body: "A Digital Product Passport is the foundation of a circular product system. Known Objects lets you offer customers clear pathways to repair, resale, take-back and recycling, making end-of-life easy to act on.",
+    detail: "Circularity requires infrastructure. Known Objects gives you the tools to build that infrastructure and give every customer a clear path to responsible product disposal.",
     features: [
       "Repair guidance and repair partners",
       "Resale programme and marketplace links",
@@ -84,7 +84,7 @@ export default function CustomerExperiencePage() {
                 Start free trial
               </a>
               <a
-                href="https://app.origins-id.com/c/ORI-89413809"
+                href="https://passport.knownobjects.io/c/ORI-89413809"
                 className="inline-flex items-center gap-1.5 h-11 px-2 text-sm font-medium text-[#525252] hover:text-[#0A0A0A] transition-colors"
               >
                 See example passport
@@ -199,7 +199,7 @@ export default function CustomerExperiencePage() {
                 Verified, not just claimed.
               </h2>
               <p className="text-[#525252] leading-relaxed mb-4">
-                Every Origins passport shows customers what is independently verified versus self-declared. Evidence can be uploaded directly in the platform including certificates, test reports, lab results — so customers and regulators can trust what they see.
+                Every Known Objects passport shows customers what is independently verified versus self-declared. Evidence can be uploaded directly in the platform including certificates, test reports, lab results — so customers and regulators can trust what they see.
               </p>
               <p className="text-[#525252] leading-relaxed mb-8">
                 The AUTHENTIC badge on published passports signals that a product&apos;s data has been reviewed and is backed by evidence. It is not just a claim. It is a standard.
