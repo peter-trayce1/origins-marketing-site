@@ -20,13 +20,13 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: "Known Objects. — Digital Identities for Physical Products",
+    default: "Known Objects.: Digital Identities for Physical Products",
     template: "%s | Known Objects.",
   },
   description:
     "Known Objects creates connected digital identities that bring together product data, stories and services across the entire product lifecycle.",
   openGraph: {
-    title: "Known Objects. — Digital Identities for Physical Products",
+    title: "Known Objects.: Digital Identities for Physical Products",
     description:
       "Known Objects creates connected digital identities that bring together product data, stories and services across the entire product lifecycle.",
     type: "website",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Known Objects. — Digital Identities for Physical Products",
+    title: "Known Objects.: Digital Identities for Physical Products",
     description:
       "Known Objects creates connected digital identities that bring together product data, stories and services across the entire product lifecycle.",
   },

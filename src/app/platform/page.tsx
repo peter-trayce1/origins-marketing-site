@@ -16,7 +16,7 @@ import {
 export const metadata: Metadata = {
   title: "Product",
   description:
-    "Everything you need to build, manage and publish verified Digital Product Passports — passport builder, QR codes, AI content, public pages, analytics and integrations.",
+    "Everything you need to build, manage and publish verified Digital Product Passports: passport builder, QR codes, AI content, public pages, analytics and integrations.",
 };
 
 // ─── Page header ──────────────────────────────────────────────────────────────
@@ -33,7 +33,7 @@ function PageHero() {
             Everything you need to build verified passports at scale.
           </h1>
           <p className="text-lg text-[#525252] leading-relaxed mb-8">
-            Known Objects. gives fashion brands a complete infrastructure for Digital Product Passports — from the first data entry to the consumer scanning a QR code at the point of sale.
+            Known Objects. gives fashion brands a complete infrastructure for Digital Product Passports starting from the first data entry to the consumer scanning a QR code at the point of sale.
           </p>
           <div className="flex items-center gap-3">
             <a
@@ -271,7 +271,7 @@ function AIVisual() {
     },
     {
       label: "Sustainability summary",
-      value: "Made using 100% renewable energy at our family-run partner mill in Biella, Italy. OEKO-TEX certified — no harmful substances.",
+      value: "Made using 100% renewable energy at our family-run partner mill in Biella, Italy. OEKO-TEX certified with no harmful substances.",
       ai: true,
     },
   ];
@@ -434,7 +434,7 @@ function ComplianceSection() {
               Built for EU ESPR from day one.
             </h2>
             <p className="text-[#525252] leading-relaxed">
-              The EU&apos;s Ecodesign for Sustainable Products Regulation (ESPR) requires all fashion brands to issue Digital Product Passports by 2026. Known Objects. structures your passport data to meet the regulation&apos;s technical requirements — without you needing to understand the legal text.
+              The EU&apos;s Ecodesign for Sustainable Products Regulation (ESPR) requires all fashion brands to issue Digital Product Passports by 2026. Known Objects. structures your passport data to meet the regulation&apos;s technical requirements, without you needing to understand the legal text.
             </p>
             <ul className="space-y-3">
               {[
@@ -528,13 +528,13 @@ export default function PlatformPage() {
         <FeatureSection
           label="Passport builder"
           title="A guided wizard for every field your passport needs."
-          body="The Known Objects. passport builder walks you through every section — product info, materials, certifications, supply chain, care instructions, and brand story. A live completeness score shows exactly what's missing before you publish."
+          body="The Known Objects. passport builder walks you through every section: product info, materials, certifications, supply chain, care instructions, and brand story. A live completeness score shows exactly what's missing before you publish."
           bullets={[
             "8-step structured wizard with guided prompts",
             "Materials composition with percentage breakdowns",
-            "Supply chain facility tracking — country, process, partner",
+            "Supply chain facility tracking by country, process, partner",
             "Certification fields for GOTS, OEKO-TEX, GRS and more",
-            "Completeness score — draft until you're confident to publish",
+            "Completeness score so you can draft until you're confident to publish",
           ]}
           visual={<BuilderVisual />}
         />
@@ -542,9 +542,9 @@ export default function PlatformPage() {
         <FeatureSection
           label="QR codes"
           title="Every passport gets a unique QR code, instantly."
-          body="The moment you publish a passport, Known Objects. generates a print-ready QR code linked to its public page. Export in PNG, SVG, or PDF — ready for swing tags, care labels, garment bags, and packaging inserts."
+          body="The moment you publish a passport, Known Objects. generates a print-ready QR code linked to its public page. Export in PNG, SVG, or PDF, ready for swing tags, care labels, garment bags, and packaging inserts."
           bullets={[
-            "Auto-generated on publish — no manual steps",
+            "Auto-generated on publish with no manual steps",
             "Export as PNG, SVG and PDF for any use case",
             "Batch export for entire product ranges",
             "Deep links for ecommerce product pages",
@@ -557,11 +557,11 @@ export default function PlatformPage() {
         <FeatureSection
           label="AI content generator"
           title="AI drafts your passport content. You approve it."
-          body="Paste a product description and let Known Objects. generate a full passport draft — product story, sustainability summary, consumer transparency copy, and more. Every AI suggestion is clearly labelled. Nothing is published without your review."
+          body="Paste a product description and let Known Objects. generate a full passport draft including product story, sustainability summary, consumer transparency copy, and more. Every AI suggestion is clearly labelled. Nothing is published without your review."
           bullets={[
             "Product story, sustainability summary, maker story",
             "Consumer-friendly transparency copy",
-            "AI-labelled output — always editable before publishing",
+            "AI-labelled output, always editable before publishing",
             "Does not fabricate certifications or factual claims",
             "One-click copy to passport fields",
           ]}
@@ -571,7 +571,7 @@ export default function PlatformPage() {
         <FeatureSection
           label="Scan analytics"
           title="See exactly who's scanning your passports."
-          body="Track QR scan activity across your entire catalogue — by product, country, device type, and time. Understand which products are resonating with consumers and prove the ROI of your transparency investment."
+          body="Track QR scan activity across your entire catalogue by product, country, device type, and time. Understand which products are resonating with consumers and prove the ROI of your transparency investment."
           bullets={[
             "Real-time scan tracking per passport and per QR code",
             "Country and device breakdowns",
@@ -588,7 +588,7 @@ export default function PlatformPage() {
           title="Connect your existing product data stack."
           body="Known Objects. integrates with the tools fashion brands already use. Sync products from Shopify, pull certification data from GOTS and EcoVadis, and connect to any PLM, ERP or custom system via the REST API."
           bullets={[
-            "Shopify product sync — auto-create passport drafts for new products",
+            "Shopify product sync to auto-create passport drafts for new products",
             "GOTS and EcoVadis certification data import",
             "Bulk CSV upload for large product ranges",
             "REST API for custom integrations",
@@ -620,7 +620,7 @@ export default function PlatformPage() {
               {
                 icon: FileText,
                 title: "Passport templates",
-                body: "Start from a template tailored to your product category — apparel, accessories, sportswear, outerwear, childrenswear and more.",
+                body: "Start from a template tailored to your product category: apparel, accessories, sportswear, outerwear, childrenswear and more.",
               },
               {
                 icon: Database,
@@ -630,12 +630,12 @@ export default function PlatformPage() {
               {
                 icon: Code,
                 title: "REST API",
-                body: "Push product and certification data from any system — PLM, ERP or custom platforms — using the Known Objects. developer API.",
+                body: "Push product and certification data from any system (PLM, ERP or custom platforms) using the Known Objects. developer API.",
               },
               {
                 icon: ShieldCheck,
                 title: "Verification badges",
-                body: "Every published passport carries a verification badge — a visible signal to consumers that your claims are structured and evidence-backed.",
+                body: "Every published passport carries a verification badge as a visible signal to consumers that your claims are structured and evidence-backed.",
               },
               {
                 icon: BarChart2,

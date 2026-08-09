@@ -68,7 +68,7 @@ export function BookDemoForm() {
       if (!res.ok) throw new Error("Request failed");
       setSubmitted(true);
     } catch {
-      setError("Something went wrong — please try again or email hello@origins-id.com");
+      setError("Something went wrong. Please try again or email hello@origins-id.com");
     } finally {
       setLoading(false);
     }
@@ -82,7 +82,7 @@ export function BookDemoForm() {
         </div>
         <div>
           <h2 className="text-xl font-bold text-[#0A0A0A] mb-2">
-            Thanks — we&apos;ll be in touch shortly.
+            Thanks, we&apos;ll be in touch shortly.
           </h2>
           <p className="text-sm text-[#525252]">
             We aim to respond within one business day.

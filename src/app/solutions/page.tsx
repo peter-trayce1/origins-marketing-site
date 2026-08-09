@@ -5,7 +5,7 @@ import { ArrowRight, Check } from "lucide-react";
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "Known Objects. for every type of fashion brand — from independent labels to luxury houses and enterprise retailers.",
+    "Known Objects. for every type of fashion brand, from independent labels to luxury houses and enterprise retailers.",
 };
 
 // ─── Page hero ────────────────────────────────────────────────────────────────
@@ -22,7 +22,7 @@ function PageHero() {
             Built for every kind of fashion brand.
           </h1>
           <p className="text-lg text-[#525252] leading-relaxed">
-            From independent labels to luxury houses and enterprise retailers — Known Objects. scales to the size, complexity and ambition of your brand.
+            From independent labels to luxury houses and enterprise retailers. Known Objects. scales to the size, complexity and ambition of your brand.
           </p>
         </div>
       </div>
@@ -36,12 +36,12 @@ const segments = [
   {
     tag: "Independent & sustainable brands",
     headline: "Prove your sustainability claims with structured, verifiable data.",
-    body: "For brands built on transparency, Known Objects. gives you the infrastructure to back your claims — not just say them. Structure your materials data, certifications, supply chain steps and impact metrics in a format that consumers, stockists and regulators can verify.",
+    body: "For brands built on transparency, Known Objects. gives you the infrastructure to back your claims, not just say them. Structure your materials data, certifications, supply chain steps and impact metrics in a format that consumers, stockists and regulators can verify.",
     features: [
       "GOTS, OEKO-TEX, GRS and custom certification fields",
-      "Supply chain transparency — country, facility, process",
+      "Supply chain transparency by country, facility, process",
       "Consumer-facing sustainability summaries",
-      "Impact metrics — carbon, water, waste",
+      "Impact metrics including carbon, water, waste",
       "Evidence-backed, not just stated",
     ],
     quote: {
@@ -52,7 +52,7 @@ const segments = [
   {
     tag: "Premium & luxury brands",
     headline: "Protect provenance. Communicate craftsmanship.",
-    body: "Luxury products deserve a digital identity that matches their physical quality. Known Objects. gives every piece a verifiable, branded passport — communicating provenance, materials, artisan stories and certifications in a format customers access instantly by scanning the label.",
+    body: "Luxury products deserve a digital identity that matches their physical quality. Known Objects. gives every piece a verifiable, branded passport communicating provenance, materials, artisan stories and certifications in a format customers access instantly by scanning the label.",
     features: [
       "Artisan and maker story fields",
       "Provenance and origin documentation",
@@ -71,7 +71,7 @@ const segments = [
     body: "Whether you have 50 products or 5,000, Known Objects. scales with your range. Bulk CSV import, Shopify sync, and AI-assisted content drafting mean you can build and maintain a complete passport library without a dedicated compliance team.",
     features: [
       "Bulk CSV import for large product ranges",
-      "Shopify product sync — auto-draft on new products",
+      "Shopify product sync that auto-drafts on new products",
       "AI content generation at scale",
       "Templates by product category",
       "Team workspace with role permissions",
@@ -84,13 +84,13 @@ const segments = [
   {
     tag: "Ecommerce & DTC brands",
     headline: "Embed passports into your product pages and checkout.",
-    body: "Known Objects. integrates directly into your ecommerce stack. Add passport badges, inline material summaries, and full passport modals to any Shopify, Hydrogen or custom storefront — reducing customer questions and building trust at the point of purchase.",
+    body: "Known Objects. integrates directly into your ecommerce stack. Add passport badges, inline material summaries, and full passport modals to any Shopify, Hydrogen or custom storefront, reducing customer questions and building trust at the point of purchase.",
     features: [
       "Shopify and Hydrogen widgets",
       "Webflow and custom embed support",
       "Passport modal triggered from any button",
       "Product page badge components",
-      "Scan analytics — who's reading your passports",
+      "Scan analytics showing who's reading your passports",
     ],
     quote: {
       text: "Our conversion rate on product pages with passport badges is measurably higher. Transparency sells.",
@@ -100,7 +100,7 @@ const segments = [
   {
     tag: "Enterprise retailers",
     headline: "EU DPP compliance infrastructure for large teams.",
-    body: "For retailers managing hundreds of brands or thousands of products, Known Objects. provides the data infrastructure, team controls and API access to manage Digital Product Passports at scale — with compliance built in from day one.",
+    body: "For retailers managing hundreds of brands or thousands of products, Known Objects. provides the data infrastructure, team controls and API access to manage Digital Product Passports at scale, with compliance built in from day one.",
     features: [
       "Unlimited passports across multiple brands",
       "Multi-brand workspace management",
@@ -183,7 +183,7 @@ function ComplianceCallout() {
             Whatever your size, EU ESPR applies to you.
           </h2>
           <p className="text-[#525252] leading-relaxed">
-            The EU&apos;s Ecodesign for Sustainable Products Regulation requires all fashion brands — from independents to global retailers — to issue Digital Product Passports by 2026. Known Objects. builds the compliance structure in from day one, so you&apos;re never scrambling to catch up.
+            The EU&apos;s Ecodesign for Sustainable Products Regulation requires all fashion brands, from independents to global retailers, to issue Digital Product Passports by 2026. Known Objects. builds the compliance structure in from day one, so you&apos;re never scrambling to catch up.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <a

@@ -53,7 +53,7 @@ const howOriginsHelps = [
   },
   {
     title: "Supplier data collection",
-    body: "Send suppliers a secure link to request missing data. Responses populate passports automatically — no spreadsheets.",
+    body: "Send suppliers a secure link to request missing data. Responses populate passports automatically. No spreadsheets needed.",
   },
   {
     title: "Audit trail included",
@@ -76,7 +76,7 @@ const faqs = [
   },
   {
     q: "Which brands does ESPR apply to?",
-    a: "ESPR applies to brands and retailers that sell products in the EU market. It is not limited to EU-based companies — any brand selling into the EU will need to comply.",
+    a: "ESPR applies to brands and retailers that sell products in the EU market. It is not limited to EU-based companies. Any brand selling into the EU will need to comply.",
   },
   {
     q: "When do fashion brands need to be compliant?",
@@ -88,7 +88,7 @@ const faqs = [
   },
   {
     q: "How quickly can we get started?",
-    a: "Most brands publish their first passport within an hour of signing up. Origins is designed to be simple — guided fields, AI-assisted content and bulk import mean you can move quickly without consultants or complex projects.",
+    a: "Most brands publish their first passport within an hour of signing up. Origins is designed to be simple. Guided fields, AI-assisted content and bulk import mean you can move quickly without consultants or complex projects.",
   },
 ];
 
@@ -107,7 +107,7 @@ export default function CompliancePage() {
               The simplest path to ESPR readiness.
             </h1>
             <p className="text-xl text-[#525252] leading-relaxed mb-10 max-w-2xl">
-              Digital Product Passports are becoming a legal requirement for fashion brands selling into the EU. Origins gives you the infrastructure to prepare early — without consultants, spreadsheets or complex implementation projects.
+              Digital Product Passports are becoming a legal requirement for fashion brands selling into the EU. Origins gives you the infrastructure to prepare early, without consultants, spreadsheets or complex implementation projects.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <a
@@ -143,7 +143,7 @@ export default function CompliancePage() {
                 The EU&apos;s Ecodesign for Sustainable Products Regulation (ESPR) is one of the most significant pieces of product legislation in decades. It sets requirements for the environmental performance, durability and recyclability of products sold in the EU.
               </p>
               <p className="text-[#525252] leading-relaxed mb-4">
-                Central to ESPR is the Digital Product Passport — a structured digital record linked to every product via a QR code. It gives consumers, retailers and regulators access to verified product information across a product&apos;s full lifecycle.
+                Central to ESPR is the Digital Product Passport, a structured digital record linked to every product via a QR code. It gives consumers, retailers and regulators access to verified product information across a product&apos;s full lifecycle.
               </p>
               <p className="text-[#525252] leading-relaxed">
                 Fashion and textiles are among the first product categories in scope. Brands that start now will be well-positioned when requirements take effect.

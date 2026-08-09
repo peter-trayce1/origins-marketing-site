@@ -237,7 +237,7 @@ function ProductStorytelling() {
               A connection that lasts.
             </h2>
             <p className="text-[#72726D] leading-relaxed">
-              Give customers access to the story, care guidance and services around each product — from first purchase through repair, resale and beyond.
+              Give customers access to the story, care guidance and services around each product. From first purchase through repair, resale and beyond.
             </p>
             <ul className="space-y-2.5">
               {highlights.map((h) => (
@@ -396,7 +396,7 @@ function SupplierCollection() {
               Collect supplier data without spreadsheets.
             </h2>
             <p className="text-[#72726D] leading-relaxed">
-              Send suppliers a secure link and request only the data you need. They complete a simple form — no account required. Responses populate your identity automatically.
+              Send suppliers a secure link and request only the data you need. They complete a simple form with no account required. Responses populate your identity automatically.
             </p>
             <ul className="space-y-2.5">
               {[
@@ -443,7 +443,7 @@ function BulkUpload() {
               Create hundreds of identities at once.
             </h2>
             <p className="text-[#72726D] leading-relaxed">
-              Download a template — Quick Start, Standard or Advanced — upload your product data, map columns automatically and publish at scale.
+              Download a template (Quick Start, Standard or Advanced), upload your product data, map columns automatically and publish at scale.
             </p>
             <ul className="space-y-2.5">
               {[
@@ -725,11 +725,11 @@ function HomepageFAQ() {
   const faqs = [
     {
       q: "What is a Digital Product Passport?",
-      a: "A Digital Product Passport is a digital record linked to a physical product via a QR code. It gives customers, retailers and regulators access to verified product information — materials, origins, certifications, environmental data and circularity guidance.",
+      a: "A Digital Product Passport is a digital record linked to a physical product via a QR code. It gives customers, retailers and regulators access to verified product information including materials, origins, certifications, environmental data and circularity guidance.",
     },
     {
       q: "Is Known Objects only for fashion brands?",
-      a: "No. Known Objects is built for any brand that makes physical products — fashion, luxury, beauty, furniture, electronics, homeware, sporting goods and more. The platform is designed to work wherever product data and customer connection matter.",
+      a: "No. Known Objects is built for any brand that makes physical products: fashion, luxury, beauty, furniture, electronics, homeware, sporting goods and more. The platform is designed to work wherever product data and customer connection matter.",
     },
     {
       q: "What is ESPR and does it affect my brand?",
@@ -737,11 +737,11 @@ function HomepageFAQ() {
     },
     {
       q: "How long does it take to set up?",
-      a: "Most brands have their first identity live within an hour of signing up. The platform is designed to be simple — guided fields, AI-assisted content and CSV import mean you can move quickly without consultants or complex projects.",
+      a: "Most brands have their first identity live within an hour of signing up. The platform is designed to be simple. Guided fields, AI-assisted content and CSV import mean you can move quickly without consultants or complex projects.",
     },
     {
       q: "Can my suppliers contribute data directly?",
-      a: "Yes. Known Objects has a built-in supplier request feature. You send a secure link, your supplier completes a simple web form — no account required — and the information flows directly into your product identity.",
+      a: "Yes. Known Objects has a built-in supplier request feature. You send a secure link, your supplier completes a simple web form with no account required, and the information flows directly into your product identity.",
     },
     {
       q: "Can I bulk upload my product catalogue?",
@@ -749,7 +749,7 @@ function HomepageFAQ() {
     },
     {
       q: "Do customers need an app to view a passport?",
-      a: "No. Passport pages are public web pages. Customers scan the QR code with any smartphone camera and the page opens instantly in their browser — no app, no login required.",
+      a: "No. Passport pages are public web pages. Customers scan the QR code with any smartphone camera and the page opens instantly in their browser. No app or login required.",
     },
     {
       q: "How are QR codes managed?",

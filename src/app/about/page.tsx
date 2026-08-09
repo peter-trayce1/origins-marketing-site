@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const values = [
   {
     title: "Transparency",
-    body: "We believe every claim about a product should be backed by real data — and that transparency is the foundation of lasting customer trust.",
+    body: "We believe every claim about a product should be backed by real data. Transparency is the foundation of lasting customer trust.",
   },
   {
     title: "Trust",
