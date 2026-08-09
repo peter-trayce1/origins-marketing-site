@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -8,41 +9,28 @@ interface LogoProps {
   compact?: boolean;
 }
 
-/**
- * Known Objects. wordmark.
- * "Known" — Inter (sans-serif)
- * "Objects." — Instrument Serif italic
- */
 export function Logo({ white = false, className, href = "/", compact = false }: LogoProps) {
-  const textColor = white ? "text-white" : "text-[#111111]";
-  const size = compact ? "text-[15px]" : "text-[17px]";
+  const height = compact ? 20 : 26;
+  const width = Math.round(height * (1600 / 397));
 
   return (
     <Link
       href={href}
-      className={cn("inline-flex items-baseline group transition-opacity hover:opacity-75", className)}
+      className={cn("inline-flex items-center group transition-opacity hover:opacity-70", className)}
       aria-label="Known Objects. — home"
     >
-      <span
+      <Image
+        src="/known_objects_logo_primary_fixed_web.png"
+        alt="Known Objects."
+        width={width}
+        height={height}
         className={cn(
-          "font-medium tracking-[-0.01em] leading-none select-none",
-          textColor,
-          size,
-          "font-[family-name:var(--font-inter)]"
+          "h-auto object-contain",
+          white ? "brightness-0 invert" : ""
         )}
-      >
-        Known{" "}
-      </span>
-      <span
-        className={cn(
-          "italic tracking-[-0.01em] leading-none select-none",
-          textColor,
-          size,
-          "font-[family-name:var(--font-instrument-serif)]"
-        )}
-      >
-        Objects.
-      </span>
+        style={{ width: "auto", height: `${height}px` }}
+        priority
+      />
     </Link>
   );
 }
