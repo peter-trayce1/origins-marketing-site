@@ -580,13 +580,13 @@ function PricingPreview() {
   const plans = [
     {
       name: "Essentials",
-      price: "£375",
+      price: "£150",
       period: "/mo",
-      description: "For emerging and growing brands creating their first product identities.",
+      description: "For smaller and growing brands starting to build connected product identities.",
       features: [
-        "250 identities per year",
-        "Unlimited QR labels & scans",
-        "AI content builder",
+        "100 published passports / year",
+        "Unlimited drafts, QR labels & scans",
+        "AI Passport Builder",
         "Public passport pages",
         "Certification management",
         "CSV import & export",
@@ -597,12 +597,12 @@ function PricingPreview() {
     },
     {
       name: "Growth",
-      price: "£795",
+      price: "£450",
       period: "/mo",
-      description: "For established brands managing larger product ranges.",
+      description: "For established brands managing larger product ranges, suppliers and teams.",
       features: [
-        "750 identities per year",
-        "Unlimited QR labels & scans",
+        "500 published passports / year",
+        "Unlimited drafts, QR labels & scans",
         "Everything in Essentials",
         "Supplier data requests",
         "Team members",
@@ -612,23 +612,6 @@ function PricingPreview() {
       cta: "Start free trial",
       href: `${APP_URL}/signup`,
       highlight: true,
-    },
-    {
-      name: "Enterprise",
-      price: "Custom",
-      period: "",
-      description: "For brands, manufacturers and teams requiring higher volumes and integrations.",
-      features: [
-        "Custom identity allowance",
-        "Unlimited QR labels & scans",
-        "Everything in Growth",
-        "ERP & PLM integration",
-        "Supplier portal",
-        "Dedicated success manager",
-      ],
-      cta: "Talk to us",
-      href: "/book-demo",
-      highlight: false,
     },
   ];
 
@@ -647,7 +630,7 @@ function PricingPreview() {
           </a>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-2 gap-4 max-w-3xl">
           {plans.map((plan) => (
             <div
               key={plan.name}
@@ -709,8 +692,8 @@ function PricingPreview() {
           ))}
         </div>
 
-        <p className="text-[12px] text-[#72726D] mt-6 text-center">
-          All plans include a 14-day free trial. Annual billing available. Publications counted per year.
+        <p className="text-[12px] text-[#72726D] mt-6 max-w-3xl">
+          All plans include a 14-day free trial. Annual billing available. Additional capacity from +100 passports for £100/month.
         </p>
       </div>
     </section>
