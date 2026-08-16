@@ -2,20 +2,23 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import { APP_URL } from "@/lib/utils";
 
 const navLinks = [
   { label: "Product", href: "/platform" },
   { label: "Solutions", href: "/solutions" },
-  { label: "Resources", href: "/resources" },
+  { label: "Customers", href: "/customer-experience" },
+  { label: "Compliance", href: "/compliance" },
   { label: "Pricing", href: "/pricing" },
   { label: "About", href: "/about" },
 ];
 
 export function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-[#E6E6E2]">
@@ -24,15 +27,20 @@ export function Nav() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-0.5">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="px-3.5 py-2 text-[13px] font-[500] text-[#72726D] hover:text-[#111111] transition-colors rounded"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const active = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`px-3.5 py-2 text-[13px] font-[500] transition-colors rounded ${
+                  active ? "text-[#111111]" : "text-[#72726D] hover:text-[#111111]"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Desktop right actions */}
@@ -65,16 +73,21 @@ export function Nav() {
       {mobileOpen && (
         <div className="md:hidden border-t border-[#E6E6E2] bg-white">
           <nav className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-0.5">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="px-3 py-2.5 text-[13px] font-[500] text-[#72726D] hover:text-[#111111] transition-colors rounded hover:bg-[#F6F4F2]"
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const active = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`px-3 py-2.5 text-[13px] font-[500] transition-colors rounded hover:bg-[#F6F4F2] ${
+                    active ? "text-[#111111]" : "text-[#72726D] hover:text-[#111111]"
+                  }`}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
             <div className="h-px bg-[#E6E6E2] my-2" />
             <Link
               href={`${APP_URL}/login`}

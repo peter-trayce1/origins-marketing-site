@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/lucide@0.417.0/dist/umd/lucide.js"></script>
+<style>
+  body { margin: 0; background: #ffffff; color: #111111; font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #164ED8; text-decoration: none; }
+  a:hover { opacity: 0.75; }
+</style>
+</helmet>
+
+<header style="position: sticky; top: 0; z-index: 50; background: #ffffff; border-bottom: 1px solid #E6E6E2;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+    <a href="Homepage tidied.dc.html" aria-label="Known Objects. home" style="display: inline-flex; align-items: center;" style-hover="opacity: 0.7;"><img src="public/known_objects_logo_primary_fixed_web.png" alt="Known Objects." style="height: 26px; width: auto; display: block; object-fit: contain;" /></a>
+    <nav style="display: flex; align-items: center; gap: 2px;">
+      <a href="Product.dc.html" style="padding: 8px 14px; font-size: 13px; font-weight: 500; color: #111111;">Product</a>
+      <a href="Solutions.dc.html" style="padding: 8px 14px; font-size: 13px; font-weight: 500; color: #72726D;" style-hover="color: #111111;">Solutions</a>
+      <a href="Customer experience.dc.html" style="padding: 8px 14px; font-size: 13px; font-weight: 500; color: #72726D;" style-hover="color: #111111;">Customers</a>
+      <a href="Compliance.dc.html" style="padding: 8px 14px; font-size: 13px; font-weight: 500; color: #72726D;" style-hover="color: #111111;">Compliance</a>
+      <a href="#" style="padding: 8px 14px; font-size: 13px; font-weight: 500; color: #72726D;" style-hover="color: #111111;">Pricing</a>
+      <a href="About.dc.html" style="padding: 8px 14px; font-size: 13px; font-weight: 500; color: #72726D;" style-hover="color: #111111;">About</a>
+    </nav>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <a href="#" style="font-size: 13px; font-weight: 500; color: #72726D;" style-hover="color: #111111;">Log in</a>
+      <a href="#" style="display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 20px; background: #111111; color: #ffffff; font-size: 13px; font-weight: 500; letter-spacing: 0.01em; border-radius: 4px; white-space: nowrap;" style-hover="background: #2a2a2a;">Book a demo</a>
+    </div>
+  </div>
+</header>
+
+<section data-screen-label="Product hero" style="background: #ffffff; padding: 96px 0 80px;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    <div style="max-width: 780px; display: flex; flex-direction: column; gap: 28px;">
+      <p style="margin: 0; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #72726D;">Product</p>
+      <h1 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 64px; line-height: 1.05; letter-spacing: -0.02em; color: #111111;">Everything you need to build verified passports <span style="font-style: italic;">at scale.</span></h1>
+      <p style="margin: 0; color: #72726D; font-size: 18px; line-height: 1.65; max-width: 32em; text-wrap: pretty;">A complete infrastructure for Digital Product Passports, from the first data entry to the customer scanning a QR code in store.</p>
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <a href="#" style="display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 24px; background: #111111; color: #ffffff; font-size: 14px; font-weight: 500; border-radius: 4px; white-space: nowrap;" style-hover="background: #2a2a2a;">Start building free</a>
+        <a href="#" style="display: inline-flex; align-items: center; gap: 5px; color: #111111; font-size: 14px; font-weight: 500;" style-hover="opacity: 0.6;">Book a demo <i data-lucide="arrow-right" style="width: 13px; height: 13px;"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Passport builder" style="background: #F6F4F2; padding: 112px 0; border-top: 1px solid #E6E6E2;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1.15fr; gap: 72px; align-items: center;">
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <p style="margin: 0; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #72726D;">Passport builder</p>
+      <h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 44px; line-height: 1.12; letter-spacing: -0.02em; color: #111111;">A guided wizard for every field your passport needs.</h2>
+      <p style="margin: 0; color: #72726D; font-size: 16px; line-height: 1.7; text-wrap: pretty;">Eight steps cover product info, materials, certifications, supply chain, care and brand story. A live completeness score shows what is missing before you publish.</p>
+      <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px;">
+        <li style="display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #72726D;"><i data-lucide="check" style="width: 13px; height: 13px; color: #164ED8; flex-shrink: 0; margin-top: 4px;"></i>Materials composition with percentage breakdowns</li>
+        <li style="display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #72726D;"><i data-lucide="check" style="width: 13px; height: 13px; color: #164ED8; flex-shrink: 0; margin-top: 4px;"></i>Supply chain tracked by country, process and partner</li>
+        <li style="display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #72726D;"><i data-lucide="check" style="width: 13px; height: 13px; color: #164ED8; flex-shrink: 0; margin-top: 4px;"></i>Certification fields for GOTS, OEKO-TEX, GRS and more</li>
+      </ul>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center;">
+      <img src="public/screenshot-passport-builder.png" alt="Passport builder" style="width: 100%; height: auto; display: block; mix-blend-mode: multiply;" />
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="QR codes" style="background: #ffffff; padding: 112px 0;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;">
+    <div style="background: #F6F4F2; padding: 64px; display: flex; flex-direction: column; align-items: center; gap: 24px;">
+      <div style="background: #ffffff; border: 1px solid #E6E6E2; padding: 24px;">
+        <img src="public/qr-example.png" alt="Example passport QR code" style="width: 160px; height: 160px; display: block;" />
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.08em; color: #72726D; border: 1px solid #E6E6E2; background: #ffffff; padding: 7px 16px;">PNG</span>
+        <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.08em; color: #72726D; border: 1px solid #E6E6E2; background: #ffffff; padding: 7px 16px;">SVG</span>
+        <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.08em; color: #72726D; border: 1px solid #E6E6E2; background: #ffffff; padding: 7px 16px;">PDF</span>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <p style="margin: 0; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #72726D;">QR codes</p>
+      <h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 44px; line-height: 1.12; letter-spacing: -0.02em; color: #111111;">Every passport gets a QR code the moment you publish.</h2>
+      <p style="margin: 0; color: #72726D; font-size: 16px; line-height: 1.7; text-wrap: pretty;">The code points at the identity rather than the label, so printed labels keep working when the data behind them changes.</p>
+      <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px;">
+        <li style="display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #72726D;"><i data-lucide="check" style="width: 13px; height: 13px; color: #164ED8; flex-shrink: 0; margin-top: 4px;"></i>Export as PNG, SVG or PDF</li>
+        <li style="display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #72726D;"><i data-lucide="check" style="width: 13px; height: 13px; color: #164ED8; flex-shrink: 0; margin-top: 4px;"></i>Batch export for an entire product range</li>
+        <li style="display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #72726D;"><i data-lucide="check" style="width: 13px; height: 13px; color: #164ED8; flex-shrink: 0; margin-top: 4px;"></i>Always resolves to the latest published version</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Integrations" style="background: #F6F4F2; padding: 112px 0;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 72px; align-items: center;">
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <p style="margin: 0; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #72726D;">Integrations</p>
+      <h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 44px; line-height: 1.12; letter-spacing: -0.02em; color: #111111;">Connect the product data stack you already run.</h2>
+      <p style="margin: 0; color: #72726D; font-size: 16px; line-height: 1.7; text-wrap: pretty;">Sync products from Shopify, pull certification data from GOTS and EcoVadis, and connect any PLM or ERP through the REST API.</p>
+      <a href="#" style="display: inline-flex; align-items: center; gap: 5px; color: #164ED8; font-size: 14px; font-weight: 500;">Read the API docs <i data-lucide="arrow-right" style="width: 13px; height: 13px;"></i></a>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #E6E6E2; border: 1px solid #E6E6E2;">
+      <div style="background: #ffffff; padding: 24px; display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 14px; font-weight: 600; color: #111111;">Shopify</span>
+        <span style="font-size: 12px; color: #72726D;">Sync products automatically</span>
+      </div>
+      <div style="background: #ffffff; padding: 24px; display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 14px; font-weight: 600; color: #111111;">GOTS</span>
+        <span style="font-size: 12px; color: #72726D;">Pull certification data</span>
+      </div>
+      <div style="background: #ffffff; padding: 24px; display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 14px; font-weight: 600; color: #111111;">EcoVadis</span>
+        <span style="font-size: 12px; color: #72726D;">Supplier sustainability ratings</span>
+      </div>
+      <div style="background: #ffffff; padding: 24px; display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 14px; font-weight: 600; color: #111111;">REST API</span>
+        <span style="font-size: 12px; color: #72726D;">Connect any system</span>
+      </div>
+      <div style="background: #ffffff; padding: 24px; display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 14px; font-weight: 600; color: #C4C4C0;">Klaviyo</span>
+        <span style="font-size: 12px; color: #C4C4C0;">Coming soon</span>
+      </div>
+      <div style="background: #ffffff; padding: 24px; display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 14px; font-weight: 600; color: #C4C4C0;">WooCommerce</span>
+        <span style="font-size: 12px; color: #C4C4C0;">Coming soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Also included" style="background: #ffffff; padding: 112px 0; border-top: 1px solid #E6E6E2;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    <div style="margin-bottom: 56px;">
+      <p style="margin: 0 0 16px; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #72726D;">Also included</p>
+      <h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 44px; line-height: 1.12; letter-spacing: -0.02em; color: #111111;">Everything else you will need.</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #E6E6E2;">
+      <div style="background: #ffffff; padding: 32px 28px; display: flex; flex-direction: column; gap: 14px;">
+        <i data-lucide="sparkles" style="width: 20px; height: 20px; color: #164ED8;"></i>
+        <h3 style="margin: 0; font-size: 15px; font-weight: 600; color: #111111;">AI passport builder</h3>
+        <p style="margin: 0; font-size: 13px; color: #72726D; line-height: 1.7;">Paste a product description and get a draft story and sustainability summary. Suggestions are labelled and never published without review.</p>
+      </div>
+      <div style="background: #ffffff; padding: 32px 28px; display: flex; flex-direction: column; gap: 14px;">
+        <i data-lucide="bar-chart-2" style="width: 20px; height: 20px; color: #164ED8;"></i>
+        <h3 style="margin: 0; font-size: 15px; font-weight: 600; color: #111111;">Scan analytics</h3>
+        <p style="margin: 0; font-size: 13px; color: #72726D; line-height: 1.7;">Track scan activity per passport by country, device and date. Exportable for reporting.</p>
+      </div>
+      <div style="background: #ffffff; padding: 32px 28px; display: flex; flex-direction: column; gap: 14px;">
+        <i data-lucide="globe" style="width: 20px; height: 20px; color: #164ED8;"></i>
+        <h3 style="margin: 0; font-size: 15px; font-weight: 600; color: #111111;">Embeddable widgets</h3>
+        <p style="margin: 0; font-size: 13px; color: #72726D; line-height: 1.7;">Add a passport badge, inline summary or full modal to Shopify, Hydrogen, Webflow or a custom storefront.</p>
+      </div>
+      <div style="background: #ffffff; padding: 32px 28px; display: flex; flex-direction: column; gap: 14px;">
+        <i data-lucide="file-text" style="width: 20px; height: 20px; color: #164ED8;"></i>
+        <h3 style="margin: 0; font-size: 15px; font-weight: 600; color: #111111;">Passport templates</h3>
+        <p style="margin: 0; font-size: 13px; color: #72726D; line-height: 1.7;">Start from a template built for your category: apparel, accessories, sportswear, outerwear, childrenswear.</p>
+      </div>
+      <div style="background: #ffffff; padding: 32px 28px; display: flex; flex-direction: column; gap: 14px;">
+        <i data-lucide="database" style="width: 20px; height: 20px; color: #164ED8;"></i>
+        <h3 style="margin: 0; font-size: 15px; font-weight: 600; color: #111111;">Bulk import</h3>
+        <p style="margin: 0; font-size: 13px; color: #72726D; line-height: 1.7;">Upload a CSV to create hundreds of drafts at once, and update existing passports in bulk as data changes.</p>
+      </div>
+      <div style="background: #ffffff; padding: 32px 28px; display: flex; flex-direction: column; gap: 14px;">
+        <i data-lucide="users" style="width: 20px; height: 20px; color: #164ED8;"></i>
+        <h3 style="margin: 0; font-size: 15px; font-weight: 600; color: #111111;">Team workspace</h3>
+        <p style="margin: 0; font-size: 13px; color: #72726D; line-height: 1.7;">Role-based permissions, multiple brands under one organisation, and SSO on Enterprise.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Product CTA" style="background: #111111; padding: 128px 0;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    <div style="max-width: 640px;">
+      <h2 style="margin: 0 0 24px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 52px; line-height: 1.05; letter-spacing: -0.02em; color: #ffffff;">Ready to build your first <span style="font-style: italic;">passport?</span></h2>
+      <p style="margin: 0 0 40px; font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.65;">Set up in under ten minutes. No credit card required.</p>
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <a href="#" style="display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 24px; background: #ffffff; color: #111111; font-size: 14px; font-weight: 500; border-radius: 4px; white-space: nowrap;">Start building free</a>
+        <a href="#" style="display: inline-flex; align-items: center; gap: 5px; color: rgba(255,255,255,0.5); font-size: 14px; font-weight: 500;" style-hover="color: #ffffff;">View pricing <i data-lucide="arrow-right" style="width: 13px; height: 13px;"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    if (window.lucide) window.lucide.createIcons();
+    else setTimeout(() => window.lucide && window.lucide.createIcons(), 400);
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/lucide@0.417.0/dist/umd/lucide.js"></script>
+<style>
+  body { margin: 0; background: #ffffff; color: #111111; font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #164ED8; text-decoration: none; }
+  a:hover { opacity: 0.75; }
+  @keyframes ko-marquee { from { transform: translateX(-50%); } to { transform: translateX(0%); } }
+  .ko-marquee { animation: ko-marquee 32s linear infinite; will-change: transform; }
+  .ko-marquee:hover { animation-play-state: paused; }
+</style>
+</helmet>
+
+<header style="position: sticky; top: 0; z-index: 50; background: #ffffff; border-bottom: 1px solid #E6E6E2;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+    <a href="#" aria-label="Known Objects. home" style="display: inline-flex; align-items: center;" style-hover="opacity: 0.7;"><img src="public/known_objects_logo_primary_fixed_web.png" alt="Known Objects." style="height: 26px; width: auto; display: block; object-fit: contain;" /></a>
+    <nav style="display: flex; align-items: center; gap: 2px;">
+      <a href="#" style="padding: 8px 14px; font-size: 13px; font-weight: 500; color: #72726D;" style-hover="color: #111111;">Product</a>
+      <a href="#" style="padding: 8px 14px; font-size: 13px; font-weight: 500; color: #72726D;" style-hover="color: #111111;">Solutions</a>
+      <a href="#" style="padding: 8px 14px; font-size: 13px; font-weight: 500; color: #72726D;" style-hover="color: #111111;">Resources</a>
+      <a href="#" style="padding: 8px 14px; font-size: 13px; font-weight: 500; color: #72726D;" style-hover="color: #111111;">Pricing</a>
+      <a href="#" style="padding: 8px 14px; font-size: 13px; font-weight: 500; color: #72726D;" style-hover="color: #111111;">About</a>
+    </nav>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <a href="#" style="font-size: 13px; font-weight: 500; color: #72726D;" style-hover="color: #111111;">Log in</a>
+      <a href="#" style="display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 20px; background: #111111; color: #ffffff; font-size: 13px; font-weight: 500; letter-spacing: 0.01em; border-radius: 4px; white-space: nowrap;" style-hover="background: #2a2a2a;">Book a demo</a>
+    </div>
+  </div>
+</header>
+
+<section data-screen-label="Hero" style="background: #ffffff; overflow: hidden;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 80px 24px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
+    <div style="padding-bottom: 96px; display: flex; flex-direction: column; gap: 32px; max-width: 576px;">
+      <p style="margin: 0; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #72726D;">Digital identities for physical products</p>
+      <h1 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 72px; line-height: 1.0; letter-spacing: -0.02em; color: #111111;">Make every<br />product <span style="font-style: italic;">known.</span></h1>
+      <p style="margin: 0; color: #72726D; font-size: 18px; line-height: 1.65; max-width: 30em; text-wrap: pretty;">Known Objects creates connected digital identities that bring together product data, stories and services across the entire product lifecycle.</p>
+      <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <a href="#" style="display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 24px; background: #111111; color: #ffffff; font-size: 14px; font-weight: 500; letter-spacing: 0.01em; border-radius: 4px; white-space: nowrap;" style-hover="background: #2a2a2a;">Book a demo</a>
+          <a href="#" style="display: inline-flex; align-items: center; gap: 5px; height: 44px; padding: 0 12px; color: #111111; font-size: 14px; font-weight: 500;" style-hover="opacity: 0.6;">See how it works <i data-lucide="arrow-right" style="width: 13px; height: 13px;"></i></a>
+        </div>
+        <a href="#" style="display: inline-flex; align-items: center; gap: 5px; color: #164ED8; font-size: 12px; font-weight: 500;">See example passport (best viewed on mobile) <i data-lucide="arrow-right" style="width: 11px; height: 11px;"></i></a>
+      </div>
+      <p style="margin: 0; font-size: 12px; color: #72726D;">No credit card required · Live in minutes</p>
+    </div>
+    <div style="display: flex; justify-content: flex-end; margin-top: 48px;">
+      <img src="public/hero-jacket-full-white.png" alt="Waxed field jacket with Known Objects. digital identity tag" style="width: 100%; height: auto; display: block; background: #ffffff;" />
+    </div>
+  </div>
+</section>
+
+<div style="border-top: 1px solid #E6E6E2; border-bottom: 1px solid #E6E6E2; background: #ffffff; overflow: hidden; padding: 18px 0;">
+  <div class="ko-marquee" style="display: flex; align-items: center; width: max-content;">
+    <span style="flex-shrink: 0; padding: 0 28px; font-size: 13px; font-weight: 500; color: #72726D; white-space: nowrap;">Live in minutes</span>
+    <span style="flex-shrink: 0; width: 3px; height: 3px; border-radius: 50%; background: #C4C4C0;"></span>
+    <span style="flex-shrink: 0; padding: 0 28px; font-size: 13px; font-weight: 500; color: #72726D; white-space: nowrap;">No consultants required</span>
+    <span style="flex-shrink: 0; width: 3px; height: 3px; border-radius: 50%; background: #C4C4C0;"></span>
+    <span style="flex-shrink: 0; padding: 0 28px; font-size: 13px; font-weight: 500; color: #72726D; white-space: nowrap;">ESPR-ready data structure</span>
+    <span style="flex-shrink: 0; width: 3px; height: 3px; border-radius: 50%; background: #C4C4C0;"></span>
+    <span style="flex-shrink: 0; padding: 0 28px; font-size: 13px; font-weight: 500; color: #72726D; white-space: nowrap;">Evidence-backed claims</span>
+    <span style="flex-shrink: 0; width: 3px; height: 3px; border-radius: 50%; background: #C4C4C0;"></span>
+    <span style="flex-shrink: 0; padding: 0 28px; font-size: 13px; font-weight: 500; color: #72726D; white-space: nowrap;">Accessible and easy pricing</span>
+    <span style="flex-shrink: 0; width: 3px; height: 3px; border-radius: 50%; background: #C4C4C0;"></span>
+    <span style="flex-shrink: 0; padding: 0 28px; font-size: 13px; font-weight: 500; color: #72726D; white-space: nowrap;">QR codes that never change</span>
+    <span style="flex-shrink: 0; width: 3px; height: 3px; border-radius: 50%; background: #C4C4C0;"></span>
+    <span style="flex-shrink: 0; padding: 0 28px; font-size: 13px; font-weight: 500; color: #72726D; white-space: nowrap;">No app for customers to download</span>
+    <span style="flex-shrink: 0; width: 3px; height: 3px; border-radius: 50%; background: #C4C4C0;"></span>
+    <span style="flex-shrink: 0; padding: 0 28px; font-size: 13px; font-weight: 500; color: #72726D; white-space: nowrap;">Live in minutes</span>
+    <span style="flex-shrink: 0; width: 3px; height: 3px; border-radius: 50%; background: #C4C4C0;"></span>
+    <span style="flex-shrink: 0; padding: 0 28px; font-size: 13px; font-weight: 500; color: #72726D; white-space: nowrap;">No consultants required</span>
+    <span style="flex-shrink: 0; width: 3px; height: 3px; border-radius: 50%; background: #C4C4C0;"></span>
+    <span style="flex-shrink: 0; padding: 0 28px; font-size: 13px; font-weight: 500; color: #72726D; white-space: nowrap;">ESPR-ready data structure</span>
+    <span style="flex-shrink: 0; width: 3px; height: 3px; border-radius: 50%; background: #C4C4C0;"></span>
+    <span style="flex-shrink: 0; padding: 0 28px; font-size: 13px; font-weight: 500; color: #72726D; white-space: nowrap;">Evidence-backed claims</span>
+    <span style="flex-shrink: 0; width: 3px; height: 3px; border-radius: 50%; background: #C4C4C0;"></span>
+    <span style="flex-shrink: 0; padding: 0 28px; font-size: 13px; font-weight: 500; color: #72726D; white-space: nowrap;">Accessible and easy pricing</span>
+    <span style="flex-shrink: 0; width: 3px; height: 3px; border-radius: 50%; background: #C4C4C0;"></span>
+    <span style="flex-shrink: 0; padding: 0 28px; font-size: 13px; font-weight: 500; color: #72726D; white-space: nowrap;">QR codes that never change</span>
+    <span style="flex-shrink: 0; width: 3px; height: 3px; border-radius: 50%; background: #C4C4C0;"></span>
+    <span style="flex-shrink: 0; padding: 0 28px; font-size: 13px; font-weight: 500; color: #72726D; white-space: nowrap;">No app for customers to download</span>
+    <span style="flex-shrink: 0; width: 3px; height: 3px; border-radius: 50%; background: #C4C4C0;"></span>
+  </div>
+</div>
+
+<section data-screen-label="System pillars" style="background: #F6F4F2; padding: 128px 0;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    <div style="max-width: 672px; margin-bottom: 64px;">
+      <p style="margin: 0 0 16px; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #72726D;">The Known Objects system</p>
+      <h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 48px; line-height: 1.12; letter-spacing: -0.02em; color: #111111;">A complete identity for every <span style="font-style: italic;">object.</span></h2>
+      <p style="margin: 20px 0 0; color: #72726D; font-size: 16px; line-height: 1.7; text-wrap: pretty;">Capture what matters, connect the supporting evidence, and carry the product's identity across its lifecycle.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: #E6E6E2;">
+      <div style="background: #F6F4F2; padding: 32px 24px; display: flex; flex-direction: column; gap: 16px;">
+        <i data-lucide="fingerprint" style="width: 20px; height: 20px; color: #164ED8;"></i>
+        <div>
+          <h3 style="margin: 0 0 6px; font-size: 14px; font-weight: 600; color: #111111;">Identity</h3>
+          <p style="margin: 0; font-size: 13px; color: #72726D; line-height: 1.65;">Every object. Every detail. Structured, consistent and trusted.</p>
+        </div>
+      </div>
+      <div style="background: #F6F4F2; padding: 32px 24px; display: flex; flex-direction: column; gap: 16px;">
+        <i data-lucide="file-check" style="width: 20px; height: 20px; color: #164ED8;"></i>
+        <div>
+          <h3 style="margin: 0 0 6px; font-size: 14px; font-weight: 600; color: #111111;">Evidence</h3>
+          <p style="margin: 0; font-size: 13px; color: #72726D; line-height: 1.65;">Verified data supported by sources brands and customers can trust.</p>
+        </div>
+      </div>
+      <div style="background: #F6F4F2; padding: 32px 24px; display: flex; flex-direction: column; gap: 16px;">
+        <i data-lucide="route" style="width: 20px; height: 20px; color: #164ED8;"></i>
+        <div>
+          <h3 style="margin: 0 0 6px; font-size: 14px; font-weight: 600; color: #111111;">Journey</h3>
+          <p style="margin: 0; font-size: 13px; color: #72726D; line-height: 1.65;">Track key events across the product lifecycle.</p>
+        </div>
+      </div>
+      <div style="background: #F6F4F2; padding: 32px 24px; display: flex; flex-direction: column; gap: 16px;">
+        <i data-lucide="heart" style="width: 20px; height: 20px; color: #164ED8;"></i>
+        <div>
+          <h3 style="margin: 0 0 6px; font-size: 14px; font-weight: 600; color: #111111;">Care</h3>
+          <p style="margin: 0; font-size: 13px; color: #72726D; line-height: 1.65;">Give customers the right guidance to extend product life.</p>
+        </div>
+      </div>
+      <div style="background: #F6F4F2; padding: 32px 24px; display: flex; flex-direction: column; gap: 16px;">
+        <i data-lucide="recycle" style="width: 20px; height: 20px; color: #164ED8;"></i>
+        <div>
+          <h3 style="margin: 0 0 6px; font-size: 14px; font-weight: 600; color: #111111;">Afterlife</h3>
+          <p style="margin: 0; font-size: 13px; color: #72726D; line-height: 1.65;">Enable repair, resale, reuse and responsible end-of-life pathways.</p>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top: 32px;">
+      <a href="#" style="display: inline-flex; align-items: center; gap: 5px; color: #164ED8; font-size: 14px; font-weight: 500;">Explore the system <i data-lucide="arrow-right" style="width: 13px; height: 13px;"></i></a>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Customer connection" style="background: #ffffff; padding: 128px 0;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: center;">
+    <div style="display: flex; flex-direction: column; gap: 28px;">
+      <p style="margin: 0; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #72726D;">Customer connection</p>
+      <h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 44px; line-height: 1.12; letter-spacing: -0.02em; color: #111111;">More than a passport.<br />A connection that lasts.</h2>
+      <p style="margin: 0; color: #72726D; font-size: 16px; line-height: 1.7; text-wrap: pretty;">Give customers the story, care guidance and services around each product, from first purchase through repair and resale.</p>
+      <ul style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px;">
+        <li style="display: flex; align-items: center; gap: 12px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 13px; height: 13px; color: #164ED8; flex-shrink: 0;"></i>Product story &amp; brand narrative</li>
+        <li style="display: flex; align-items: center; gap: 12px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 13px; height: 13px; color: #164ED8; flex-shrink: 0;"></i>Materials and composition</li>
+        <li style="display: flex; align-items: center; gap: 12px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 13px; height: 13px; color: #164ED8; flex-shrink: 0;"></i>Maker and supplier information</li>
+        <li style="display: flex; align-items: center; gap: 12px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 13px; height: 13px; color: #164ED8; flex-shrink: 0;"></i>Care instructions</li>
+        <li style="display: flex; align-items: center; gap: 12px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 13px; height: 13px; color: #164ED8; flex-shrink: 0;"></i>Repair and resale pathways</li>
+        <li style="display: flex; align-items: center; gap: 12px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 13px; height: 13px; color: #164ED8; flex-shrink: 0;"></i>Ownership and end-of-life guidance</li>
+      </ul>
+      <a href="#" style="display: inline-flex; align-items: center; gap: 5px; color: #164ED8; font-size: 14px; font-weight: 500;">Explore customer experience <i data-lucide="arrow-right" style="width: 13px; height: 13px;"></i></a>
+    </div>
+    <div style="display: flex; justify-content: center;">
+      <img src="public/screenshot-certifications-mobile.png" alt="Known Objects. digital passport on mobile" style="width: 100%; max-width: 280px; height: auto; display: block; filter: brightness(1.08);" />
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="How it works" style="background: #F6F4F2; padding: 128px 0;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    <div style="max-width: 720px; margin-bottom: 72px;">
+      <p style="margin: 0 0 16px; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #72726D;">How it works</p>
+      <h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 48px; line-height: 1.12; letter-spacing: -0.02em; color: #111111;">The world's most customisable<br /><span style="font-style: italic;">passport builder.</span></h2>
+      <p style="margin: 20px 0 0; color: #72726D; font-size: 16px; line-height: 1.7;">Most brands have their first identity live within an hour of signing up.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: 340px 1fr; gap: 56px; align-items: start;">
+      <div style="display: flex; flex-direction: column;">
+        <sc-for list="{{ steps }}" as="step" hint-placeholder-count="4">
+          <button onClick="{{ step.select }}" style="appearance: none; background: none; border: 0; border-left: 2px solid {{ step.rail }}; text-align: left; padding: 20px 0 20px 24px; cursor: pointer; display: flex; flex-direction: column; gap: 8px; font-family: inherit;">
+            <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.1em; color: {{ step.num }};">{{ step.number }}</span>
+            <span style="font-size: 16px; font-weight: 600; color: {{ step.title }};">{{ step.heading }}</span>
+            <span style="font-size: 13px; line-height: 1.65; color: #72726D; opacity: {{ step.bodyOpacity }};">{{ step.body }}</span>
+          </button>
+        </sc-for>
+        <div style="margin-top: 40px; display: flex; align-items: center; gap: 20px;">
+          <a href="#" style="display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 24px; background: #111111; color: #ffffff; font-size: 14px; font-weight: 500; border-radius: 4px; white-space: nowrap;" style-hover="background: #2a2a2a;">Start building free</a>
+          <p style="margin: 0; font-size: 12px; color: #72726D;">No credit card required</p>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center; min-height: 520px;">
+        <img src="public/screenshot-passport-builder.png" alt="Product information builder" style="width: 100%; height: auto; mix-blend-mode: multiply; display: {{ show1 }};" />
+        <img src="public/screenshot-impact-builder.png" alt="Impact and certifications builder" style="width: 100%; height: auto; mix-blend-mode: multiply; display: {{ show2 }};" />
+        <img src="public/screenshot-supply-chain-builder.png" alt="Supply chain builder" style="width: 100%; height: auto; mix-blend-mode: multiply; display: {{ show3 }};" />
+        <img src="public/screenshot-passports-list.png" alt="Publish and QR code generation" style="width: 100%; height: auto; mix-blend-mode: multiply; display: {{ show4 }};" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Supply chain and scale" style="background: #ffffff; padding: 128px 0;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    <div style="max-width: 720px; margin-bottom: 64px;">
+      <p style="margin: 0 0 16px; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #72726D;">Supply chain &amp; scale</p>
+      <h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 48px; line-height: 1.12; letter-spacing: -0.02em; color: #111111;">Get the data in <span style="font-style: italic;">without the spreadsheets.</span></h2>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #E6E6E2; border: 1px solid #E6E6E2;">
+      <div style="background: #ffffff; padding: 40px; display: flex; flex-direction: column; gap: 24px;">
+        <div style="background: #F6F4F2; padding: 28px; display: flex; align-items: center; justify-content: center; min-height: 220px;">
+          <img src="public/screenshot-supplier-request.png" alt="Supply chain requests" style="width: 100%; height: auto; display: block; mix-blend-mode: multiply;" />
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px; line-height: 1.2; color: #111111;">Collect supplier data without spreadsheets.</h3>
+          <p style="margin: 0; color: #72726D; font-size: 14px; line-height: 1.7;">Send suppliers a secure link and request only the data you need. They complete a simple form with no account required, and responses populate your identity automatically.</p>
+          <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px;">
+            <li style="display: flex; align-items: center; gap: 12px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 13px; height: 13px; color: #164ED8; flex-shrink: 0;"></i>Send a secure link to any supplier</li>
+            <li style="display: flex; align-items: center; gap: 12px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 13px; height: 13px; color: #164ED8; flex-shrink: 0;"></i>Request only the fields you need</li>
+            <li style="display: flex; align-items: center; gap: 12px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 13px; height: 13px; color: #164ED8; flex-shrink: 0;"></i>Track responses in real time</li>
+          </ul>
+          <a href="#" style="display: inline-flex; align-items: center; gap: 5px; color: #164ED8; font-size: 14px; font-weight: 500;">Start for free <i data-lucide="arrow-right" style="width: 13px; height: 13px;"></i></a>
+        </div>
+      </div>
+      <div style="background: #ffffff; padding: 40px; display: flex; flex-direction: column; gap: 24px;">
+        <div style="background: #F6F4F2; padding: 28px; display: flex; align-items: center; justify-content: center; min-height: 220px;">
+          <img src="public/screenshot-bulk-import.png" alt="Bulk import" style="width: 100%; height: auto; display: block; mix-blend-mode: multiply;" />
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px; line-height: 1.2; color: #111111;">Create hundreds of identities at once.</h3>
+          <p style="margin: 0; color: #72726D; font-size: 14px; line-height: 1.7;">Download a template, upload your product data, and let columns map automatically before you publish at scale.</p>
+          <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px;">
+            <li style="display: flex; align-items: center; gap: 12px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 13px; height: 13px; color: #164ED8; flex-shrink: 0;"></i>Download a CSV template in seconds</li>
+            <li style="display: flex; align-items: center; gap: 12px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 13px; height: 13px; color: #164ED8; flex-shrink: 0;"></i>Upload any column format</li>
+            <li style="display: flex; align-items: center; gap: 12px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 13px; height: 13px; color: #164ED8; flex-shrink: 0;"></i>Review drafts and publish at scale</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Regulatory readiness" style="background: #F6F4F2; padding: 128px 0;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    <div style="max-width: 780px; margin-bottom: 80px;">
+      <p style="margin: 0 0 16px; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #72726D;">Regulatory readiness</p>
+      <h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 48px; line-height: 1.12; letter-spacing: -0.02em; color: #111111;">Prepare for Digital Product Passports<br /><span style="font-style: italic;">without rebuilding your systems.</span></h2>
+      <p style="margin: 20px 0 0; color: #72726D; font-size: 16px; line-height: 1.7; text-wrap: pretty;">Bring your product information together, identify the gaps, and publish customer-ready identities on a platform built to adapt as requirements evolve.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; border-top: 1px solid #111111;">
+      <div style="padding-top: 32px; position: relative;">
+        <div style="position: absolute; top: -4px; left: 0; width: 7px; height: 7px; background: #111111; border-radius: 50%;"></div>
+        <div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 40px; line-height: 1; color: #111111; margin-bottom: 14px;">2026</div>
+        <h3 style="margin: 0 0 8px; font-size: 14px; font-weight: 600; color: #111111;">Preparation</h3>
+        <p style="margin: 0; font-size: 13px; color: #72726D; line-height: 1.7; max-width: 24em;">Early adopters structure product data and issue voluntary passports.</p>
+      </div>
+      <div style="padding-top: 32px; position: relative;">
+        <div style="position: absolute; top: -4px; left: 0; width: 7px; height: 7px; background: #164ED8; border-radius: 50%;"></div>
+        <div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 40px; line-height: 1; color: #164ED8; margin-bottom: 14px;">2027</div>
+        <h3 style="margin: 0 0 8px; font-size: 14px; font-weight: 600; color: #111111;">Initial rollout</h3>
+        <p style="margin: 0; font-size: 13px; color: #72726D; line-height: 1.7; max-width: 24em;">First requirements take effect for selected textile categories.</p>
+      </div>
+      <div style="padding-top: 32px; position: relative;">
+        <div style="position: absolute; top: -4px; left: 0; width: 7px; height: 7px; background: #C4C4C0; border-radius: 50%;"></div>
+        <div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 40px; line-height: 1; color: #C4C4C0; margin-bottom: 14px;">2028–30</div>
+        <h3 style="margin: 0 0 8px; font-size: 14px; font-weight: 600; color: #111111;">Expanded scope</h3>
+        <p style="margin: 0; font-size: 13px; color: #72726D; line-height: 1.7; max-width: 24em;">Requirements extend across broader product categories.</p>
+      </div>
+    </div>
+    <div style="margin-top: 56px;">
+      <a href="#" style="display: inline-flex; align-items: center; gap: 5px; color: #164ED8; font-size: 14px; font-weight: 500;">Learn about ESPR readiness <i data-lucide="arrow-right" style="width: 13px; height: 13px;"></i></a>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Pricing" style="background: #ffffff; padding: 128px 0; border-top: 1px solid #E6E6E2;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 56px;">
+      <div>
+        <p style="margin: 0 0 16px; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #72726D;">Pricing</p>
+        <h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 48px; line-height: 1.12; letter-spacing: -0.02em; color: #111111;">Simple pricing for brands<br />at every stage.</h2>
+      </div>
+      <a href="#" style="display: inline-flex; align-items: center; gap: 5px; color: #164ED8; font-size: 14px; font-weight: 500; flex-shrink: 0;">View full pricing <i data-lucide="arrow-right" style="width: 13px; height: 13px;"></i></a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+      <div style="padding: 28px; display: flex; flex-direction: column; gap: 24px; background: #ffffff; border: 1px solid #E6E6E2; border-radius: 4px;">
+        <div>
+          <p style="margin: 0 0 12px; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: #72726D;">Essentials</p>
+          <div style="display: flex; align-items: baseline; gap: 4px; margin-bottom: 8px;">
+            <span style="font-size: 36px; font-weight: 300; letter-spacing: -0.02em; color: #111111;">£150</span>
+            <span style="font-size: 14px; color: #72726D;">/mo</span>
+          </div>
+          <p style="margin: 0; font-size: 13px; line-height: 1.65; color: #72726D;">For smaller and growing brands starting to build connected product identities.</p>
+        </div>
+        <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1;">
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 12px; height: 12px; color: #164ED8; flex-shrink: 0; margin-top: 3px;"></i>100 published passports / year</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 12px; height: 12px; color: #164ED8; flex-shrink: 0; margin-top: 3px;"></i>Unlimited drafts, QR labels &amp; scans</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 12px; height: 12px; color: #164ED8; flex-shrink: 0; margin-top: 3px;"></i>AI Passport Builder</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 12px; height: 12px; color: #164ED8; flex-shrink: 0; margin-top: 3px;"></i>Public passport pages</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 12px; height: 12px; color: #164ED8; flex-shrink: 0; margin-top: 3px;"></i>Certification management</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 12px; height: 12px; color: #164ED8; flex-shrink: 0; margin-top: 3px;"></i>CSV import &amp; export</li>
+        </ul>
+        <a href="#" style="display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 20px; background: #111111; color: #ffffff; font-size: 13px; font-weight: 500; border: 1px solid #111111; border-radius: 4px;" style-hover="background: #2a2a2a;">Start free trial</a>
+      </div>
+      <div style="padding: 28px; display: flex; flex-direction: column; gap: 24px; background: #111111; border: 1px solid #111111; border-radius: 4px;">
+        <div>
+          <p style="margin: 0 0 12px; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.4);">Growth</p>
+          <div style="display: flex; align-items: baseline; gap: 4px; margin-bottom: 8px;">
+            <span style="font-size: 36px; font-weight: 300; letter-spacing: -0.02em; color: #ffffff;">£450</span>
+            <span style="font-size: 14px; color: rgba(255,255,255,0.4);">/mo</span>
+          </div>
+          <p style="margin: 0; font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.5);">For established brands managing larger product ranges, suppliers and teams.</p>
+        </div>
+        <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1;">
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.6);"><i data-lucide="check" style="width: 12px; height: 12px; color: rgba(255,255,255,0.5); flex-shrink: 0; margin-top: 3px;"></i>500 published passports / year</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.6);"><i data-lucide="check" style="width: 12px; height: 12px; color: rgba(255,255,255,0.5); flex-shrink: 0; margin-top: 3px;"></i>Unlimited drafts, QR labels &amp; scans</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.6);"><i data-lucide="check" style="width: 12px; height: 12px; color: rgba(255,255,255,0.5); flex-shrink: 0; margin-top: 3px;"></i>Everything in Essentials</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.6);"><i data-lucide="check" style="width: 12px; height: 12px; color: rgba(255,255,255,0.5); flex-shrink: 0; margin-top: 3px;"></i>Supplier data requests</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.6);"><i data-lucide="check" style="width: 12px; height: 12px; color: rgba(255,255,255,0.5); flex-shrink: 0; margin-top: 3px;"></i>Team members</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.6);"><i data-lucide="check" style="width: 12px; height: 12px; color: rgba(255,255,255,0.5); flex-shrink: 0; margin-top: 3px;"></i>Advanced analytics</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.6);"><i data-lucide="check" style="width: 12px; height: 12px; color: rgba(255,255,255,0.5); flex-shrink: 0; margin-top: 3px;"></i>Custom branding</li>
+        </ul>
+        <a href="#" style="display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 20px; background: #ffffff; color: #111111; font-size: 13px; font-weight: 500; border: 1px solid #ffffff; border-radius: 4px;">Start free trial</a>
+      </div>
+      <div style="padding: 28px; display: flex; flex-direction: column; gap: 24px; background: #ffffff; border: 1px solid #E6E6E2; border-radius: 4px;">
+        <div>
+          <p style="margin: 0 0 12px; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: #72726D;">Enterprise</p>
+          <div style="display: flex; align-items: baseline; gap: 4px; margin-bottom: 8px;">
+            <span style="font-size: 36px; font-weight: 300; letter-spacing: -0.02em; color: #111111;">Custom</span>
+          </div>
+          <p style="margin: 0; font-size: 13px; line-height: 1.65; color: #72726D;">For brands, manufacturers and teams requiring higher volumes, integrations and dedicated support.</p>
+        </div>
+        <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1;">
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 12px; height: 12px; color: #164ED8; flex-shrink: 0; margin-top: 3px;"></i>Custom publication allowance</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 12px; height: 12px; color: #164ED8; flex-shrink: 0; margin-top: 3px;"></i>Everything in Growth</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 12px; height: 12px; color: #164ED8; flex-shrink: 0; margin-top: 3px;"></i>ERP &amp; PLM integration</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 12px; height: 12px; color: #164ED8; flex-shrink: 0; margin-top: 3px;"></i>API access</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 12px; height: 12px; color: #164ED8; flex-shrink: 0; margin-top: 3px;"></i>Supplier portal</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 12px; height: 12px; color: #164ED8; flex-shrink: 0; margin-top: 3px;"></i>Dedicated success manager</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #72726D;"><i data-lucide="check" style="width: 12px; height: 12px; color: #164ED8; flex-shrink: 0; margin-top: 3px;"></i>White-label options</li>
+        </ul>
+        <a href="#" style="display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 20px; background: #111111; color: #ffffff; font-size: 13px; font-weight: 500; border: 1px solid #111111; border-radius: 4px;" style-hover="background: #2a2a2a;">Talk to us</a>
+      </div>
+    </div>
+    <p style="margin: 24px 0 0; font-size: 12px; color: #72726D;">All plans include a 14-day free trial. Annual billing available. Additional capacity from +100 passports for £100/month.</p>
+  </div>
+</section>
+
+<section data-screen-label="FAQ" style="background: #F6F4F2; padding: 128px 0; border-top: 1px solid #E6E6E2;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 2fr; gap: 80px;">
+    <div>
+      <p style="margin: 0 0 16px; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #72726D;">FAQ</p>
+      <h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; color: #111111;">Common questions.</h2>
+      <p style="margin: 16px 0 0; font-size: 13px; color: #72726D; line-height: 1.7;">Still have questions? <a href="mailto:hello@knownobjects.io" style="color: #164ED8;">Get in touch.</a></p>
+    </div>
+    <div>
+      <sc-for list="{{ faqs }}" as="faq" hint-placeholder-count="8">
+        <div style="border-top: 1px solid #E6E6E2; padding: 20px 0;">
+          <button onClick="{{ faq.toggle }}" style="appearance: none; background: none; border: 0; padding: 0; width: 100%; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; text-align: left; cursor: pointer; font-family: inherit;">
+            <span style="font-size: 14px; font-weight: 500; color: #111111;">{{ faq.q }}</span>
+            <span style="flex-shrink: 0; margin-top: 2px; color: #72726D; font-size: 16px; line-height: 1;">{{ faq.sign }}</span>
+          </button>
+          <sc-if value="{{ faq.open }}" hint-placeholder-val="{{ false }}">
+            <p style="margin: 12px 0 0; font-size: 13px; color: #72726D; line-height: 1.75; padding-right: 40px; max-width: 62ch;">{{ faq.a }}</p>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Final CTA" style="background: #111111; padding: 128px 0;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    <div style="max-width: 672px;">
+      <h2 style="margin: 0 0 24px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 52px; line-height: 1.05; letter-spacing: -0.02em; color: #ffffff;">Make every product <span style="font-style: italic;">known.</span></h2>
+      <p style="margin: 0 0 40px; font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.65;">Connect product data, collect supplier information and generate QR codes in minutes.</p>
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <a href="#" style="display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 24px; background: #ffffff; color: #111111; font-size: 14px; font-weight: 500; border-radius: 4px; white-space: nowrap;">Book a demo</a>
+        <a href="#" style="display: inline-flex; align-items: center; gap: 5px; color: rgba(255,255,255,0.5); font-size: 14px; font-weight: 500;" style-hover="color: #ffffff;">Start for free <i data-lucide="arrow-right" style="width: 13px; height: 13px;"></i></a>
+      </div>
+      <p style="margin: 20px 0 0; font-size: 12px; color: rgba(255,255,255,0.25);">No credit card required · Live in minutes</p>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { step: 0, openFaq: null };
+
+  componentDidMount() { this.icons(); }
+  componentDidUpdate() { this.icons(); }
+  icons() {
+    if (window.lucide) window.lucide.createIcons();
+    else setTimeout(() => window.lucide && window.lucide.createIcons(), 400);
+  }
+
+  get stepData() {
+    return [
+      { number: "01", heading: "Add product information", body: "Name, description, imagery, country of origin, category and identifiers." },
+      { number: "02", heading: "Add materials, impact & certifications", body: "Composition, carbon footprint, water usage, claims and verified certifications." },
+      { number: "03", heading: "Connect supply chain data", body: "Add suppliers and facilities, or send requests for suppliers to complete directly." },
+      { number: "04", heading: "Publish and generate your QR code", body: "Your identity goes live instantly. Download a QR code for labels, packaging and product pages." }
+    ];
+  }
+
+  get faqData() {
+    return [
+      { q: "What is a Digital Product Passport?", a: "A Digital Product Passport is a digital record linked to a physical product via a QR code. It gives customers, retailers and regulators access to verified product information including materials, origins, certifications, environmental data and circularity guidance." },
+      { q: "Is Known Objects only for fashion brands?", a: "No. Known Objects is built for any brand that makes physical products: fashion, luxury, beauty, furniture, electronics, homeware, sporting goods and more." },
+      { q: "What is ESPR and does it affect my brand?", a: "ESPR stands for the EU Ecodesign for Sustainable Products Regulation. It requires brands selling into the EU to issue Digital Product Passports. If you sell into European markets, this regulation will apply to your brand from 2027 onwards." },
+      { q: "How long does it take to set up?", a: "Most brands have their first identity live within an hour of signing up. Guided fields, AI-assisted content and CSV import mean you can move quickly without consultants or complex projects." },
+      { q: "Can my suppliers contribute data directly?", a: "Yes. You send a secure link, your supplier completes a simple web form with no account required, and the information flows directly into your product identity." },
+      { q: "Can I bulk upload my product catalogue?", a: "Yes. Download a template, populate it with your product data and upload. Known Objects maps columns automatically and creates draft identities for each product, ready to review and publish." },
+      { q: "Do customers need an app to view a passport?", a: "No. Passport pages are public web pages. Customers scan the QR code with any smartphone camera and the page opens instantly in their browser." },
+      { q: "How are QR codes managed?", a: "QR codes are permanent and linked to the identity, not the label. Download and reprint them at any time in PNG or SVG format. The URL never changes, so existing printed labels always work." }
+    ];
+  }
+
+  renderVals() {
+    const s = this.state.step;
+    return {
+      show1: s === 0 ? "block" : "none",
+      show2: s === 1 ? "block" : "none",
+      show3: s === 2 ? "block" : "none",
+      show4: s === 3 ? "block" : "none",
+      steps: this.stepData.map((st, i) => {
+        const on = i === s;
+        return {
+          number: st.number, heading: st.heading, body: st.body,
+          rail: on ? "#164ED8" : "#E6E6E2",
+          num: on ? "#164ED8" : "#C4C4C0",
+          title: on ? "#111111" : "#72726D",
+          bodyOpacity: on ? "1" : "0.55",
+          select: () => this.setState({ step: i })
+        };
+      }),
+      faqs: this.faqData.map((f, i) => ({
+        q: f.q, a: f.a,
+        open: this.state.openFaq === i,
+        sign: this.state.openFaq === i ? "–" : "+",
+        toggle: () => this.setState({ openFaq: this.state.openFaq === i ? null : i })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

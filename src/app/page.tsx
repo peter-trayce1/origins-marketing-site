@@ -1,9 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
-import { motion, type MotionProps, type Variants } from "framer-motion";
+import { Fragment, useState } from "react";
+import { motion } from "framer-motion";
 import { APP_URL } from "@/lib/utils";
+import { fadeUp, staggerContainer, staggerItem } from "@/lib/motion";
+import { homePlans } from "@/lib/plans";
 import {
   ArrowRight,
   Check,
@@ -14,38 +16,15 @@ import {
   Route,
   Heart,
   Recycle,
-  Send,
-  Upload,
 } from "lucide-react";
-
-// ─── Animation helpers ────────────────────────────────────────────────────────
-
-const fadeUp = (delay = 0): MotionProps => ({
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.5, delay },
-});
-
-const staggerContainer: Variants = {
-  initial: {},
-  whileInView: { transition: { staggerChildren: 0.08 } },
-};
-
-const staggerItem: Variants = {
-  initial: { opacity: 0, y: 16 },
-  whileInView: { opacity: 1, y: 0, transition: { duration: 0.45 } },
-};
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 
 function Hero() {
-  const hasHeroImage = true; // set to false if hero-jacket.png not yet in /public
-
   return (
     <section className="bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 pt-20 pb-0 lg:pt-28">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-6 pt-20 pb-0">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left: copy */}
           <motion.div {...fadeUp(0)} className="pb-16 lg:pb-24 flex flex-col gap-8 max-w-xl">
             <p className="eyebrow">Digital identities for physical products</p>
@@ -56,26 +35,25 @@ function Hero() {
               <span className="italic">known.</span>
             </h1>
 
-            <p className="text-[#72726D] text-lg leading-relaxed">
+            <p className="text-[#72726D] text-[18px] leading-[1.65] max-w-[30em]">
               Known Objects creates connected digital identities that bring together product data, stories and services across the entire product lifecycle.
             </p>
 
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col sm:flex-row items-start gap-3">
+            <div className="flex flex-col gap-3 items-start">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
                 <a href="/book-demo" className="btn-primary h-11 px-6 text-sm">
                   Book a demo
                 </a>
                 <a
                   href="/platform"
-                  className="link-cobalt h-11 items-center text-sm"
+                  className="inline-flex items-center gap-[5px] h-11 px-3 text-sm font-[500] text-[#111111] transition-opacity hover:opacity-60"
                 >
                   See how it works <ArrowRight size={13} />
                 </a>
               </div>
               <a
                 href="https://passport.knownobjects.io/c/ORI-89413809"
-                className="link-cobalt text-xs text-[#72726D] hover:text-[#111111]"
-                style={{ color: "#72726D" }}
+                className="link-cobalt text-xs"
               >
                 See example passport (best viewed on mobile) <ArrowRight size={11} />
               </a>
@@ -86,8 +64,8 @@ function Hero() {
             </p>
           </motion.div>
 
-          {/* Right: product image */}
-          <motion.div {...fadeUp(0.15)} className="relative flex justify-center lg:justify-end">
+          {/* Right: product image, pushed down to align with the headline */}
+          <motion.div {...fadeUp(0.15)} className="relative flex justify-center lg:justify-end lg:mt-12">
             <Image
               src="/hero-jacket-full-white.png"
               alt="Waxed field jacket with Known Objects. digital identity tag"
@@ -104,32 +82,30 @@ function Hero() {
   );
 }
 
-// ─── Trust strip ──────────────────────────────────────────────────────────────
+// ─── Benefits band (marquee) ───────────────────────────────────────────────────
 
-function TrustStrip() {
-  const brands = [
-    "Acme Studios",
-    "Field Folk",
-    "Tanner Goods",
-    "Aura",
-    "Vemadic",
-    "Fleurgt",
+function BenefitsBand() {
+  const phrases = [
+    "Live in minutes",
+    "No consultants required",
+    "ESPR-ready data structure",
+    "Evidence-backed claims",
+    "Accessible and easy pricing",
+    "QR codes that never change",
+    "No app for customers to download",
   ];
-  const ticker = [...brands, ...brands];
+  const ticker = [...phrases, ...phrases];
 
   return (
-    <div className="border-y border-[#E6E6E2] bg-white overflow-hidden py-5">
-      <p className="text-center text-[11px] font-[500] text-[#72726D] uppercase tracking-[0.1em] mb-4">
-        Trusted by forward-thinking brands
-      </p>
-      <div className="animate-marquee flex items-center">
-        {ticker.map((brand, i) => (
-          <span
-            key={i}
-            className="shrink-0 px-10 text-[13px] font-[500] text-[#C4C4C0] whitespace-nowrap"
-          >
-            {brand}
-          </span>
+    <div className="border-y border-[#E6E6E2] bg-white overflow-hidden py-[18px]">
+      <div className="animate-marquee flex items-center w-max">
+        {ticker.map((phrase, i) => (
+          <Fragment key={i}>
+            <span className="shrink-0 px-7 text-[13px] font-[500] text-[#72726D] whitespace-nowrap">
+              {phrase}
+            </span>
+            <span className="shrink-0 w-[3px] h-[3px] rounded-full bg-[#C4C4C0]" />
+          </Fragment>
         ))}
       </div>
     </div>
@@ -168,16 +144,16 @@ function SystemPillars() {
   ];
 
   return (
-    <section className="bg-[#F6F4F2] py-24 lg:py-32">
+    <section className="bg-[#F6F4F2] py-32">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div {...fadeUp(0)} className="max-w-2xl mb-16">
           <p className="eyebrow mb-4">The Known Objects system</p>
-          <h2 className="font-serif text-4xl lg:text-5xl text-[#111111] leading-tight tracking-[-0.02em]">
+          <h2 className="font-serif text-4xl lg:text-5xl text-[#111111] leading-[1.12] tracking-[-0.02em]">
             A complete identity for every{" "}
             <span className="italic">object.</span>
           </h2>
-          <p className="mt-5 text-[#72726D] leading-relaxed">
-            Known Objects captures what matters, connects supporting evidence and carries the product&apos;s identity across its entire lifecycle.
+          <p className="mt-5 text-[#72726D] text-base leading-[1.7]">
+            Capture what matters, connect the supporting evidence, and carry the product&apos;s identity across its lifecycle.
           </p>
         </motion.div>
 
@@ -197,7 +173,7 @@ function SystemPillars() {
               <p.icon size={20} className="text-[#164ED8]" strokeWidth={1.5} />
               <div>
                 <h3 className="font-[600] text-[#111111] mb-1.5 text-sm">{p.title}</h3>
-                <p className="text-[13px] text-[#72726D] leading-relaxed">{p.body}</p>
+                <p className="text-[13px] text-[#72726D] leading-[1.65]">{p.body}</p>
               </div>
             </motion.div>
           ))}
@@ -213,10 +189,9 @@ function SystemPillars() {
   );
 }
 
-// ─── Product Storytelling ─────────────────────────────────────────────────────
+// ─── Customer connection ───────────────────────────────────────────────────────
 
-function ProductStorytelling() {
-  const tabs = ["Product", "Materials", "Journey", "Care", "Afterlife"];
+function CustomerConnection() {
   const highlights = [
     "Product story & brand narrative",
     "Materials and composition",
@@ -227,19 +202,19 @@ function ProductStorytelling() {
   ];
 
   return (
-    <section className="bg-white py-24 lg:py-32">
+    <section className="bg-white py-32">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <motion.div {...fadeUp(0)} className="flex flex-col gap-7">
             <p className="eyebrow">Customer connection</p>
-            <h2 className="font-serif text-4xl lg:text-[2.75rem] text-[#111111] leading-tight tracking-[-0.02em]">
+            <h2 className="font-serif text-4xl lg:text-[2.75rem] text-[#111111] leading-[1.12] tracking-[-0.02em]">
               More than a passport.<br />
               A connection that lasts.
             </h2>
-            <p className="text-[#72726D] leading-relaxed">
-              Give customers access to the story, care guidance and services around each product. From first purchase through repair, resale and beyond.
+            <p className="text-[#72726D] text-base leading-[1.7]">
+              Give customers the story, care guidance and services around each product, from first purchase through repair and resale.
             </p>
-            <ul className="space-y-2.5">
+            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
               {highlights.map((h) => (
                 <li key={h} className="flex items-center gap-3 text-[13px] text-[#72726D]">
                   <Check size={13} className="text-[#164ED8] shrink-0" strokeWidth={2} />
@@ -252,28 +227,14 @@ function ProductStorytelling() {
             </a>
           </motion.div>
 
-          {/* Mobile passport mockup */}
           <motion.div {...fadeUp(0.15)} className="flex justify-center">
-            <div className="relative">
-              <Image
-                src="/screenshot-certifications-mobile.png"
-                alt="Known Objects. digital passport on mobile"
-                width={862}
-                height={1478}
-                className="w-full max-w-[260px] h-auto [filter:brightness(1.08)]"
-              />
-              {/* Cobalt tab indicators */}
-              <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-1">
-                {tabs.map((t, i) => (
-                  <div
-                    key={t}
-                    className={`h-0.5 rounded-full transition-all ${
-                      i === 0 ? "w-6 bg-[#164ED8]" : "w-3 bg-[#E6E6E2]"
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
+            <Image
+              src="/screenshot-certifications-mobile.png"
+              alt="Known Objects. digital passport on mobile"
+              width={862}
+              height={1478}
+              className="w-full max-w-[280px] h-auto [filter:brightness(1.08)]"
+            />
           </motion.div>
         </div>
       </div>
@@ -281,9 +242,11 @@ function ProductStorytelling() {
   );
 }
 
-// ─── How it works (Passport Steps) ───────────────────────────────────────────
+// ─── How it works (interactive passport builder) ───────────────────────────────
 
 function PassportSteps() {
+  const [active, setActive] = useState(0);
+
   const steps = [
     {
       number: "01",
@@ -306,7 +269,7 @@ function PassportSteps() {
     {
       number: "03",
       title: "Connect supply chain data",
-      body: "Add suppliers and manufacturing facilities, or send requests for suppliers to complete directly.",
+      body: "Add suppliers and facilities, or send requests for suppliers to complete directly.",
       image: "/screenshot-supply-chain-builder.png",
       alt: "Supply chain builder",
       width: 2284,
@@ -316,184 +279,202 @@ function PassportSteps() {
       number: "04",
       title: "Publish and generate your QR code",
       body: "Your identity goes live instantly. Download a QR code for labels, packaging and product pages.",
-      image: "/screenshot-passport-builder.png",
+      image: "/screenshot-passports-list.png",
       alt: "Publish and QR code generation",
-      width: 2870,
-      height: 1614,
+      width: 2854,
+      height: 1606,
     },
   ];
 
+  const current = steps[active];
+
   return (
-    <section className="bg-[#F6F4F2] py-24 lg:py-32">
+    <section className="bg-[#F6F4F2] py-32">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div {...fadeUp(0)} className="max-w-2xl mb-16">
+        <motion.div {...fadeUp(0)} className="max-w-3xl mb-16">
           <p className="eyebrow mb-4">How it works</p>
-          <h2 className="font-serif text-4xl lg:text-5xl text-[#111111] leading-tight tracking-[-0.02em]">
+          <h2 className="font-serif text-4xl lg:text-5xl text-[#111111] leading-[1.12] tracking-[-0.02em]">
             The world&apos;s most customisable<br />
             <span className="italic">passport builder.</span>
           </h2>
-          <p className="mt-5 text-[#72726D] leading-relaxed">
+          <p className="mt-5 text-[#72726D] text-base leading-[1.7]">
             Most brands have their first identity live within an hour of signing up.
           </p>
         </motion.div>
 
-        <motion.div
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="whileInView"
-          viewport={{ once: true }}
-          className="grid sm:grid-cols-2 gap-6"
-        >
-          {steps.map((step) => (
-            <motion.div
-              key={step.number}
-              variants={staggerItem}
-              className="bg-white border border-[#E6E6E2] overflow-hidden"
-            >
-              <div className="h-[220px] bg-[#F6F4F2] overflow-hidden flex items-center justify-center">
-                <Image
-                  src={step.image}
-                  alt={step.alt}
-                  width={step.width}
-                  height={step.height}
-                  className="w-full h-auto mix-blend-multiply"
-                />
-              </div>
-              <div className="p-7 border-t border-[#E6E6E2]">
-                <p className="text-[11px] font-[500] text-[#164ED8] uppercase tracking-[0.1em] mb-2">
-                  {step.number}
-                </p>
-                <h3 className="font-[600] text-[#111111] mb-1.5">{step.title}</h3>
-                <p className="text-[13px] text-[#72726D] leading-relaxed">{step.body}</p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+        <motion.div {...fadeUp(0.1)} className="grid lg:grid-cols-[380px_1fr] gap-14 items-start">
+          {/* Steps */}
+          <div className="flex flex-col">
+            {steps.map((step, i) => {
+              const on = i === active;
+              return (
+                <button
+                  key={step.number}
+                  onClick={() => setActive(i)}
+                  className="text-left border-l-2 pl-6 py-5 flex flex-col gap-2 transition-colors"
+                  style={{ borderColor: on ? "#164ED8" : "#E6E6E2" }}
+                >
+                  <span
+                    className="text-[11px] font-[500] tracking-[0.1em]"
+                    style={{ color: on ? "#164ED8" : "#C4C4C0" }}
+                  >
+                    {step.number}
+                  </span>
+                  <span
+                    className="text-base font-[600]"
+                    style={{ color: on ? "#111111" : "#72726D" }}
+                  >
+                    {step.title}
+                  </span>
+                  <span
+                    className="text-[13px] leading-[1.65] text-[#72726D]"
+                    style={{ opacity: on ? 1 : 0.55 }}
+                  >
+                    {step.body}
+                  </span>
+                </button>
+              );
+            })}
 
-        <motion.div {...fadeUp(0.2)} className="mt-10 flex flex-col sm:flex-row gap-4 items-start">
-          <a href={`${APP_URL}/signup`} className="btn-primary h-11 px-6 text-sm">
-            Start building free
-          </a>
-          <p className="text-[12px] text-[#72726D] self-center">
-            No credit card required
-          </p>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
+            <div className="mt-10 flex items-center gap-5">
+              <a href={`${APP_URL}/signup`} className="btn-primary h-11 px-6 text-sm">
+                Start building free
+              </a>
+              <p className="text-[12px] text-[#72726D]">No credit card required</p>
+            </div>
+          </div>
 
-// ─── Supplier Collection ──────────────────────────────────────────────────────
-
-function SupplierCollection() {
-  return (
-    <section className="bg-white py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-          <motion.div {...fadeUp(0)} className="flex flex-col gap-6">
-            <p className="eyebrow">Supply chain</p>
-            <h2 className="font-serif text-4xl lg:text-[2.75rem] text-[#111111] leading-tight tracking-[-0.02em]">
-              Collect supplier data without spreadsheets.
-            </h2>
-            <p className="text-[#72726D] leading-relaxed">
-              Send suppliers a secure link and request only the data you need. They complete a simple form with no account required. Responses populate your identity automatically.
-            </p>
-            <ul className="space-y-2.5">
-              {[
-                "Send a secure link to any supplier",
-                "Request only the fields you need",
-                "Track responses in real time",
-                "Data populates identities automatically",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3 text-[13px] text-[#72726D]">
-                  <Check size={13} className="text-[#164ED8] shrink-0" strokeWidth={2} />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <a href={`${APP_URL}/signup`} className="link-cobalt text-sm">
-              Start for free <ArrowRight size={13} />
-            </a>
-          </motion.div>
-          <motion.div {...fadeUp(0.15)} className="flex justify-center lg:justify-end">
+          {/* Screenshot */}
+          <div className="flex items-center justify-center min-h-[520px]">
             <Image
-              src="/screenshot-supplier-request.png"
-              alt="Supply chain requests"
-              width={2334}
-              height={1164}
-              className="w-full max-w-lg h-auto mix-blend-multiply"
+              key={current.image}
+              src={current.image}
+              alt={current.alt}
+              width={current.width}
+              height={current.height}
+              className="w-full h-auto mix-blend-multiply"
             />
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 }
 
-// ─── Bulk Upload ──────────────────────────────────────────────────────────────
+// ─── Supply chain & scale ──────────────────────────────────────────────────────
 
-function BulkUpload() {
-  return (
-    <section className="bg-[#F6F4F2] py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-          <motion.div {...fadeUp(0)} className="lg:order-2 flex flex-col gap-6">
-            <p className="eyebrow">Scale</p>
-            <h2 className="font-serif text-4xl lg:text-[2.75rem] text-[#111111] leading-tight tracking-[-0.02em]">
-              Create hundreds of identities at once.
-            </h2>
-            <p className="text-[#72726D] leading-relaxed">
-              Download a template (Quick Start, Standard or Advanced), upload your product data, map columns automatically and publish at scale.
-            </p>
-            <ul className="space-y-2.5">
-              {[
-                "Download a CSV template in seconds",
-                "Upload any column format",
-                "Columns mapped automatically",
-                "Review drafts and publish at scale",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-[13px] text-[#72726D]">
-                  <Check size={13} className="text-[#164ED8] mt-0.5 shrink-0" strokeWidth={2} />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-          <motion.div {...fadeUp(0.15)} className="lg:order-1 flex justify-center">
-            <Image
-              src="/screenshot-bulk-import.png"
-              alt="Bulk import"
-              width={1700}
-              height={1454}
-              className="w-full max-w-lg h-auto mix-blend-multiply"
-            />
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── Compliance ───────────────────────────────────────────────────────────────
-
-function ComplianceSection() {
-  const milestones = [
-    { year: "2026", label: "Preparation", body: "Early adopters structure product data and issue voluntary passports." },
-    { year: "2027", label: "Initial rollout", body: "First requirements take effect for selected textile categories." },
-    { year: "2028–30", label: "Expanded scope", body: "Requirements extend across broader product categories." },
+function SupplyChainScale() {
+  const cells = [
+    {
+      image: "/screenshot-supplier-request.png",
+      alt: "Supply chain requests",
+      width: 2334,
+      height: 1164,
+      title: "Collect supplier data without spreadsheets.",
+      body: "Send suppliers a secure link and request only the data you need. They complete a simple form with no account required, and responses populate your identity automatically.",
+      bullets: [
+        "Send a secure link to any supplier",
+        "Request only the fields you need",
+        "Track responses in real time",
+      ],
+      link: true,
+    },
+    {
+      image: "/screenshot-bulk-import.png",
+      alt: "Bulk import",
+      width: 1700,
+      height: 1454,
+      title: "Create hundreds of identities at once.",
+      body: "Download a template, upload your product data, and let columns map automatically before you publish at scale.",
+      bullets: [
+        "Download a CSV template in seconds",
+        "Upload any column format",
+        "Review drafts and publish at scale",
+      ],
+      link: false,
+    },
   ];
 
   return (
-    <section className="bg-white py-24 lg:py-32 border-t border-[#E6E6E2]">
+    <section className="bg-white py-32">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div {...fadeUp(0)} className="max-w-2xl mb-16">
+        <motion.div {...fadeUp(0)} className="max-w-3xl mb-16">
+          <p className="eyebrow mb-4">Supply chain &amp; scale</p>
+          <h2 className="font-serif text-4xl lg:text-5xl text-[#111111] leading-[1.12] tracking-[-0.02em]">
+            Get the data in{" "}
+            <span className="italic">without the spreadsheets.</span>
+          </h2>
+        </motion.div>
+
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 gap-px bg-[#E6E6E2] border border-[#E6E6E2]"
+        >
+          {cells.map((cell) => (
+            <motion.div
+              key={cell.title}
+              variants={staggerItem}
+              className="bg-white p-10 flex flex-col gap-6"
+            >
+              <div className="bg-[#F6F4F2] p-7 flex items-center justify-center min-h-[220px]">
+                <Image
+                  src={cell.image}
+                  alt={cell.alt}
+                  width={cell.width}
+                  height={cell.height}
+                  className="w-full h-auto mix-blend-multiply"
+                />
+              </div>
+              <div className="flex flex-col gap-4">
+                <h3 className="font-serif text-[28px] leading-[1.2] text-[#111111]">
+                  {cell.title}
+                </h3>
+                <p className="text-[#72726D] text-sm leading-[1.7]">{cell.body}</p>
+                <ul className="flex flex-col gap-2.5">
+                  {cell.bullets.map((b) => (
+                    <li key={b} className="flex items-center gap-3 text-[13px] text-[#72726D]">
+                      <Check size={13} className="text-[#164ED8] shrink-0" strokeWidth={2} />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+                {cell.link && (
+                  <a href={`${APP_URL}/signup`} className="link-cobalt text-sm">
+                    Start for free <ArrowRight size={13} />
+                  </a>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Regulatory readiness (timeline) ───────────────────────────────────────────
+
+function ComplianceTimeline() {
+  const milestones = [
+    { year: "2026", color: "#111111", label: "Preparation", body: "Early adopters structure product data and issue voluntary passports." },
+    { year: "2027", color: "#164ED8", label: "Initial rollout", body: "First requirements take effect for selected textile categories." },
+    { year: "2028–30", color: "#C4C4C0", label: "Expanded scope", body: "Requirements extend across broader product categories." },
+  ];
+
+  return (
+    <section className="bg-[#F6F4F2] py-32">
+      <div className="max-w-7xl mx-auto px-6">
+        <motion.div {...fadeUp(0)} className="max-w-3xl mb-20">
           <p className="eyebrow mb-4">Regulatory readiness</p>
-          <h2 className="font-serif text-4xl lg:text-5xl text-[#111111] leading-tight tracking-[-0.02em]">
+          <h2 className="font-serif text-4xl lg:text-5xl text-[#111111] leading-[1.12] tracking-[-0.02em]">
             Prepare for Digital Product Passports<br />
             <span className="italic">without rebuilding your systems.</span>
           </h2>
-          <p className="mt-5 text-[#72726D] leading-relaxed">
-            Bring your product information together, identify gaps and create customer-ready digital identities using a platform built to adapt as requirements evolve.
+          <p className="mt-5 text-[#72726D] text-base leading-[1.7]">
+            Bring your product information together, identify the gaps, and publish customer-ready identities on a platform built to adapt as requirements evolve.
           </p>
         </motion.div>
 
@@ -502,18 +483,27 @@ function ComplianceSection() {
           initial="initial"
           whileInView="whileInView"
           viewport={{ once: true }}
-          className="grid md:grid-cols-3 gap-px bg-[#E6E6E2] mb-12"
+          className="grid md:grid-cols-3 gap-12 border-t border-[#111111]"
         >
           {milestones.map((m) => (
-            <motion.div key={m.year} variants={staggerItem} className="bg-white p-8">
-              <div className="text-4xl font-[300] text-[#E6E6E2] tracking-tight mb-4">{m.year}</div>
-              <h3 className="font-[600] text-[#111111] mb-2 text-sm">{m.label}</h3>
-              <p className="text-[13px] text-[#72726D] leading-relaxed">{m.body}</p>
+            <motion.div key={m.year} variants={staggerItem} className="relative pt-8">
+              <div
+                className="absolute -top-1 left-0 w-[7px] h-[7px] rounded-full"
+                style={{ background: m.color }}
+              />
+              <div
+                className="font-serif text-[40px] leading-none mb-3.5"
+                style={{ color: m.color }}
+              >
+                {m.year}
+              </div>
+              <h3 className="font-[600] text-sm text-[#111111] mb-2">{m.label}</h3>
+              <p className="text-[13px] text-[#72726D] leading-[1.7] max-w-[24em]">{m.body}</p>
             </motion.div>
           ))}
         </motion.div>
 
-        <motion.div {...fadeUp(0.1)} className="flex gap-4">
+        <motion.div {...fadeUp(0.1)} className="mt-14">
           <a href="/compliance" className="link-cobalt text-sm">
             Learn about ESPR readiness <ArrowRight size={13} />
           </a>
@@ -523,122 +513,16 @@ function ComplianceSection() {
   );
 }
 
-// ─── Solutions ────────────────────────────────────────────────────────────────
-
-function SolutionsGrid() {
-  const solutions = [
-    {
-      number: "01",
-      title: "Prepare",
-      body: "Organise the product data required for evolving Digital Product Passport requirements. Start with what you have.",
-    },
-    {
-      number: "02",
-      title: "Connect",
-      body: "Bring together information from teams, suppliers, certifications and supporting evidence in one structured identity.",
-    },
-    {
-      number: "03",
-      title: "Engage",
-      body: "Turn product information into customer-facing stories, care guidance and lifecycle services that last beyond purchase.",
-    },
-  ];
-
-  return (
-    <section className="bg-[#F6F4F2] py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div {...fadeUp(0)} className="mb-14">
-          <p className="eyebrow mb-4">Solutions</p>
-          <h2 className="font-serif text-4xl lg:text-5xl text-[#111111] leading-tight tracking-[-0.02em] max-w-xl">
-            Three clear areas of value.
-          </h2>
-        </motion.div>
-
-        <motion.div
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="whileInView"
-          viewport={{ once: true }}
-          className="grid md:grid-cols-3 gap-px bg-[#E6E6E2]"
-        >
-          {solutions.map((s) => (
-            <motion.div key={s.title} variants={staggerItem} className="bg-[#F6F4F2] p-8 lg:p-10">
-              <p className="text-[11px] font-[500] text-[#164ED8] uppercase tracking-[0.1em] mb-5">{s.number}</p>
-              <h3 className="font-serif text-2xl text-[#111111] mb-4 italic">{s.title}</h3>
-              <p className="text-[13px] text-[#72726D] leading-relaxed">{s.body}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
 // ─── Pricing preview ──────────────────────────────────────────────────────────
 
 function PricingPreview() {
-  const plans = [
-    {
-      name: "Essentials",
-      price: "£150",
-      period: "/mo",
-      description: "For smaller and growing brands starting to build connected product identities.",
-      features: [
-        "100 published passports / year",
-        "Unlimited drafts, QR labels & scans",
-        "AI Passport Builder",
-        "Public passport pages",
-        "Certification management",
-        "CSV import & export",
-      ],
-      cta: "Start free trial",
-      href: `${APP_URL}/signup`,
-      highlight: false,
-    },
-    {
-      name: "Growth",
-      price: "£450",
-      period: "/mo",
-      description: "For established brands managing larger product ranges, suppliers and teams.",
-      features: [
-        "500 published passports / year",
-        "Unlimited drafts, QR labels & scans",
-        "Everything in Essentials",
-        "Supplier data requests",
-        "Team members",
-        "Advanced analytics",
-        "Custom branding",
-      ],
-      cta: "Start free trial",
-      href: `${APP_URL}/signup`,
-      highlight: true,
-    },
-    {
-      name: "Enterprise",
-      price: "Custom",
-      period: "",
-      description: "For brands, manufacturers and teams requiring higher volumes and integrations.",
-      features: [
-        "Custom publication allowance",
-        "Unlimited drafts, QR labels & scans",
-        "Everything in Growth",
-        "ERP & PLM integration",
-        "Supplier portal",
-        "Dedicated success manager",
-      ],
-      cta: "Talk to us",
-      href: "/book-demo",
-      highlight: false,
-    },
-  ];
-
   return (
-    <section className="bg-white py-24 lg:py-32 border-t border-[#E6E6E2]">
+    <section className="bg-white py-32 border-t border-[#E6E6E2]">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div {...fadeUp(0)} className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
           <div>
             <p className="eyebrow mb-4">Pricing</p>
-            <h2 className="font-serif text-4xl lg:text-5xl text-[#111111] leading-tight tracking-[-0.02em]">
+            <h2 className="font-serif text-4xl lg:text-5xl text-[#111111] leading-[1.12] tracking-[-0.02em]">
               Simple pricing for brands<br />at every stage.
             </h2>
           </div>
@@ -648,10 +532,10 @@ function PricingPreview() {
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-4">
-          {plans.map((plan) => (
+          {homePlans.map((plan) => (
             <div
               key={plan.name}
-              className={`p-7 flex flex-col gap-6 border ${
+              className={`p-7 flex flex-col gap-6 border rounded-[4px] ${
                 plan.highlight
                   ? "bg-[#111111] border-[#111111]"
                   : "bg-white border-[#E6E6E2]"
@@ -675,7 +559,7 @@ function PricingPreview() {
                     </span>
                   )}
                 </div>
-                <p className={`text-[13px] leading-relaxed ${plan.highlight ? "text-white/50" : "text-[#72726D]"}`}>
+                <p className={`text-[13px] leading-[1.65] ${plan.highlight ? "text-white/50" : "text-[#72726D]"}`}>
                   {plan.description}
                 </p>
               </div>
@@ -685,7 +569,7 @@ function PricingPreview() {
                   <li key={feat} className="flex items-start gap-2.5">
                     <Check
                       size={12}
-                      className={`mt-0.5 shrink-0 ${plan.highlight ? "text-white/50" : "text-[#164ED8]"}`}
+                      className={`mt-[3px] shrink-0 ${plan.highlight ? "text-white/50" : "text-[#164ED8]"}`}
                       strokeWidth={2}
                     />
                     <span className={`text-[13px] ${plan.highlight ? "text-white/60" : "text-[#72726D]"}`}>
@@ -697,7 +581,7 @@ function PricingPreview() {
 
               <a
                 href={plan.href}
-                className={`inline-flex items-center justify-center h-10 px-5 text-[13px] font-[500] transition-colors border ${
+                className={`inline-flex items-center justify-center h-10 px-5 text-[13px] font-[500] transition-colors border rounded-[4px] ${
                   plan.highlight
                     ? "bg-white text-[#111111] border-white hover:bg-white/90"
                     : "bg-[#111111] text-white border-[#111111] hover:bg-[#2a2a2a]"
@@ -729,7 +613,7 @@ function HomepageFAQ() {
     },
     {
       q: "Is Known Objects only for fashion brands?",
-      a: "No. Known Objects is built for any brand that makes physical products: fashion, luxury, beauty, furniture, electronics, homeware, sporting goods and more. The platform is designed to work wherever product data and customer connection matter.",
+      a: "No. Known Objects is built for any brand that makes physical products: fashion, luxury, beauty, furniture, electronics, homeware, sporting goods and more.",
     },
     {
       q: "What is ESPR and does it affect my brand?",
@@ -737,11 +621,11 @@ function HomepageFAQ() {
     },
     {
       q: "How long does it take to set up?",
-      a: "Most brands have their first identity live within an hour of signing up. The platform is designed to be simple. Guided fields, AI-assisted content and CSV import mean you can move quickly without consultants or complex projects.",
+      a: "Most brands have their first identity live within an hour of signing up. Guided fields, AI-assisted content and CSV import mean you can move quickly without consultants or complex projects.",
     },
     {
       q: "Can my suppliers contribute data directly?",
-      a: "Yes. Known Objects has a built-in supplier request feature. You send a secure link, your supplier completes a simple web form with no account required, and the information flows directly into your product identity.",
+      a: "Yes. You send a secure link, your supplier completes a simple web form with no account required, and the information flows directly into your product identity.",
     },
     {
       q: "Can I bulk upload my product catalogue?",
@@ -749,7 +633,7 @@ function HomepageFAQ() {
     },
     {
       q: "Do customers need an app to view a passport?",
-      a: "No. Passport pages are public web pages. Customers scan the QR code with any smartphone camera and the page opens instantly in their browser. No app or login required.",
+      a: "No. Passport pages are public web pages. Customers scan the QR code with any smartphone camera and the page opens instantly in their browser.",
     },
     {
       q: "How are QR codes managed?",
@@ -758,15 +642,15 @@ function HomepageFAQ() {
   ];
 
   return (
-    <section className="bg-[#F6F4F2] py-24 lg:py-32 border-t border-[#E6E6E2]">
+    <section className="bg-[#F6F4F2] py-32 border-t border-[#E6E6E2]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-[1fr_2fr] gap-16 lg:gap-20">
           <motion.div {...fadeUp(0)}>
             <p className="eyebrow mb-4">FAQ</p>
-            <h2 className="font-serif text-3xl lg:text-4xl text-[#111111] leading-tight tracking-[-0.02em]">
+            <h2 className="font-serif text-3xl lg:text-4xl text-[#111111] leading-[1.12] tracking-[-0.02em]">
               Common questions.
             </h2>
-            <p className="mt-4 text-[13px] text-[#72726D] leading-relaxed">
+            <p className="mt-4 text-[13px] text-[#72726D] leading-[1.7]">
               Still have questions?{" "}
               <a href="mailto:hello@knownobjects.io" className="text-[#164ED8] hover:underline">
                 Get in touch.
@@ -774,20 +658,20 @@ function HomepageFAQ() {
             </p>
           </motion.div>
 
-          <motion.div {...fadeUp(0.1)} className="divide-y divide-[#E6E6E2]">
+          <motion.div {...fadeUp(0.1)} className="divide-y divide-[#E6E6E2] border-t border-[#E6E6E2]">
             {faqs.map((faq, i) => (
               <div key={faq.q} className="py-5">
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
                   className="w-full flex items-start justify-between gap-4 text-left"
                 >
-                  <span className="text-[13px] font-[500] text-[#111111]">{faq.q}</span>
+                  <span className="text-sm font-[500] text-[#111111]">{faq.q}</span>
                   <span className="shrink-0 mt-0.5 text-[#72726D]">
-                    {open === i ? <Minus size={13} /> : <Plus size={13} />}
+                    {open === i ? <Minus size={14} /> : <Plus size={14} />}
                   </span>
                 </button>
                 {open === i && (
-                  <p className="mt-3 text-[13px] text-[#72726D] leading-relaxed pr-6">{faq.a}</p>
+                  <p className="mt-3 text-[13px] text-[#72726D] leading-[1.75] pr-10 max-w-[62ch]">{faq.a}</p>
                 )}
               </div>
             ))}
@@ -802,24 +686,23 @@ function HomepageFAQ() {
 
 function FinalCTA() {
   return (
-    <section className="bg-[#111111] py-24 lg:py-32">
+    <section className="bg-[#111111] py-32">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div {...fadeUp(0)} className="max-w-2xl">
           <h2 className="font-serif text-4xl lg:text-5xl xl:text-[3.25rem] text-white leading-[1.05] tracking-[-0.02em] mb-6">
             Make every product{" "}
             <span className="italic">known.</span>
           </h2>
-          <p className="text-lg text-white/50 leading-relaxed mb-10">
+          <p className="text-lg text-white/50 leading-[1.65] mb-10">
             Connect product data, collect supplier information and generate QR codes in minutes.
           </p>
-          <div className="flex flex-col sm:flex-row items-start gap-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
             <a href="/book-demo" className="btn-primary bg-white text-[#111111] hover:bg-white/90 h-11 px-6 text-sm">
               Book a demo
             </a>
             <a
               href={`${APP_URL}/signup`}
-              className="link-cobalt text-sm text-white/50 hover:text-white"
-              style={{ color: "rgba(255,255,255,0.5)" }}
+              className="inline-flex items-center gap-[5px] text-sm font-[500] text-white/50 transition-colors hover:text-white"
             >
               Start for free <ArrowRight size={13} />
             </a>
@@ -839,14 +722,12 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <TrustStrip />
+      <BenefitsBand />
       <SystemPillars />
-      <ProductStorytelling />
+      <CustomerConnection />
       <PassportSteps />
-      <SupplierCollection />
-      <BulkUpload />
-      <ComplianceSection />
-      <SolutionsGrid />
+      <SupplyChainScale />
+      <ComplianceTimeline />
       <PricingPreview />
       <HomepageFAQ />
       <FinalCTA />
