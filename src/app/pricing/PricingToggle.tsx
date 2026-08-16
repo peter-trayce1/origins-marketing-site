@@ -10,7 +10,8 @@ type Plan = {
   name: string;
   monthly: string;
   annual: string;
-  annualEquivalent: string;
+  annualEquivalent?: string;
+  custom?: boolean;
   positioning: string;
   allowance: string;
   cta: string;
@@ -67,6 +68,27 @@ const plans: Plan[] = [
       "Priority support",
     ],
   },
+  {
+    name: "Enterprise",
+    monthly: "Custom",
+    annual: "Custom",
+    custom: true,
+    positioning:
+      "For brands, manufacturers and teams requiring higher volumes, integrations and dedicated support.",
+    allowance: "Custom publication allowance",
+    cta: "Talk to us",
+    ctaHref: "/book-demo",
+    highlight: false,
+    everythingLine: "Everything in Growth, plus:",
+    features: [
+      "ERP & PLM integration",
+      "API access",
+      "Supplier portal",
+      "Dedicated success manager",
+      "White-label options",
+      "Custom onboarding",
+    ],
+  },
 ];
 
 export default function PricingToggle() {
@@ -74,7 +96,7 @@ export default function PricingToggle() {
 
   return (
     <section className="bg-white pb-20 lg:pb-28">
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Toggle */}
         <div className="flex justify-center mb-12">
           <div className="inline-flex items-center gap-1 bg-[#F6F4F2] border border-[#E6E6E2] rounded-full p-1">
@@ -103,7 +125,7 @@ export default function PricingToggle() {
         </div>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-2 gap-5 items-start">
+        <div className="grid md:grid-cols-3 gap-5 items-start">
           {plans.map((plan) => {
             const price = billing === "annual" ? plan.annual : plan.monthly;
             const period = billing === "annual" ? "/year" : "/month";
@@ -139,9 +161,9 @@ export default function PricingToggle() {
                       <span className="text-5xl font-[600] tracking-[-0.02em] text-[#111111]">
                         {price}
                       </span>
-                      <span className="text-sm text-[#72726D]">{period}</span>
+                      {!plan.custom && <span className="text-sm text-[#72726D]">{period}</span>}
                     </div>
-                    {billing === "annual" && (
+                    {billing === "annual" && plan.annualEquivalent && (
                       <p className="text-[12px] text-[#72726D] mt-2">
                         {plan.annualEquivalent}
                       </p>

@@ -613,6 +613,23 @@ function PricingPreview() {
       href: `${APP_URL}/signup`,
       highlight: true,
     },
+    {
+      name: "Enterprise",
+      price: "Custom",
+      period: "",
+      description: "For brands, manufacturers and teams requiring higher volumes and integrations.",
+      features: [
+        "Custom publication allowance",
+        "Unlimited drafts, QR labels & scans",
+        "Everything in Growth",
+        "ERP & PLM integration",
+        "Supplier portal",
+        "Dedicated success manager",
+      ],
+      cta: "Talk to us",
+      href: "/book-demo",
+      highlight: false,
+    },
   ];
 
   return (
@@ -630,7 +647,7 @@ function PricingPreview() {
           </a>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-4 max-w-3xl">
+        <div className="grid md:grid-cols-3 gap-4">
           {plans.map((plan) => (
             <div
               key={plan.name}
@@ -692,7 +709,7 @@ function PricingPreview() {
           ))}
         </div>
 
-        <p className="text-[12px] text-[#72726D] mt-6 max-w-3xl">
+        <p className="text-[12px] text-[#72726D] mt-6">
           All plans include a 14-day free trial. Annual billing available. Additional capacity from +100 passports for £100/month.
         </p>
       </div>
