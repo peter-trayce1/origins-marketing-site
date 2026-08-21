@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { APP_URL } from "@/lib/utils";
 import { fadeUp, staggerContainer, staggerItem } from "@/lib/motion";
+import { AppLink } from "@/components/currency/AppLink";
 import { ArrowRight, Check } from "lucide-react";
 
 const themes = [
@@ -62,9 +62,9 @@ function Hero() {
             A passport is a permanent, scannable connection between product and person. Treated as a channel rather than a compliance record, it keeps working long after the sale.
           </p>
           <div className="flex flex-col sm:flex-row sm:items-center gap-5">
-            <a href={`${APP_URL}/signup`} className="btn-primary h-11 px-6 text-sm">
+            <AppLink path="/signup" className="btn-primary h-11 px-6 text-sm">
               Start free trial
-            </a>
+            </AppLink>
             <a
               href="https://passport.knownobjects.io/c/ORI-89413809"
               className="link-cobalt text-sm"
@@ -184,9 +184,9 @@ function CTA() {
             Build passports that connect your brand to your customers, not only to a regulator.
           </p>
           <div className="flex flex-col sm:flex-row sm:items-center gap-5">
-            <a href={`${APP_URL}/signup`} className="btn-primary bg-white text-[#111111] hover:bg-white/90 h-11 px-6 text-sm">
+            <AppLink path="/signup" className="btn-primary bg-white text-[#111111] hover:bg-white/90 h-11 px-6 text-sm">
               Start free trial
-            </a>
+            </AppLink>
             <a
               href="/book-demo"
               className="inline-flex items-center gap-[5px] text-sm font-[500] text-white/50 transition-colors hover:text-white"

@@ -1,21 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { APP_URL } from "@/lib/utils";
 import { Check } from "lucide-react";
+import { PRICES } from "@/lib/currency";
+import { useCurrency } from "@/components/currency/CurrencyProvider";
+import { CurrencySelector } from "@/components/currency/CurrencySelector";
+import { AppLink } from "@/components/currency/AppLink";
 
 type Billing = "monthly" | "annual";
 
 type Plan = {
+  id: "essentials" | "growth" | "enterprise";
   name: string;
-  monthly: string;
-  annual: string;
-  annualEquivalent?: string;
   custom?: boolean;
   positioning: string;
   allowance: string;
   cta: string;
-  ctaHref: string;
+  ctaType: "app" | "internal";
+  ctaPath: string;
   highlight: boolean;
   badge?: string;
   everythingLine?: string;
@@ -24,15 +26,14 @@ type Plan = {
 
 const plans: Plan[] = [
   {
+    id: "essentials",
     name: "Essentials",
-    monthly: "£150",
-    annual: "£1,500",
-    annualEquivalent: "Equivalent to £125/month",
     positioning:
       "For smaller and growing brands starting to build connected product identities.",
     allowance: "100 published passports / year",
     cta: "Start free trial",
-    ctaHref: `${APP_URL}/signup`,
+    ctaType: "app",
+    ctaPath: "/signup",
     highlight: false,
     features: [
       "AI Passport Builder",
@@ -47,15 +48,14 @@ const plans: Plan[] = [
     ],
   },
   {
+    id: "growth",
     name: "Growth",
-    monthly: "£450",
-    annual: "£4,500",
-    annualEquivalent: "Equivalent to £375/month",
     positioning:
       "For established brands managing larger product ranges, suppliers and teams.",
     allowance: "500 published passports / year",
     cta: "Start free trial",
-    ctaHref: `${APP_URL}/signup`,
+    ctaType: "app",
+    ctaPath: "/signup",
     highlight: true,
     badge: "Most popular",
     everythingLine: "Everything in Essentials, plus:",
@@ -69,15 +69,15 @@ const plans: Plan[] = [
     ],
   },
   {
+    id: "enterprise",
     name: "Enterprise",
-    monthly: "Custom",
-    annual: "Custom",
     custom: true,
     positioning:
       "For brands, manufacturers and teams requiring higher volumes, integrations and dedicated support.",
     allowance: "Custom publication allowance",
     cta: "Talk to us",
-    ctaHref: "/book-demo",
+    ctaType: "internal",
+    ctaPath: "/book-demo",
     highlight: false,
     everythingLine: "Everything in Growth, plus:",
     features: [
@@ -93,12 +93,14 @@ const plans: Plan[] = [
 
 export default function PricingToggle() {
   const [billing, setBilling] = useState<Billing>("monthly");
+  const { currency } = useCurrency();
+  const prices = PRICES[currency];
 
   return (
     <section className="bg-white pb-20 lg:pb-28">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Toggle */}
-        <div className="flex justify-center mb-12">
+        {/* Toggle + currency selector */}
+        <div className="flex flex-col items-center gap-5 mb-12">
           <div className="inline-flex items-center gap-1 bg-[#F6F4F2] border border-[#E6E6E2] rounded-full p-1">
             <button
               onClick={() => setBilling("monthly")}
@@ -122,12 +124,18 @@ export default function PricingToggle() {
               <span className="text-[11px] font-[600] text-[#164ED8]">Save 17%</span>
             </button>
           </div>
+          <CurrencySelector />
         </div>
 
         {/* Cards */}
         <div className="grid md:grid-cols-3 gap-5 items-start">
           {plans.map((plan) => {
-            const price = billing === "annual" ? plan.annual : plan.monthly;
+            const planPrice =
+              plan.id === "enterprise"
+                ? "Custom"
+                : billing === "annual"
+                  ? prices[plan.id].annual
+                  : prices[plan.id].monthly;
             const period = billing === "annual" ? "/year" : "/month";
 
             return (
@@ -159,13 +167,13 @@ export default function PricingToggle() {
                   <div>
                     <div className="flex items-baseline gap-1.5">
                       <span className="text-5xl font-[600] tracking-[-0.02em] text-[#111111]">
-                        {price}
+                        {planPrice}
                       </span>
                       {!plan.custom && <span className="text-sm text-[#72726D]">{period}</span>}
                     </div>
-                    {billing === "annual" && plan.annualEquivalent && (
+                    {billing === "annual" && plan.id !== "enterprise" && (
                       <p className="text-[12px] text-[#72726D] mt-2">
-                        {plan.annualEquivalent}
+                        {prices[plan.id].annualEquivalent}
                       </p>
                     )}
                   </div>
@@ -190,16 +198,29 @@ export default function PricingToggle() {
                   </p>
 
                   {/* CTA */}
-                  <a
-                    href={plan.ctaHref}
-                    className={`inline-flex items-center justify-center h-11 px-5 text-[13px] font-[500] transition-colors border ${
-                      plan.highlight
-                        ? "bg-[#164ED8] text-white border-[#164ED8] hover:bg-[#123fad]"
-                        : "bg-[#111111] text-white border-[#111111] hover:bg-[#2a2a2a]"
-                    }`}
-                  >
-                    {plan.cta}
-                  </a>
+                  {plan.ctaType === "app" ? (
+                    <AppLink
+                      path={plan.ctaPath}
+                      className={`inline-flex items-center justify-center h-11 px-5 text-[13px] font-[500] transition-colors border ${
+                        plan.highlight
+                          ? "bg-[#164ED8] text-white border-[#164ED8] hover:bg-[#123fad]"
+                          : "bg-[#111111] text-white border-[#111111] hover:bg-[#2a2a2a]"
+                      }`}
+                    >
+                      {plan.cta}
+                    </AppLink>
+                  ) : (
+                    <a
+                      href={plan.ctaPath}
+                      className={`inline-flex items-center justify-center h-11 px-5 text-[13px] font-[500] transition-colors border ${
+                        plan.highlight
+                          ? "bg-[#164ED8] text-white border-[#164ED8] hover:bg-[#123fad]"
+                          : "bg-[#111111] text-white border-[#111111] hover:bg-[#2a2a2a]"
+                      }`}
+                    >
+                      {plan.cta}
+                    </a>
+                  )}
 
                   {/* Features */}
                   <ul className="space-y-2.5 pt-2 border-t border-[#E6E6E2]">

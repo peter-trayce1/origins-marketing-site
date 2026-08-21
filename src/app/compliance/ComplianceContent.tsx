@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { APP_URL } from "@/lib/utils";
 import { fadeUp, staggerContainer, staggerItem } from "@/lib/motion";
+import { AppLink } from "@/components/currency/AppLink";
 import { ArrowRight, Check, Plus, Minus } from "lucide-react";
 
 const specRows = [
@@ -63,9 +63,9 @@ function Hero() {
             Digital Product Passports are becoming a legal requirement for brands selling into the EU. Known Objects gives you the infrastructure to prepare early, without consultants or spreadsheets.
           </p>
           <div className="flex flex-col sm:flex-row sm:items-center gap-5">
-            <a href={`${APP_URL}/signup`} className="btn-primary h-11 px-6 text-sm">
+            <AppLink path="/signup" className="btn-primary h-11 px-6 text-sm">
               Start free trial
-            </a>
+            </AppLink>
             <a
               href="/book-demo"
               className="inline-flex items-center gap-[5px] text-sm font-[500] text-[#111111] transition-opacity hover:opacity-60"
@@ -264,9 +264,9 @@ function CTA() {
             Most brands publish their first passport within an hour of signing up.
           </p>
           <div className="flex flex-col sm:flex-row sm:items-center gap-5">
-            <a href={`${APP_URL}/signup`} className="btn-primary bg-white text-[#111111] hover:bg-white/90 h-11 px-6 text-sm">
+            <AppLink path="/signup" className="btn-primary bg-white text-[#111111] hover:bg-white/90 h-11 px-6 text-sm">
               Start free trial
-            </a>
+            </AppLink>
             <a
               href="/book-demo"
               className="inline-flex items-center gap-[5px] text-sm font-[500] text-white/50 transition-colors hover:text-white"

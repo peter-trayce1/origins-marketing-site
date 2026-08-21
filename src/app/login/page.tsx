@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { APP_URL } from "@/lib/utils";
+import { AppLink } from "@/components/currency/AppLink";
 
 export const metadata: Metadata = {
   title: "Login",
@@ -31,12 +32,12 @@ export default function LoginPage() {
           </a>
           <div className="text-xs text-[#8C8C8C]">
             Don&apos;t have an account?{" "}
-            <a
-              href={`${APP_URL}/signup`}
+            <AppLink
+              path="/signup"
               className="text-[#525252] hover:text-[#0A0A0A] underline underline-offset-2 transition-colors"
             >
               Start free trial
-            </a>
+            </AppLink>
           </div>
         </div>
       </div>

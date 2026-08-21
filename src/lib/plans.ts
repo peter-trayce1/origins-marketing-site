@@ -1,24 +1,24 @@
-import { APP_URL } from "@/lib/utils";
-
-// Homepage pricing preview plans. Feature lists are aligned with the full
-// pricing page in src/app/pricing/PricingToggle.tsx.
+// Homepage pricing preview plans. Prices are not stored here; they are looked
+// up per-currency from src/lib/currency.ts (PRICES) at render time. Feature
+// lists are aligned with the full pricing page in
+// src/app/pricing/PricingToggle.tsx.
 
 export type HomePlan = {
+  id: "essentials" | "growth" | "enterprise";
   name: string;
-  price: string;
-  period: string;
   description: string;
   features: string[];
   cta: string;
-  href: string;
+  /** "app" CTAs go into the Known Objects app and carry ?currency=. */
+  ctaType: "app" | "internal";
+  ctaPath: string;
   highlight: boolean;
 };
 
 export const homePlans: HomePlan[] = [
   {
+    id: "essentials",
     name: "Essentials",
-    price: "£150",
-    period: "/mo",
     description:
       "For smaller and growing brands starting to build connected product identities.",
     features: [
@@ -30,13 +30,13 @@ export const homePlans: HomePlan[] = [
       "CSV import & export",
     ],
     cta: "Start free trial",
-    href: `${APP_URL}/signup`,
+    ctaType: "app",
+    ctaPath: "/signup",
     highlight: false,
   },
   {
+    id: "growth",
     name: "Growth",
-    price: "£450",
-    period: "/mo",
     description:
       "For established brands managing larger product ranges, suppliers and teams.",
     features: [
@@ -49,13 +49,13 @@ export const homePlans: HomePlan[] = [
       "Custom branding",
     ],
     cta: "Start free trial",
-    href: `${APP_URL}/signup`,
+    ctaType: "app",
+    ctaPath: "/signup",
     highlight: true,
   },
   {
+    id: "enterprise",
     name: "Enterprise",
-    price: "Custom",
-    period: "",
     description:
       "For brands, manufacturers and teams requiring higher volumes, integrations and dedicated support.",
     features: [
@@ -68,7 +68,8 @@ export const homePlans: HomePlan[] = [
       "White-label options",
     ],
     cta: "Talk to us",
-    href: "/book-demo",
+    ctaType: "internal",
+    ctaPath: "/book-demo",
     highlight: false,
   },
 ];

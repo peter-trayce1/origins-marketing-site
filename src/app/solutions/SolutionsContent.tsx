@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { APP_URL } from "@/lib/utils";
 import { fadeUp, staggerContainer, staggerItem } from "@/lib/motion";
+import { AppLink } from "@/components/currency/AppLink";
 import { ArrowRight, Check } from "lucide-react";
 
 const segments = [
@@ -136,9 +136,9 @@ function ComplianceCallout() {
             The Ecodesign for Sustainable Products Regulation asks brands selling into the EU to issue Digital Product Passports, from independents to global retailers. Known Objects builds that structure in from the start.
           </p>
           <div className="flex flex-col sm:flex-row sm:items-center gap-5 mt-2">
-            <a href={`${APP_URL}/signup`} className="btn-primary h-11 px-6 text-sm">
+            <AppLink path="/signup" className="btn-primary h-11 px-6 text-sm">
               Start for free
-            </a>
+            </AppLink>
             <a href="/compliance" className="link-cobalt text-sm">
               Read about ESPR readiness <ArrowRight size={13} />
             </a>

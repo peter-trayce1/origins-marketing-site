@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { APP_URL } from "@/lib/utils";
 import { fadeUp, staggerContainer, staggerItem } from "@/lib/motion";
+import { AppLink } from "@/components/currency/AppLink";
 import {
   ArrowRight,
   Check,
@@ -31,9 +31,9 @@ function Hero() {
             A complete infrastructure for Digital Product Passports, from the first data entry to the customer scanning a QR code in store.
           </p>
           <div className="flex flex-col sm:flex-row sm:items-center gap-5">
-            <a href={`${APP_URL}/signup`} className="btn-primary h-11 px-6 text-sm">
+            <AppLink path="/signup" className="btn-primary h-11 px-6 text-sm">
               Start building free
-            </a>
+            </AppLink>
             <a
               href="/book-demo"
               className="inline-flex items-center gap-[5px] text-sm font-[500] text-[#111111] transition-opacity hover:opacity-60"
@@ -289,9 +289,9 @@ function CTA() {
             Set up in under ten minutes. No credit card required.
           </p>
           <div className="flex flex-col sm:flex-row sm:items-center gap-5">
-            <a href={`${APP_URL}/signup`} className="btn-primary bg-white text-[#111111] hover:bg-white/90 h-11 px-6 text-sm">
+            <AppLink path="/signup" className="btn-primary bg-white text-[#111111] hover:bg-white/90 h-11 px-6 text-sm">
               Start building free
-            </a>
+            </AppLink>
             <a
               href="/pricing"
               className="inline-flex items-center gap-[5px] text-sm font-[500] text-white/50 transition-colors hover:text-white"

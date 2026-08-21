@@ -3,9 +3,12 @@
 import Image from "next/image";
 import { Fragment, useState } from "react";
 import { motion } from "framer-motion";
-import { APP_URL } from "@/lib/utils";
 import { fadeUp, staggerContainer, staggerItem } from "@/lib/motion";
 import { homePlans } from "@/lib/plans";
+import { PRICES } from "@/lib/currency";
+import { useCurrency } from "@/components/currency/CurrencyProvider";
+import { CurrencySelector } from "@/components/currency/CurrencySelector";
+import { AppLink } from "@/components/currency/AppLink";
 import {
   ArrowRight,
   Check,
@@ -337,9 +340,9 @@ function PassportSteps() {
             })}
 
             <div className="mt-10 flex items-center gap-5">
-              <a href={`${APP_URL}/signup`} className="btn-primary h-11 px-6 text-sm">
+              <AppLink path="/signup" className="btn-primary h-11 px-6 text-sm">
                 Start building free
-              </a>
+              </AppLink>
               <p className="text-[12px] text-[#72726D]">No credit card required</p>
             </div>
           </div>
@@ -442,9 +445,9 @@ function SupplyChainScale() {
                   ))}
                 </ul>
                 {cell.link && (
-                  <a href={`${APP_URL}/signup`} className="link-cobalt text-sm">
+                  <AppLink path="/signup" className="link-cobalt text-sm">
                     Start for free <ArrowRight size={13} />
-                  </a>
+                  </AppLink>
                 )}
               </div>
             </motion.div>
@@ -516,6 +519,9 @@ function ComplianceTimeline() {
 // ─── Pricing preview ──────────────────────────────────────────────────────────
 
 function PricingPreview() {
+  const { currency } = useCurrency();
+  const prices = PRICES[currency];
+
   return (
     <section className="bg-white py-32 border-t border-[#E6E6E2]">
       <div className="max-w-7xl mx-auto px-6">
@@ -526,75 +532,96 @@ function PricingPreview() {
               Simple pricing for brands<br />at every stage.
             </h2>
           </div>
-          <a href="/pricing" className="link-cobalt text-sm shrink-0">
-            View full pricing <ArrowRight size={13} />
-          </a>
+          <div className="flex items-center gap-6 shrink-0">
+            <CurrencySelector />
+            <a href="/pricing" className="link-cobalt text-sm">
+              View full pricing <ArrowRight size={13} />
+            </a>
+          </div>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-4">
-          {homePlans.map((plan) => (
-            <div
-              key={plan.name}
-              className={`p-7 flex flex-col gap-6 border rounded-[4px] ${
-                plan.highlight
-                  ? "bg-[#111111] border-[#111111]"
-                  : "bg-white border-[#E6E6E2]"
-              }`}
-            >
-              <div>
-                <p className={`text-[10px] font-[500] uppercase tracking-[0.12em] mb-3 ${
-                  plan.highlight ? "text-white/40" : "text-[#72726D]"
-                }`}>
-                  {plan.name}
-                </p>
-                <div className="flex items-baseline gap-1 mb-2">
-                  <span className={`text-4xl font-[300] tracking-tight ${
-                    plan.highlight ? "text-white" : "text-[#111111]"
-                  }`}>
-                    {plan.price}
-                  </span>
-                  {plan.period && (
-                    <span className={`text-sm ${plan.highlight ? "text-white/40" : "text-[#72726D]"}`}>
-                      {plan.period}
-                    </span>
-                  )}
-                </div>
-                <p className={`text-[13px] leading-[1.65] ${plan.highlight ? "text-white/50" : "text-[#72726D]"}`}>
-                  {plan.description}
-                </p>
-              </div>
+          {homePlans.map((plan) => {
+            const price = plan.id === "enterprise" ? "Custom" : prices[plan.id].monthly;
+            const period = plan.id === "enterprise" ? "" : "/mo";
 
-              <ul className="space-y-2.5 flex-1">
-                {plan.features.map((feat) => (
-                  <li key={feat} className="flex items-start gap-2.5">
-                    <Check
-                      size={12}
-                      className={`mt-[3px] shrink-0 ${plan.highlight ? "text-white/50" : "text-[#164ED8]"}`}
-                      strokeWidth={2}
-                    />
-                    <span className={`text-[13px] ${plan.highlight ? "text-white/60" : "text-[#72726D]"}`}>
-                      {feat}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href={plan.href}
-                className={`inline-flex items-center justify-center h-10 px-5 text-[13px] font-[500] transition-colors border rounded-[4px] ${
+            return (
+              <div
+                key={plan.name}
+                className={`p-7 flex flex-col gap-6 border rounded-[4px] ${
                   plan.highlight
-                    ? "bg-white text-[#111111] border-white hover:bg-white/90"
-                    : "bg-[#111111] text-white border-[#111111] hover:bg-[#2a2a2a]"
+                    ? "bg-[#111111] border-[#111111]"
+                    : "bg-white border-[#E6E6E2]"
                 }`}
               >
-                {plan.cta}
-              </a>
-            </div>
-          ))}
+                <div>
+                  <p className={`text-[10px] font-[500] uppercase tracking-[0.12em] mb-3 ${
+                    plan.highlight ? "text-white/40" : "text-[#72726D]"
+                  }`}>
+                    {plan.name}
+                  </p>
+                  <div className="flex items-baseline gap-1 mb-2">
+                    <span className={`text-4xl font-[300] tracking-tight ${
+                      plan.highlight ? "text-white" : "text-[#111111]"
+                    }`}>
+                      {price}
+                    </span>
+                    {period && (
+                      <span className={`text-sm ${plan.highlight ? "text-white/40" : "text-[#72726D]"}`}>
+                        {period}
+                      </span>
+                    )}
+                  </div>
+                  <p className={`text-[13px] leading-[1.65] ${plan.highlight ? "text-white/50" : "text-[#72726D]"}`}>
+                    {plan.description}
+                  </p>
+                </div>
+
+                <ul className="space-y-2.5 flex-1">
+                  {plan.features.map((feat) => (
+                    <li key={feat} className="flex items-start gap-2.5">
+                      <Check
+                        size={12}
+                        className={`mt-[3px] shrink-0 ${plan.highlight ? "text-white/50" : "text-[#164ED8]"}`}
+                        strokeWidth={2}
+                      />
+                      <span className={`text-[13px] ${plan.highlight ? "text-white/60" : "text-[#72726D]"}`}>
+                        {feat}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                {plan.ctaType === "app" ? (
+                  <AppLink
+                    path={plan.ctaPath}
+                    className={`inline-flex items-center justify-center h-10 px-5 text-[13px] font-[500] transition-colors border rounded-[4px] ${
+                      plan.highlight
+                        ? "bg-white text-[#111111] border-white hover:bg-white/90"
+                        : "bg-[#111111] text-white border-[#111111] hover:bg-[#2a2a2a]"
+                    }`}
+                  >
+                    {plan.cta}
+                  </AppLink>
+                ) : (
+                  <a
+                    href={plan.ctaPath}
+                    className={`inline-flex items-center justify-center h-10 px-5 text-[13px] font-[500] transition-colors border rounded-[4px] ${
+                      plan.highlight
+                        ? "bg-white text-[#111111] border-white hover:bg-white/90"
+                        : "bg-[#111111] text-white border-[#111111] hover:bg-[#2a2a2a]"
+                    }`}
+                  >
+                    {plan.cta}
+                  </a>
+                )}
+              </div>
+            );
+          })}
         </div>
 
         <p className="text-[12px] text-[#72726D] mt-6">
-          All plans include a 14-day free trial. Annual billing available. Additional capacity from +100 passports for £100/month.
+          All plans include a 14-day free trial. Annual billing available. Additional capacity from +100 passports for {prices.addOns.plus100}/month.
         </p>
       </div>
     </section>
@@ -700,12 +727,12 @@ function FinalCTA() {
             <a href="/book-demo" className="btn-primary bg-white text-[#111111] hover:bg-white/90 h-11 px-6 text-sm">
               Book a demo
             </a>
-            <a
-              href={`${APP_URL}/signup`}
+            <AppLink
+              path="/signup"
               className="inline-flex items-center gap-[5px] text-sm font-[500] text-white/50 transition-colors hover:text-white"
             >
               Start for free <ArrowRight size={13} />
-            </a>
+            </AppLink>
           </div>
           <p className="text-[12px] text-white/25 mt-5">
             No credit card required · Live in minutes
